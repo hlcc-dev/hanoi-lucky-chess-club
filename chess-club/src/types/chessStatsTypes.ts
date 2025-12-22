@@ -19,28 +19,6 @@ export interface ChessStreamingPlatform {
     type: string
     channel_url: string
 }
-
-export interface ChessUser {
-    "@id": string
-    avatar?: string
-    country: string
-    followers: number
-    is_streamer: boolean
-    joined: number
-    last_online: number
-    league?: string
-    location?: string
-    name?: string
-    player_id: number
-    status: string
-    streaming_platforms?: ChessStreamingPlatform[]
-    title?: "GM" | "IM" | "FM" | "CM" | "WGM" | "WIM" | "WFM" | "WCM"
-    twitch_url?: string
-    url: string
-    username: string
-    verified: boolean
-}
-
 /* ---------- Game Modes ---------- */
 
 export interface ChessGameMode {

@@ -15,7 +15,7 @@ interface ToastContentProps {
 
 const config = {
     success: {
-        color: "#FACC15", // club-primary
+        color: "#628141", //club-primary
         icon: <FaCheckCircle />,
     },
     error: {
@@ -23,7 +23,7 @@ const config = {
         icon: <FaTimesCircle />,
     },
     info: {
-        color: "#3B82F6", // blue-500
+        color: "#FACC15", // yellow-500
         icon: <FaInfoCircle />,
     },
     warning: {

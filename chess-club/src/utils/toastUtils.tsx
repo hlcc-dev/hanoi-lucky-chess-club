@@ -1,5 +1,5 @@
 import { toast } from "react-toastify"
-import ToastContent from "../components/ToastContent"
+import ToastContent from "../components/Toast/ToastContent"
 
 export function toastSuccess(message: string) {
   toast(

@@ -5,6 +5,7 @@ interface ButtonSecondaryProps {
   onClick?: () => void
   disabled?: boolean
   size?: ButtonSize
+  icon?: React.ReactNode
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -18,6 +19,7 @@ function ButtonSecondary({
   onClick,
   disabled = false,
   size = "md",
+  icon,
 }: ButtonSecondaryProps) {
   return (
     <button
@@ -38,6 +40,7 @@ function ButtonSecondary({
       `}
     >
       {label}
+      {icon && <span className="ml-2 inline-flex">{icon}</span>}
     </button>
   )
 }

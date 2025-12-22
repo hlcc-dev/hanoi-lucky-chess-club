@@ -44,7 +44,6 @@ export function useChessUser() {
 
             setProfile(profileRes.data)
             setStats(statsRes.data)
-            console.log(profileRes.data, statsRes.data)
             setStatus("success")
         } catch (err: any) {
             if (axios.isCancel(err)) return
