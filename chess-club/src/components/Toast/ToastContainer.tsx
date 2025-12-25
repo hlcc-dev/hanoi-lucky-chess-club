@@ -12,6 +12,10 @@ function ToastContainer() {
             pauseOnHover
             draggable
 
+            // --- layout fixes ---
+            toastClassName={() =>
+                "relative w-80 max-w-sm sm:w-80 rounded-lg overflow-visible shadow-md bg-white pr-10"
+            }
         />
     )
 }
