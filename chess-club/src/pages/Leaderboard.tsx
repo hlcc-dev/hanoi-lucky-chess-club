@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { supabasePersistent } from "../utils/supabaseClient";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRocket, faFire, faCalendar, faShuffle, faGlobe, } from "@fortawesome/free-solid-svg-icons";
+import { faRocket, faFire, faCalendar, faShuffle, faGlobe, faCrown } from "@fortawesome/free-solid-svg-icons";
+
 
 const CACHE_KEY = "leaderboardCache_v1";
 
@@ -195,15 +196,6 @@ function Leaderboard() {
                             rows.map((row, index) => {
                                 const isMe = row.id === currentUserId;
 
-                                const rankColor =
-                                    index === 0
-                                        ? "text-yellow-600"
-                                        : index === 1
-                                            ? "text-gray-500"
-                                            : index === 2
-                                                ? "text-amber-700"
-                                                : "text-club-dark";
-
                                 return (
                                     <tr
                                         key={row.id}
@@ -217,9 +209,21 @@ function Leaderboard() {
                                     >
                                         {/* RANK */}
                                         <td
-                                            className={`px-3 sm:px-4 py-2 sm:py-3 font-bold ${rankColor}`}
+                                            className={`flex flex-row justify-center items-center px-3 sm:px-4 py-2 sm:py-3 font-bold text-black text-sm md:text-lg  lg:text-xl} `}
                                         >
+                                            {index === 0 && (
+                                                <FontAwesomeIcon className="inline mr-1 text-yellow-400" icon={faCrown} />
+                                            )}
+
+                                            {index === 1 && (
+                                                <FontAwesomeIcon className="inline mr-1 text-gray-400" icon={faCrown} />
+                                            )}
+
+                                            {index === 2 && (
+                                                <FontAwesomeIcon className="inline mr-1 text-[#cd7f32]" icon={faCrown} />
+                                            )}
                                             {index + 1}
+
                                         </td>
 
                                         {/* PLAYER */}
