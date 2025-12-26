@@ -1,4 +1,6 @@
 import { useRef, useEffect, useMemo } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCrown } from "@fortawesome/free-solid-svg-icons";
 
 // Types for leaderboard rows coming from the database
 export interface ChessLeaderboardEntry {
@@ -37,6 +39,81 @@ function ChessLeaderboard({
 }: ChessLeaderboardProps) {
     // -------- MEMOIZED LEADERBOARD + WINDOW LOGIC --------
     const leaderboard = useMemo(() => data, [data]);
+
+    // add 3 fake entries
+
+    data.push(
+        {
+            user_id: "fake1",
+            puzzle_date: "2023-01-01",
+            time_seconds: 120,
+            attempt: 1,
+            solved_at: "2023-01-01T12:00:00Z",
+            profiles: {
+                username: "Champion123",
+            },
+        },
+        {
+            user_id: "fake2",
+            puzzle_date: "2023-01-01",
+            time_seconds: 150,
+            attempt: 2,
+            solved_at: "2023-01-01T12:05:00Z",
+            profiles: {
+                username: "Grandmaster456",
+            },
+        },
+        {
+            user_id: "fake3",
+            puzzle_date: "2023-01-01",
+            time_seconds: 180,
+            attempt: 3,
+            solved_at: "2023-01-01T12:10:00Z",
+            profiles: {
+                username: "PuzzlePro789",
+            },
+        },
+        {
+            user_id: "fake3",
+            puzzle_date: "2023-01-01",
+            time_seconds: 180,
+            attempt: 3,
+            solved_at: "2023-01-01T12:10:00Z",
+            profiles: {
+                username: "PuzzlePro789",
+            },
+        },
+        {
+            user_id: "fake3",
+            puzzle_date: "2023-01-01",
+            time_seconds: 180,
+            attempt: 3,
+            solved_at: "2023-01-01T12:10:00Z",
+            profiles: {
+                username: "PuzzlePro789",
+            },
+        },
+        {
+            user_id: "fake3",
+            puzzle_date: "2023-01-01",
+            time_seconds: 180,
+            attempt: 3,
+            solved_at: "2023-01-01T12:10:00Z",
+            profiles: {
+                username: "PuzzlePro789",
+            },
+        },
+        {
+            user_id: "fake3",
+            puzzle_date: "2023-01-01",
+            time_seconds: 180,
+            attempt: 3,
+            solved_at: "2023-01-01T12:10:00Z",
+            profiles: {
+                username: "PuzzlePro789",
+            },
+        }
+    );
 
     const {
         visibleRows,
@@ -146,7 +223,8 @@ function ChessLeaderboard({
                 {/* Enables vertical scrolling only */}
                 <div
                     ref={containerRef}
-                    className="flex flex-col gap-2 max-h-65 sm:max-h-72 overflow-y-auto overflow-x-hidden overscroll-contain border border-black rounded-2xl ">
+                    className="flex flex-col gap-2 px-4 py-5 max-h-65 sm:max-h-72 overflow-y-auto overflow-x-hidden overscroll-contain border rounded-sm overflow-hidden"
+                >
                     {visibleRows.map((entry, index) => {
                         const isCurrentUser = user_id === entry.user_id;
 
@@ -162,7 +240,20 @@ function ChessLeaderboard({
                                     }`}
                             >
                                 {/* Rank */}
-                                <div className="w-6 text-center font-semibold">
+                                <div className="w-6 text-center font-semibold flex flex-row justify-center items-center">
+
+
+                                    {index === 0 && (
+                                        <FontAwesomeIcon className="inline mr-1 text-yellow-400" icon={faCrown} />
+                                    )}
+
+                                    {index === 1 && (
+                                        <FontAwesomeIcon className="inline mr-1 text-gray-400" icon={faCrown} />
+                                    )}
+
+                                    {index === 2 && (
+                                        <FontAwesomeIcon className="inline mr-1 text-[#cd7f32]" icon={faCrown} />
+                                    )}
                                     {leaderboard.findIndex((e) => e.user_id === entry.user_id) + 1}
                                 </div>
 

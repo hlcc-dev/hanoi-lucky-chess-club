@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { supabasePersistent } from "../utils/supabaseClient";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRocket, faFire, faCalendar, faShuffle, faGlobe, } from "@fortawesome/free-solid-svg-icons";
 
 const CACHE_KEY = "leaderboardCache_v1";
 
@@ -24,13 +26,13 @@ type LeaderboardType =
     | "960"
     | "fide";
 
-const leaderboardTabs: { label: string; value: LeaderboardType }[] = [
-    { label: "Blitz", value: "blitz" },
-    { label: "Bullet", value: "bullet" },
-    { label: "Rapid", value: "rapid" },
-    { label: "Daily", value: "daily" },
-    { label: "960", value: "960" },
-    { label: "FIDE", value: "fide" },
+const leaderboardTabs: { label: string; value: LeaderboardType, icon: any }[] = [
+    { label: "Blitz", value: "blitz", icon: faFire },
+    { label: "Bullet", value: "bullet", icon: faRocket },
+    { label: "Rapid", value: "rapid", icon: faRocket },
+    { label: "Daily", value: "daily", icon: faCalendar },
+    { label: "960", value: "960", icon: faShuffle },
+    { label: "FIDE", value: "fide", icon: faGlobe },
 ];
 
 const columnMap: Record<LeaderboardType, string> = {
@@ -131,21 +133,25 @@ function Leaderboard() {
                 {/* TABS */}
                 <div className="flex flex-wrap justify-center gap-2 text-sm sm:text-base">
                     {leaderboardTabs.map((tab) => (
-                        <button
-                            key={tab.value}
-                            disabled={loading}
-                            onClick={() => setType(tab.value)}
-                            className={`
+                        <div key={tab.value} className="flex items-center gap-1">
+
+                            <button
+                                key={tab.value}
+                                disabled={loading}
+                                onClick={() => setType(tab.value)}
+                                className={`
                                 px-4 py-2 rounded-lg border font-medium transition
                                 disabled:opacity-50 disabled:cursor-not-allowed
                                 ${type === tab.value
-                                    ? "bg-club-primary text-club-dark border-club-secondary"
-                                    : "border-club-secondary hover:bg-club-secondary/10"
-                                }
+                                        ? "bg-club-primary text-club-dark border-club-secondary"
+                                        : "border-club-secondary hover:bg-club-secondary/10"
+                                    }
                             `}
-                        >
-                            {tab.label}
-                        </button>
+                            >
+                                <FontAwesomeIcon icon={tab.icon} />
+                                {tab.label}
+                            </button>
+                        </div>
                     ))}
                 </div>
             </div>
