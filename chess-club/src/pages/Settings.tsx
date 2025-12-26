@@ -1,4 +1,3 @@
-import { Outlet } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import Input from '../components/Input';
@@ -8,9 +7,11 @@ import { useChangeUsername } from '../hooks/useChangeUsername';
 import type { ChessStats } from "../hooks/useUser";
 import ChessLoading from '../components/ChessboardComps/ChessLoading';
 import { checkUsernameAvailable } from '../utils/checkUsernameAvailable';
-import { toastError, toastSuccess } from '../utils/toastUtils';
+import { toastSuccess } from '../utils/toastUtils';
 import { useChessUser } from '../hooks/useChessUser';
 import updateChessStats from "../utils/UpdateChessStats";
+import { FaEnvelope, FaUser } from 'react-icons/fa';
+import { FaChessBoard } from "react-icons/fa6";
 
 function Settings() {
     const navigate = useNavigate();
@@ -166,44 +167,69 @@ function Settings() {
                                 sm:gap-3
                             "
                         >
-                            <Input
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                readOnly={usernameChanged}
-                            />
+                            <div
+                                className="
+                                    flex
+                                    flex-col
+                                    sm:flex-row
+                                    w-full
+                                    sm:items-center
+                                    gap-1
+                                    sm:gap-3
+                                "
+                            >
+                                <div className="relative w-full">
+                                    <FaUser
+                                        className="
+                                            absolute
+                                            left-3
+                                            top-1/2
+                                            -translate-y-1/2
+                                            text-club-dark/40
+                                            pointer-events-none
+                                        "
+                                    />
 
-                            <div className="w-full sm:w-auto">
-                                <ButtonPrimary
-                                    label={isUsernameAvailable === false ? "Not available" : "Change Username"}
-                                    size="md"
-                                    onClick={async () => {
-                                        try {
-                                            setCheckingUsername(true);
+                                    <Input
+                                        icon
+                                        value={username}
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        readOnly={usernameChanged}
+                                    />
+                                </div>
 
-                                            const available = await checkUsernameAvailable(username);
+                                <div className="w-full sm:w-auto">
+                                    <ButtonPrimary
+                                        label={isUsernameAvailable === false ? "Not available" : "Change Username"}
+                                        size="md"
+                                        onClick={async () => {
+                                            try {
+                                                setCheckingUsername(true);
 
-                                            if (!available) {
-                                                setIsUsernameAvailable(false);
-                                                return;
+                                                const available = await checkUsernameAvailable(username);
+
+                                                if (!available) {
+                                                    setIsUsernameAvailable(false);
+                                                    return;
+                                                }
+
+                                                await changeUsername(username);
+                                                setIsUsernameAvailable(true);
+
+                                            } finally {
+                                                setCheckingUsername(false);
+                                                setUsernameChanged(true);
+                                                toastSuccess("Username changed successfully to " + username + "!");
                                             }
-
-                                            await changeUsername(username);
-                                            setIsUsernameAvailable(true);
-
-                                        } finally {
-                                            setCheckingUsername(false);
-                                            setUsernameChanged(true);
-                                            toastSuccess("Username changed successfully to " + username + "!");
+                                        }}
+                                        disabled={
+                                            checkingUsername ||
+                                            !username.trim() ||
+                                            username === (user.profile?.username ?? '') ||
+                                            usernameChanged
                                         }
-                                    }}
-                                    disabled={
-                                        checkingUsername ||
-                                        !username.trim() ||
-                                        username === (user.profile?.username ?? '') ||
-                                        usernameChanged
-
-                                    }
-                                />
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -225,11 +251,30 @@ function Settings() {
                             Email :
                         </label>
 
-                        <Input
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            readOnly
-                        />
+                        <div
+                            className="
+                                relative
+                                w-full
+                            "
+                        >
+                            <FaEnvelope
+                                className="
+                                    absolute
+                                    left-3
+                                    top-1/2
+                                    -translate-y-1/2
+                                    text-club-dark/40
+                                    pointer-events-none
+                                "
+                            />
+
+                            <Input
+                                icon
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                readOnly
+                            />
+                        </div>
                     </div>
 
                     <div className="pt-4 flex justify-center">
@@ -293,14 +338,25 @@ function Settings() {
                                 sm:gap-3
                             "
                         >
-                            <Input
-                                value={chessUsername}
-                                placeholder='Chess.com Username'
-                                onChange={(e) => {
-                                    setChessUsername(e.target.value);
-                                }}
+                            <div className="relative w-full">
+                                <FaChessBoard
+                                    className="
+                                        absolute
+                                        left-3
+                                        top-1/2
+                                        -translate-y-1/2
+                                        text-club-dark/40
+                                        pointer-events-none
+                                    "
+                                />
 
-                            />
+                                <Input
+                                    icon
+                                    value={chessUsername}
+                                    placeholder="Chess.com Username"
+                                    onChange={(e) => setChessUsername(e.target.value)}
+                                />
+                            </div>
 
                             <div className="w-full sm:w-auto">
                                 <ButtonPrimary
@@ -410,7 +466,7 @@ function Settings() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

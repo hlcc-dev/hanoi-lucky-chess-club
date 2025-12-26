@@ -102,7 +102,7 @@ function ChessLeaderboard({
 
                     <div className="flex justify-center content-center items-center gap-4 sm:gap-6 flex-wrap sm:flex-nowrap w-full text-center">
                         <div className="flex flex-col gap-1 px-4 py-3 rounded-xl border border-black/20 bg-[#f3e7c4] shadow-sm w-36 sm:w-40">
-                            <span className="text-xs uppercase text-gray-600 text-left">
+                            <span className="text-xs uppercase text-gray-600 text-center">
                                 Time Elapsed
                             </span>
                             <span className="font-mono text-lg font-semibold self-center">
@@ -112,7 +112,7 @@ function ChessLeaderboard({
                         </div>
 
                         <div className="flex flex-col gap-1 px-4 py-3 rounded-xl border border-black/20 bg-[#f3e7c4] shadow-sm w-36 sm:w-40">
-                            <span className="text-xs uppercase text-gray-600 text-left">
+                            <span className="text-xs uppercase text-gray-600 text-center">
                                 Total Mistakes
                             </span>
                             <span className="font-mono text-lg font-bold self-center">
