@@ -29,7 +29,6 @@ function ButtonSecondary({
       className={`
         bg-club-light
         text-club-dark
-        border-2
         rounded-2xl
         font-medium
         transition

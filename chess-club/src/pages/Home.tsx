@@ -1,7 +1,21 @@
-function Home () {
+import HeroSection from "../components/homeComponents/HeroSection"
+import ImageCarousel from "../components/homeComponents/ImageCarousel"
+import ClubInfoSection from "../components/homeComponents/ClubInfoSection"
+import CallToAction from "../components/homeComponents/CallToAction"
+import WhatToExpectSection from "../components/homeComponents/WhatToExpectSection"
+import WhoCanJoinSection from "../components/homeComponents/WhoCanJoinSection"
+import FAQ from "../components/homeComponents/FAQ"
+
+function Home() {
   return (
-    <div className="pt-48 pb-24 flex items-center justify-center min-h-screen bg-club-light">
-      <h1>Welcome to the Hanoi Lucky Chess Club!</h1>
+    <div className="flex flex-col grow w-full ">
+      <HeroSection />
+      <WhatToExpectSection />
+      <WhoCanJoinSection />
+      <ClubInfoSection />
+      <ImageCarousel />
+      <CallToAction />
+      <FAQ />
     </div>
   )
 }

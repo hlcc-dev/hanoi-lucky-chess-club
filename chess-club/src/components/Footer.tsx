@@ -3,7 +3,7 @@ import { SiZalo } from "react-icons/si";
 
 function Footer() {
   return (
-    <footer className="bg-club-primary text-club-dark">
+    <footer className="w-full bg-club-primary text-club-dark">
       <div
         className="
           mx-auto w-full
@@ -22,7 +22,9 @@ function Footer() {
         {/* Right side */}
         <div className="flex items-center gap-5">
           <a
-            href="#"
+            href="https://zalo.me/g/owpzpk136"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Zalo"
             className="hover:text-club-secondary transition-transform hover:scale-110"
           >
@@ -30,7 +32,9 @@ function Footer() {
           </a>
 
           <a
-            href="#"
+            href="https://www.facebook.com/share/17ovBRMUDA/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Facebook"
             className="hover:text-club-secondary transition-transform hover:scale-110"
           >

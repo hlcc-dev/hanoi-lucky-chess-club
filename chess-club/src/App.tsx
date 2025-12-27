@@ -21,7 +21,7 @@ function App() {
       <Header />
 
       {/* MAIN CONTENT MUST GROW */}
-      <main className="flex-1 flex">
+      <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
@@ -33,10 +33,10 @@ function App() {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/Events" element={<h1>Events</h1>} />
         </Routes>
-      </main>
+      </main >
 
       <Footer />
-    </div>
+    </div >
   );
 }
 

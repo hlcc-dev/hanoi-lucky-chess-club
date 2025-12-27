@@ -169,3 +169,62 @@ a[aria-disabled="true"] {
     display: none;
   }
 }
+
+/* -----------------------------
+   Custom animations
+------------------------------ */
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+}
+
+/* Slide in from the RIGHT */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Fade In and move down */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform : translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform : translateY(0);
+  }
+}
+
+/* ---------------------------------
+   Reusable Animation Utility Classes
+----------------------------------*/
+
+/* Slide from LEFT to RIGHT (Main Sections) */
+.animate-slideRight {
+  animation: slideRight 1s ease-out both;
+}
+
+/* Slide from RIGHT to LEFT (if ever needed) */
+.animate-slideLeft {
+  animation: slideLeft 1s ease-out both;
+}
+
+/* Fade In + Move Down (Secondary Sections) */
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out both;
+}

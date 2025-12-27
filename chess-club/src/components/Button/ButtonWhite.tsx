@@ -13,7 +13,7 @@ const sizeClasses: Record<ButtonSize, string> = {
     lg: "min-w-[180px] min-h-[52px] px-6 text-lg",
 }
 
-function ButtonDark({
+function ButtonWhite({
     label,
     onClick,
     disabled = false,
@@ -25,14 +25,17 @@ function ButtonDark({
             onClick={onClick}
             disabled={disabled}
             className={`
-        bg-club-dark
-        border-club-dark
-        text-club-light
+        bg-white
+        border-white
+        text-club-dark
+        border-2
         rounded-2xl
         font-medium
         transition
-        hover:bg-club-light
-        hover:text-club-dark
+        hover:bg-club-dark
+        hover:text-club-light
+        hover:border-club-dark
+        
         disabled:opacity-50
         disabled:cursor-not-allowed
         ${sizeClasses[size]}
@@ -43,4 +46,4 @@ function ButtonDark({
     )
 }
 
-export default ButtonDark
+export default ButtonWhite
