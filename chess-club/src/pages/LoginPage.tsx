@@ -31,7 +31,7 @@ function LoginPage() {
     }
 
     return (
-        <div className="flex flex-1 items-center justify-center bg-club-light px-4">
+        <div className="flex flex-1 items-center justify-center bg-club-light px-4 mx-auto my-12">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
 
                 {/* Header */}

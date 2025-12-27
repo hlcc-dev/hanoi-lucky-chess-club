@@ -170,7 +170,7 @@ function SignUpPage() {
     }, [chessStatus, profile, stats, chessSaveState]);
 
     return (
-        <div className="flex flex-1 items-center justify-center bg-club-light px-2">
+        <div className="flex flex-1 items-center justify-center bg-club-light px-2 mx-auto my-12">
             <div className="w-full max-w-md bg-white border border-club-dark/20 rounded-2xl shadow-lg p-8 mx-2 md:mx-0">
                 <StepCounter step={step} />
 
