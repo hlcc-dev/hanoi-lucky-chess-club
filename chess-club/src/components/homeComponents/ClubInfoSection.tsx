@@ -7,7 +7,7 @@ function ClubInfoSection() {
     const googleMapsLink = "https://maps.app.goo.gl/aQdHKXbR5KqGRZ9v6"
 
     return (
-        <div className={`w-full h-full  mt-6 md:mt-16 flex flex-col items-center mb-5  md:mb-10 ${inView ? 'animate-slideLeft' : 'opacity-0'}`}
+        <div className={`w-full h-full  mt-6 md:mt-16 flex flex-col items-center ${inView ? 'animate-slideLeft' : 'opacity-0'}`}
             ref={ref}>
 
             <h2 className="text-3xl font-extrabold text-center mb-6 font-serif">
