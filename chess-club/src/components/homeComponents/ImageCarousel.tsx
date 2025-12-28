@@ -9,7 +9,7 @@ import image6 from '../../assets/homePage/chess-together6.jpg';
 import image7 from '../../assets/homePage/chess-together7.jpg';
 import image8 from '../../assets/homePage/chess-together8.jpg';
 
-import { useInView } from "../../hooks/UseInView"
+import { useInView } from "../../hooks/useInView"
 
 const images = [image1, image2, image3, image4, image5, image6, image7, image8];
 const extendedImages = [...images, images[0]]; // smooth looping
@@ -45,8 +45,7 @@ function ImageCarousel() {
 
             {/* Carousel Container */}
             <div
-                className={`relative w-280 h-180 overflow-hidden rounded-xl shadow-xl bg-white
-                ${inView ? 'animate-fadeIn' : 'opacity-0'}`}
+                className={`relative w-full max-w-5xl h-64 md:h-96 lg:h-[32rem] overflow-hidden rounded-xl shadow-xl bg-white mx-auto`}
                 onMouseEnter={() => setPaused(true)}
                 onMouseLeave={() => setPaused(false)}
             >
@@ -77,7 +76,7 @@ function ImageCarousel() {
                         <img
                             key={i}
                             src={img}
-                            className="w-full h-180 object-center shrink-0 bg-transparent"
+                            className="w-full h-64 md:h-96 lg:h-[32rem] object-cover shrink-0 bg-transparent"
                             loading="lazy"
                         />
                     ))}

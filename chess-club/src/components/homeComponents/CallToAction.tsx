@@ -2,7 +2,7 @@ import ButtonDark from "../Button/ButtonDark";
 import ButtonWhite from "../Button/ButtonWhite";
 import ButtonSecondary from "../Button/ButtonSecondary";
 import { useNavigate } from "react-router-dom";
-import { useInView } from "../../hooks/UseInView";
+import { useInView } from "../../hooks/useInView";
 function CallToAction() {
     const navigate = useNavigate();
     const { ref, inView } = useInView(0.3);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import { useInView } from "../../hooks/UseInView";
+import { useInView } from "../../hooks/useInView";
 
 function FAQ() {
     const { ref, inView } = useInView(0.3);

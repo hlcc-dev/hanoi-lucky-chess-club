@@ -1,5 +1,5 @@
 import { FaMapMarkerAlt, FaClock, FaDirections, FaRegClock } from "react-icons/fa"
-import { useInView } from "../../hooks/UseInView"
+import { useInView } from "../../hooks/useInView"
 
 function ClubInfoSection() {
     const { ref, inView } = useInView(0.3);
@@ -7,14 +7,14 @@ function ClubInfoSection() {
     const googleMapsLink = "https://maps.app.goo.gl/aQdHKXbR5KqGRZ9v6"
 
     return (
-        <div className={`w-full h-100 mt-16 flex flex-col items-center mb-60 ${inView ? 'animate-slideLeft' : 'opacity-0'}`}
+        <div className={`w-full h-full  mt-6 md:mt-16 flex flex-col items-center mb-5  md:mb-10 ${inView ? 'animate-slideLeft' : 'opacity-0'}`}
             ref={ref}>
 
             <h2 className="text-3xl font-extrabold text-center mb-6 font-serif">
                 Where & When We Play
             </h2>
 
-            <div className="flex flex-col lg:flex-row gap-6 w-fullshadow-xl p-6 $">
+            <div className="flex flex-col md:flex-row gap-6 w-full shadow-xl p-4 md:p-6 lg:p-8">
 
                 {/* Time Section */}
                 <div className="flex-1 flex flex-col gap-4 bg-[#f3e7c4] border border-black/20 rounded-xl p-6 shadow-sm">
@@ -26,7 +26,7 @@ function ClubInfoSection() {
                     <div className={`flex flex-col lg:flex-row gap-4 mt-2 items-stretch ${inView ? 'animate-fadeIn' : 'opacity-0'}`}>
 
                         {/* Friday Card */}
-                        <div className="flex flex-1 bg-white rounded-xl border border-black/20 shadow overflow-hidden h-full">
+                        <div className="flex w-full md:flex-1 bg-white rounded-xl border border-black/20 shadow overflow-hidden">
                             {/* Date Section */}
                             <div className="bg-club-primary text-white flex flex-col justify-center items-center px-6 py-4">
                                 <p className="text-4xl font-extrabold leading-none">FRI</p>
@@ -46,7 +46,7 @@ function ClubInfoSection() {
                         </div>
 
                         {/* Sunday Card */}
-                        <div className="flex flex-1 bg-white rounded-xl border border-black/20 shadow overflow-hidden">
+                        <div className="flex w-full md:flex-1 bg-white rounded-xl border border-black/20 shadow overflow-hidden">
                             {/* Date Section */}
                             <div className="bg-[#9fb97f] text-black flex flex-col justify-center items-center px-6 py-4">
                                 <p className="text-4xl font-extrabold leading-none">SUN</p>
@@ -68,7 +68,7 @@ function ClubInfoSection() {
                 </div>
 
                 {/* Location Section */}
-                <div className="flex-1 flex flex-col gap-4">
+                <div className="flex-1 flex flex-col gap-4 mt-4 lg:mt-0">
                     <div className="bg-[#f3e7c4] border border-black/20 rounded-xl p-6 shadow-sm flex flex-col gap-3">
                         <div className="flex items-center gap-3">
                             <FaMapMarkerAlt className="text-club-dark text-2xl" />

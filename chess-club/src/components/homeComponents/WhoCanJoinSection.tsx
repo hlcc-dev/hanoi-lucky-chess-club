@@ -1,5 +1,5 @@
 import image from '../../assets/homePage/chessbanner2.jpg';
-import { useInView } from '../../hooks/UseInView';
+import { useInView } from '../../hooks/useInView';
 function WhoCanJoinSection() {
     const { ref, inView } = useInView(0.3);
     return (
@@ -8,18 +8,18 @@ function WhoCanJoinSection() {
                 Who Can Join?
             </h2>
 
-            <div className="flex flex-col md:flex-row max-w-5xl mx-auto text-gray-800 gap-6 items-start">
+            <div className="flex flex-col md:flex-row max-w-5xl mx-auto text-gray-800 gap-2 md:gap-6 items-center md:items-start ">
                 <div className="flex-col w-full md:w-1/2">
                     <img
                         src={image}
                         alt="Chess club banner"
                         className="rounded-xl shadow-lg object-cover"
                     />
-                    <p className="text-sm italic text-center mt-2 font-serif">
+                    <p className="mx-auto justify-center text-sm italic text-center mt-2 font-serif">
                         Samuel Reshevsky, who is playing against 20 grandmasters simultaneously in 1920. He won 19 and lost 1. <span className='font-bold'>Age is a number when it comes to chess!</span>
                     </p>
                 </div>
-                <div className="flex-col w-full md:w-1/2 items-start flex gap-4">
+                <div className="flex-col w-full md:w-1/2 items-center md:items-start flex gap-4">
                     <p className="text-justify font-serif">
                         Our chess club is open to everyone! Whether you're a complete beginner or a seasoned player,
                         we welcome all skill levels. Our members range from young students to retirees, all united by
