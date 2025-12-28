@@ -228,9 +228,8 @@ function ChessPuzzle() {
     // Loading screen
     if (loading || user.loading) {
         return (
-            <div className="grow">
-                <ChessLoading
-                    text="Loading puzzle" />
+            <div className="flex w-full grow flex-1 items-center justify-center py-10">
+                <ChessLoading text="Loading puzzle" />
             </div>
         );
     }

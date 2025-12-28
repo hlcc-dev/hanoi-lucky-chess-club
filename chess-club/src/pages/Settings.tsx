@@ -43,7 +43,7 @@ function Settings() {
 
     if (user.loading) {
         return (
-            <div className='flex flex-1'>
+            <div className='flex w-full grow flex-1 items-center justify-center py-10'>
                 <ChessLoading
                     text="Loading user data" />
             </div>
