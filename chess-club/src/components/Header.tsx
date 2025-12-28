@@ -10,7 +10,7 @@ function Header() {
   return (
     <>
       {/* ================= MOBILE HEADER ================= */}
-      <header className="relative z-50 w-full h-20 px-4 bg-club-primary text-club-dark flex items-center justify-between md:hidden">
+      <header className="relative z-50 w-full h-20 px-4 bg-club-primary text-club-dark flex items-center justify-between lg:hidden">
         <img
           src="/logo.png"
           alt="Club Logo"
@@ -29,7 +29,7 @@ function Header() {
       {/* ================= MOBILE MENU ================= */}
       <div
         className={`
-          relative w-full bg-club-primary
+          relative w-full bg-club-primary lg:hidden
           transition-all duration-300 ease-in-out
           ${open ? "max-h-125 opacity-100" : "max-h-0 opacity-0 overflow-hidden"}
         `}
@@ -46,7 +46,7 @@ function Header() {
       </div>
 
       {/* ================= DESKTOP HEADER ================= */}
-      <header className="relative z-50 hidden md:grid h-40 grid-cols-[260px_1fr_260px] grid-rows-2 items-center bg-club-primary text-club-dark px-6">
+      <header className="relative z-50 hidden lg:grid w-full min-w-full h-40 grid-cols-[260px_1fr_260px] grid-rows-2 items-center bg-club-primary text-club-dark px-6">
         {/* LEFT — LOGO */}
         <div className="row-span-2 flex items-center gap-4">
           <div className="relative">
