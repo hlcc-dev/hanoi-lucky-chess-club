@@ -10,6 +10,7 @@ import ChessBoard from "../components/ChessBoard";
 import ChessLoading from "../components/ChessboardComps/ChessLoading";
 import ChessLeaderboard from "../components/ChessboardComps/ChessLeaderboard";
 import type { ChessLeaderboardEntry } from "../components/ChessboardComps/ChessLeaderboard";
+import PuzzleCompleted from "../components/ChessboardComps/PuzzleCompleted";
 
 import {
     initPuzzleEngine,
@@ -80,6 +81,9 @@ function ChessPuzzle() {
         []
     );
 
+    // Puzzle completed modal state
+    const [showPuzzleCompleted, setShowPuzzleCompleted] = useState(false);
+
 
     // Redirect if user is not logged in
     useEffect(() => {
@@ -96,10 +100,9 @@ function ChessPuzzle() {
         if (alreadyNotifiedRef.current) return;
 
         if (!user.loading && user.puzzleStats) {
-            toastInfo("You have already played today's puzzle. Come back tomorrow!");
             setMovesEnabled(false);
+            setShowPuzzleCompleted(true);
             alreadyNotifiedRef.current = true;
-            console.log("Moves disabled because user has already played today.");
         }
     }, [user.loading, user.puzzleStats]);
 
@@ -208,7 +211,7 @@ function ChessPuzzle() {
         }
 
         if (result.finished) {
-            toastSuccess("Puzzle solved! Well done.");
+            setShowPuzzleCompleted(true);
 
             if (userId) {
                 updatePuzzleStats(userId, puzzleDate, elapsed, attempts)
@@ -245,6 +248,13 @@ function ChessPuzzle() {
 
     return (
         <div className="grow flex flex-col items-center px-3 sm:px-0">
+            {showPuzzleCompleted && (
+                <PuzzleCompleted
+                    time={displayElapsed}
+                    attempts={displayAttempts}
+                    onClose={() => setShowPuzzleCompleted(false)}
+                />
+            )}
             <div className="w-full max-w-5xl mx-auto mt-4 mb-6 sm:mt-6 sm:mb-8">
                 <div className="relative flex justify-center">
                     <div className="flex items-center gap-3 bg-club-primary/20 px-4 py-3 sm:px-8 sm:py-4 rounded-xl border border-black/20 shadow-md">
