@@ -8,6 +8,7 @@ import Checkbox from "../components/Checkbox";
 import Input from "../components/Input";
 import { useNavigate } from "react-router-dom";
 import login from "../utils/login";
+import { useCaptchaGuard } from "../hooks/useCaptchaGuard";
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -16,17 +17,24 @@ function LoginPage() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [loggedIn, setLoggedIn] = useState(true);
+    const { Captcha, runWithCaptcha } = useCaptchaGuard();
 
     async function handleLogin() {
-        const success = await login({
-            email,
-            password,
-            rememberMe: loggedIn,
-        });
+        try {
+            await runWithCaptcha(async () => {
+                const success = await login({
+                    email,
+                    password,
+                    rememberMe: loggedIn,
+                });
 
-        if (success) {
-            toastSuccess("Login successful!");
-            navigate("/");
+                if (success) {
+                    toastSuccess("Login successful!");
+                    navigate("/");
+                }
+            });
+        } catch (err) {
+            console.error("Captcha or login failed:", err);
         }
     }
 
@@ -98,6 +106,8 @@ function LoginPage() {
                             Forgot password?
                         </button>
                     </div>
+
+                    {Captcha}
 
                     {/* Primary action */}
                     <ButtonPrimary label="Login" size="lg" onClick={handleLogin} />
