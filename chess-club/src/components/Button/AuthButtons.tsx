@@ -10,7 +10,10 @@ import {
 } from "react-icons/fa";
 import ButtonSecondary from "./ButtonSecondary";
 import ButtonDark from "./ButtonDark";
-import { supabasePersistent } from "../../utils/supabaseClient";
+import {
+    supabasePersistent,
+    supabaseSessionOnly,
+} from "../../utils/supabaseClient";
 import { toastSuccess } from "../../utils/toastUtils";
 
 interface AuthButtonsProps {
@@ -19,7 +22,7 @@ interface AuthButtonsProps {
 }
 
 function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
-    const { profile, loading } = useUser();
+    const { user, profile, loading } = useUser();
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
 
@@ -28,14 +31,18 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
 
     useEffect(() => {
         if (profile) {
+            // User logged in or profile updated
             stableProfileRef.current = profile;
+        } else if (!loading) {
+            // User logged out and loading finished → clear cached profile
+            stableProfileRef.current = null;
         }
-    }, [profile]);
+    }, [profile, loading]);
 
     const stableProfile = stableProfileRef.current;
 
     /* ================= NOT LOGGED IN ================= */
-    if (!stableProfile) {
+    if (!stableProfile && !user) {
         return (
             <div className={mobile ? "flex flex-col gap-3" : "flex gap-3"}>
                 <ButtonDark
@@ -82,7 +89,10 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
 
                 <button
                     onClick={async () => {
-                        await supabasePersistent.auth.signOut();
+                        await Promise.all([
+                            supabasePersistent.auth.signOut(),
+                            supabaseSessionOnly.auth.signOut(),
+                        ]);
                         toastSuccess("Logged out successfully");
                         navigate("/", { replace: true });
                         onAction?.();
@@ -146,7 +156,10 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                     <button
                         onClick={async () => {
                             setOpen(false);
-                            await supabasePersistent.auth.signOut();
+                            await Promise.all([
+                                supabasePersistent.auth.signOut(),
+                                supabaseSessionOnly.auth.signOut(),
+                            ]);
                             toastSuccess("Logged out successfully");
                             navigate("/", { replace: true });
                         }}

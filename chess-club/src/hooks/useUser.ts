@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { supabasePersistent } from "../utils/supabaseClient";
+import {
+    supabasePersistent,
+    supabaseSessionOnly,
+} from "../utils/supabaseClient";
 import type { User } from "@supabase/supabase-js";
 
 interface Profile {
@@ -37,10 +40,25 @@ export function useUser() {
     async function loadUser() {
         setLoading(true);
 
-        const {
+        // 1️⃣ Determine which client has the user
+        let activeClient = supabasePersistent;
+
+        let {
             data: { user },
         } = await supabasePersistent.auth.getUser();
 
+        if (!user) {
+            const {
+                data: { user: sessionUser },
+            } = await supabaseSessionOnly.auth.getUser();
+
+            if (sessionUser) {
+                user = sessionUser;
+                activeClient = supabaseSessionOnly;
+            }
+        }
+
+        // 2️⃣ If still no user → clear state
         if (!user) {
             setAuthUser(null);
             setProfile(null);
@@ -52,13 +70,15 @@ export function useUser() {
 
         setAuthUser(user);
 
-        const { data: profileData, error: profileError } = await supabasePersistent
+        // 3️⃣ Load profile
+        const { data: profileData, error: profileError } = await activeClient
             .from("profiles")
             .select("id, username")
             .eq("id", user.id)
             .maybeSingle();
 
-        const { data: chessData, error: chessError } = await supabasePersistent
+        // 4️⃣ Load chess stats
+        const { data: chessData, error: chessError } = await activeClient
             .from("chess_com_stats")
             .select(`
                 chess_com_name,
@@ -70,27 +90,29 @@ export function useUser() {
                 chess_com_960_daily,
                 chess_com_title,
                 fide_rating
-            `
-            )
+            `)
             .eq("id", user.id)
             .maybeSingle()
             .returns<ChessStats>();
+
+        // 5️⃣ Load puzzle stats
         const today = new Date().toISOString().split("T")[0];
 
-        const { data: puzzleData, error: puzzleError } = await supabasePersistent
+        const { data: puzzleData, error: puzzleError } = await activeClient
             .from("daily_puzzle_solves")
             .select("*")
             .eq("user_id", user.id)
             .eq("puzzle_date", today)
             .single()
-            .returns<PuzzleStats>()
+            .returns<PuzzleStats>();
 
         if (profileError || chessError || puzzleError) {
-            console.error("Error loading user data:", profileError?.message, chessError?.message, puzzleError?.message);
-            setProfile(null);
-            setChessStats(null);
-            setLoading(false);
-            return;
+            console.error(
+                "Error loading user data:",
+                profileError?.message,
+                chessError?.message,
+                puzzleError?.message
+            );
         }
 
         setProfile(profileData ?? null);
@@ -103,12 +125,21 @@ export function useUser() {
         loadUser();
 
         const {
-            data: { subscription },
+            data: { subscription: persistentSub },
         } = supabasePersistent.auth.onAuthStateChange(() => {
             loadUser();
         });
 
-        return () => subscription.unsubscribe();
+        const {
+            data: { subscription: sessionSub },
+        } = supabaseSessionOnly.auth.onAuthStateChange(() => {
+            loadUser();
+        });
+
+        return () => {
+            persistentSub.unsubscribe();
+            sessionSub.unsubscribe();
+        };
     }, []);
 
     return {

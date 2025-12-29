@@ -7,7 +7,7 @@ import { useChangeUsername } from '../hooks/useChangeUsername';
 import type { ChessStats } from "../hooks/useUser";
 import ChessLoading from '../components/ChessboardComps/ChessLoading';
 import { checkUsernameAvailable } from '../utils/checkUsernameAvailable';
-import { toastSuccess } from '../utils/toastUtils';
+import { toastError, toastSuccess } from '../utils/toastUtils';
 import { useChessUser } from '../hooks/useChessUser';
 import updateChessStats from "../utils/UpdateChessStats";
 import { FaEnvelope, FaUser } from 'react-icons/fa';
@@ -48,6 +48,12 @@ function Settings() {
                     text="Loading user data" />
             </div>
         );
+    }
+
+    if (!user.user || !user.profile) {
+        navigate("/login");
+        toastError("Please log in to access settings.");
+        return null;
     }
     return (
         <div

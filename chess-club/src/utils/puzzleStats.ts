@@ -1,9 +1,10 @@
-import { supabasePersistent } from "./supabaseClient";
+import { getActiveClient } from "./getActiveClient";
 import type { ChessLeaderboardEntry } from
     "../components/ChessboardComps/ChessLeaderboard";
 
-export function getPuzzleStats(puzzleDate: string) {
-    return supabasePersistent
+export async function getPuzzleStats(puzzleDate: string) {
+    const supabaseClient = await getActiveClient();
+    return supabaseClient
         .from("daily_puzzle_solves")
         .select(`
             user_id,
@@ -22,9 +23,10 @@ export function getPuzzleStats(puzzleDate: string) {
         .returns<ChessLeaderboardEntry[]>();
 }
 
-export function updatePuzzleStats(user_id: string, puzzle_date: string, time_seconds: number, attempt: number) {
+export async function updatePuzzleStats(user_id: string, puzzle_date: string, time_seconds: number, attempt: number) {
+    const supabaseClient = await getActiveClient();
     // Update puzzle statistics in Supabase
-    return supabasePersistent
+    return supabaseClient
         .from("daily_puzzle_solves")
         .upsert({ user_id, puzzle_date, time_seconds, attempt });
 }

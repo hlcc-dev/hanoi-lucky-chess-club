@@ -1,8 +1,6 @@
 import { supabasePersistent } from "../utils/supabaseClient";
-import { useNavigate } from "react-router-dom";
 
-export async function handleAuthCallback() {
-    const navigate = useNavigate();
+export async function handleAuthCallback(navigate: (path: string) => void) {
     const { data, error } = await supabasePersistent.auth.getSession();
 
     if (error) {
@@ -11,7 +9,7 @@ export async function handleAuthCallback() {
     }
 
     if (data.session) {
-        // User is now VERIFIED 
+        // User is now VERIFIED
         navigate("/");
     }
 }

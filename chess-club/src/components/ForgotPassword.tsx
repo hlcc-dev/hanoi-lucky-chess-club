@@ -3,7 +3,7 @@ import { FaEnvelope } from "react-icons/fa";
 import Input from "./Input";
 import ButtonPrimary from "./Button/ButtonPrimary";
 import ButtonSecondary from "./Button/ButtonSecondary";
-import { supabasePersistent } from "../utils/supabaseClient";
+import { getActiveClient } from "../utils/getActiveClient";
 import { toastSuccess, toastError } from "../utils/toastUtils";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,11 @@ function ForgotPassword() {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
 
+
+
     async function handleReset() {
+        const supabaseClient = await getActiveClient();
+
         if (!email) {
             toastError("Please enter your email address.");
             return;
@@ -21,7 +25,7 @@ function ForgotPassword() {
         try {
             setLoading(true);
 
-            const { error } = await supabasePersistent.auth.resetPasswordForEmail(
+            const { error } = await supabaseClient.auth.resetPasswordForEmail(
                 email,
                 {
                     redirectTo: `${window.location.origin}/reset-password`,

@@ -1,8 +1,9 @@
 import { toast } from "react-toastify";
-import { supabasePersistent } from "./supabaseClient";
+import { getActiveClient } from "./getActiveClient";
 
 export async function checkUsernameAvailable(username: string): Promise<boolean> {
-    const { data, error } = await supabasePersistent
+    const supabaseClient = await getActiveClient();
+    const { data, error } = await supabaseClient
         .from("profiles")
         .select("username")
         .eq("username", username)

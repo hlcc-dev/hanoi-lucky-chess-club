@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { supabasePersistent } from "../utils/supabaseClient";
+import { getActiveClient } from "../utils/getActiveClient";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket, faFire, faCalendar, faShuffle, faGlobe, faCrown } from "@fortawesome/free-solid-svg-icons";
 
@@ -64,16 +65,26 @@ function Leaderboard() {
     const cacheRef = useRef<Record<LeaderboardType, LeaderboardRow[]>>(loadCache());
     const abortRef = useRef<AbortController | null>(null);
 
+    const [supabaseClient, setSupabaseClient] = useState<any>(null);
+
+    useEffect(() => {
+        (async () => {
+            const client = await getActiveClient();
+            setSupabaseClient(client);
+        })();
+    }, []);
+
     // get current user id
     useEffect(() => {
-        supabasePersistent.auth.getUser().then(({ data }) => {
+        supabaseClient?.auth.getUser().then(({ data }: { data: { user: { id: string } | null } }) => {
             setCurrentUserId(data.user?.id ?? null);
         });
-    }, []);
+    }, [supabaseClient]);
 
     // fetch leaderboard
     useEffect(() => {
         async function fetchLeaderboard() {
+            if (!supabaseClient) return;
             setLoading(true);
 
             // If cached → show instantly (no waiting)
@@ -87,7 +98,7 @@ function Leaderboard() {
             abortRef.current?.abort();
             abortRef.current = new AbortController();
 
-            const { data, error } = await supabasePersistent
+            const { data, error } = await supabaseClient
                 .from("chess_com_stats")
                 .select(`
                     id,
@@ -121,7 +132,7 @@ function Leaderboard() {
         }
 
         fetchLeaderboard();
-    }, [type]);
+    }, [type, supabaseClient]);
 
     return (
         <div className="grow px-2 sm:px-0">

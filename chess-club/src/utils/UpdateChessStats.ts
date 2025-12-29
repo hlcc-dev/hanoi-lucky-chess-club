@@ -1,4 +1,5 @@
-import { supabasePersistent } from "./supabaseClient";
+import { getActiveClient } from "./getActiveClient";
+import { useUser } from "../hooks/useUser";
 
 interface ChessStatsInput {
     chess_com_name: string;
@@ -23,16 +24,15 @@ async function updateChessStats({
     chess_com_title,
     fide_rating,
 }: ChessStatsInput): Promise<boolean> {
-    const {
-        data: { user },
-    } = await supabasePersistent.auth.getUser();
-
+    const { user } = useUser();
+    // Ensure we have a logged-in user
     if (!user) {
-        console.error("User not authenticated");
         return false;
     }
 
-    const { error } = await supabasePersistent
+    const supabaseClient = await getActiveClient();
+
+    const { error } = await supabaseClient
         .from("chess_com_stats")
         .update({
             chess_com_name,

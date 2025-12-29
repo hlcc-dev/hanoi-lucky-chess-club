@@ -13,6 +13,7 @@ export const supabasePersistent = createClient(supabaseUrl, anonKey, {
 export const supabaseSessionOnly = createClient(supabaseUrl, anonKey, {
     auth: {
         persistSession: false,
+        storage: window.sessionStorage,
         autoRefreshToken: false,
     },
 });

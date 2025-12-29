@@ -1,4 +1,5 @@
-import { supabasePersistent } from "../utils/supabaseClient";
+
+import { getActiveClient } from "../utils/getActiveClient";
 import { useUser } from "../hooks/useUser";
 import { useState } from "react";
 
@@ -12,16 +13,18 @@ export function useChangeUsername() {
         setLoading(true);
         setError(null);
 
+        const supabaseClient = await getActiveClient();
+
         if (!profile?.id) {
             setLoading(false);
             setError("User not authenticated");
             throw new Error("User not authenticated");
         }
 
-        const r = await supabasePersistent.from("profiles").select("*").eq("id", profile.id);
+        const r = await supabaseClient.from("profiles").select("*").eq("id", profile.id);
         console.log(r);
 
-        const { data, error: supabaseError } = await supabasePersistent
+        const { data, error: supabaseError } = await supabaseClient
             .from("profiles")
             .update({ username })
             .eq("id", profile.id)       // no ?
