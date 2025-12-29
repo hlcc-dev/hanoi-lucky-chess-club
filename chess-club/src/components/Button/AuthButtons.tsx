@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useUser } from "../../hooks/useUser";
 import { useNavigate } from "react-router-dom";
 import {
@@ -23,10 +23,19 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
 
-    if (loading) return null;
+    // Keep a stable profile reference to avoid UI flashing when loading toggles
+    const stableProfileRef = useRef(profile);
+
+    useEffect(() => {
+        if (profile) {
+            stableProfileRef.current = profile;
+        }
+    }, [profile]);
+
+    const stableProfile = stableProfileRef.current;
 
     /* ================= NOT LOGGED IN ================= */
-    if (!profile) {
+    if (!stableProfile) {
         return (
             <div className={mobile ? "flex flex-col gap-3" : "flex gap-3"}>
                 <ButtonDark
@@ -103,7 +112,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                 className="flex items-center gap-2 rounded-lg bg-club-dark px-4 py-2 text-white hover:bg-club-dark/90"
             >
                 <FaChessKing />
-                <span className="font-medium">{profile.username}</span>
+                <span className="font-medium">{stableProfile?.username}</span>
                 <FaChevronDown
                     className={`transition-transform duration-200 ${open ? "rotate-180" : "rotate-0"
                         }`}

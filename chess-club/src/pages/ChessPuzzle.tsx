@@ -54,20 +54,43 @@ function ChessPuzzle() {
     // Attempts counter
     const { attempts, incrementAttempt } = useAttempt();
 
+
+
+    // Leaderboard data
+    const [puzzleStats, setPuzzleStats] = useState<ChessLeaderboardEntry[]>([]);
+    const frozenElapsedRef = useRef(0);
+    const frozenAttemptsRef = useRef(0);
+
+    useEffect(() => {
+        if (!userId) return;
+
+        const me = puzzleStats.find(p => p.user_id === userId);
+        if (!me) return;
+
+        frozenElapsedRef.current = me.time_seconds;
+        frozenAttemptsRef.current = me.attempt;
+
+    }, [puzzleStats, userId]);
+
     // Displayed time (memoized for stability)
     const displayElapsed = useMemo(
-        () => (movesEnabled ? elapsed : user.puzzleStats?.time_seconds),
-        [movesEnabled, elapsed, user.puzzleStats?.time_seconds]
+        () => (movesEnabled ? elapsed : frozenElapsedRef.current),
+        [movesEnabled, elapsed]
     );
 
     // Displayed attempts (memoized for stability)
     const displayAttempts = useMemo(
-        () => (movesEnabled ? attempts : user.puzzleStats?.attempt),
-        [movesEnabled, attempts, user.puzzleStats?.attempt]
+        () => (movesEnabled ? attempts : frozenAttemptsRef.current),
+        [movesEnabled, attempts]
     );
 
-    // Leaderboard data
-    const [puzzleStats, setPuzzleStats] = useState<ChessLeaderboardEntry[]>([]);
+
+    // is it solved already?
+    const puzzleSolved = useMemo(() => {
+        return puzzleStats.some(
+            (player: ChessLeaderboardEntry) => player.user_id === userId
+        );
+    }, [puzzleStats, userId]);
 
     // Leaderboard loading state
     const [statsLoading, setStatsLoading] = useState(true);
@@ -110,7 +133,6 @@ function ChessPuzzle() {
     // Initialize puzzle engine when puzzle loads (once per puzzleDate)
     useEffect(() => {
         if (!puzzle) return;
-        if (engineRef.current) return; // prevent re‑init
 
         engineRef.current = initPuzzleEngine(
             puzzle.game.pgn,
@@ -122,6 +144,7 @@ function ChessPuzzle() {
 
         const turn = engineRef.current.chess.turn();
         setBoardOrientation(turn === "w" ? "black" : "white");
+
 
         const timer = setTimeout(() => {
             if (!engineRef.current) return;
@@ -135,10 +158,14 @@ function ChessPuzzle() {
             });
 
             setFen(engineRef.current.chess.fen());
-        }, 1000);
+        }, 2000);
 
-        return () => clearTimeout(timer);
-    }, [puzzleDate, puzzle]);
+
+        return () => {
+            clearTimeout(timer);
+            engineRef.current = null; // adjust here in the future for cleanup
+        };
+    }, [puzzleDate, puzzle, puzzleSolved, userId]);
 
     // Reset timer when puzzle changes
     useEffect(() => {
@@ -161,6 +188,7 @@ function ChessPuzzle() {
                 }
 
                 setPuzzleStats(data || []);
+                console.log("Puzzle stats:", data);
             } catch (err: any) {
                 setStatsError(err.message);
             } finally {
@@ -220,6 +248,24 @@ function ChessPuzzle() {
                             console.error("Error updating puzzle stats:", error);
                         }
                     });
+
+                setMovesEnabled(false);
+                frozenElapsedRef.current = elapsed;
+                frozenAttemptsRef.current = attempts;
+                // Update leaderboard instantly
+                setPuzzleStats(prev => [
+                    ...prev,
+                    {
+                        user_id: userId,
+                        puzzle_date: puzzleDate,
+                        time_seconds: elapsed,
+                        attempt: attempts,
+                        solved_at: new Date().toISOString(),
+                        profiles: {
+                            username: user.profile?.username ?? "You",
+                        },
+                    },
+                ]);
             }
 
             return true;
@@ -294,12 +340,10 @@ function ChessPuzzle() {
                         <ChessLeaderboard
                             user_id={userId}
                             data={puzzleStats}
-                            time={displayElapsed}
-                            attempts={displayAttempts}
                             statsLoading={statsLoading}
                             statsError={statsError}
-                            displayElapsed={displayElapsed}
-                            displayAttempts={displayAttempts}
+                            displayElapsed={movesEnabled ? displayElapsed : frozenElapsedRef.current}
+                            displayAttempts={movesEnabled ? displayAttempts : frozenAttemptsRef.current}
                             movesEnabled={movesEnabled}
                         />
                     )}

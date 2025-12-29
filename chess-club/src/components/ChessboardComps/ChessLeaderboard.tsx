@@ -17,8 +17,6 @@ export interface ChessLeaderboardEntry {
 // Props passed into the leaderboard component
 interface ChessLeaderboardProps {
     user_id?: string | null;
-    time: number;
-    attempts?: number;
     statsLoading?: boolean;
     statsError?: string | null;
     displayElapsed: number;
