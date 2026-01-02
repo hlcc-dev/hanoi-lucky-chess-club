@@ -18,11 +18,14 @@ import { supabasePersistent } from "../utils/supabaseClient";
 import { toastSuccess, toastError } from "../utils/toastUtils";
 import { checkUsernameAvailable } from "../utils/checkUsernameAvailable";
 
+import { useCaptchaGuard } from "../hooks/useCaptchaGuard";
+
 import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
     const [step, setStep] = useState(1);
     const navigate = useNavigate();
+    const { Captcha, runWithCaptcha } = useCaptchaGuard();
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -81,12 +84,21 @@ function SignUpPage() {
                 toastError("Username is already taken. Please choose another.");
                 return;
             }
-            const success = await signUp({ email, password, username });
-            if (success) {
-                setStep(2)
-                toastSuccess("Sign up successful! Please check your inbox to verify your email.");
-            } else if (!success) {
-                toastError("Sign up failed. Email may already be in use. Please try again!");
+            try {
+                await runWithCaptcha(async () => {
+                    const success = await signUp({ email, password, username });
+
+                    if (success) {
+                        setStep(2)
+                        toastSuccess("Sign up successful! Please check your inbox to verify your email.");
+                    } else if (!success) {
+                        toastError("Sign up failed. Email may already be in use. Please try again!");
+                    }
+
+                });
+            } catch (err) {
+                toastError("Captcha verification failed. Please try again.");
+                return;
             }
         } finally {
         }
@@ -258,6 +270,8 @@ function SignUpPage() {
                                     onChange={(e) => setPasswordAgain(e.target.value)}
                                 />
                             </div>
+
+                            {Captcha}
 
                             <ButtonPrimary
                                 label={status === 'idle' ? "Verify Email and Continue" : status === 'loading' ? "Validating..." : status === 'error' ? "Error Validating" : "Success! Please wait..."}
