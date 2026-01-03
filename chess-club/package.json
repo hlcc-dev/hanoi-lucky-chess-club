@@ -20,6 +20,7 @@
     "axios": "^1.13.2",
     "chess.js": "^1.4.0",
     "chessboard": "^2.0.0",
+    "i": "^0.3.7",
     "node-fetch": "^3.3.2",
     "react": "^19.2.0",
     "react-chessboard": "^5.8.6",

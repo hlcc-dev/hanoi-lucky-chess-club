@@ -16,6 +16,7 @@ const ChessPuzzle = lazy(() => import('./pages/ChessPuzzle'));
 const Leaderboard = lazy(() => import('./pages/Leaderboard'));
 const Settings = lazy(() => import('./pages/Settings'));
 const Contact = lazy(() => import('./pages/Contact'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
   return (
@@ -38,11 +39,13 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/Events" element={<h1>Events</h1>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main >
 
       <Footer />
+
     </div >
   );
 }
