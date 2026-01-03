@@ -16,11 +16,11 @@ function Home() {
       <div ref={ref}>
         {inView && (
           <Suspense fallback={null}>
+            <ImageCarousel />
+            <ClubInfoSection />
+            <CallToAction />
             <WhatToExpectSection />
             <WhoCanJoinSection />
-            <ClubInfoSection />
-            <ImageCarousel />
-            <CallToAction />
             <FAQ />
           </Suspense>
         )}
