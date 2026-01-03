@@ -5,6 +5,8 @@ import Footer from './components/Footer'
 
 import ToastContainer from './components/Toast/ToastContainer';
 
+import { Analytics } from '@vercel/analytics/react';
+
 const Home = lazy(() => import('./pages/Home'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
@@ -20,6 +22,7 @@ function App() {
     <div className="min-h-screen flex flex-col">
       <ToastContainer />
       <Header />
+      <Analytics />
 
       {/* MAIN CONTENT MUST GROW */}
       <main className="flex-1">
