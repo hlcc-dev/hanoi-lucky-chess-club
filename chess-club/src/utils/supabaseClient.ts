@@ -10,10 +10,12 @@ export const supabasePersistent = createClient(supabaseUrl, anonKey, {
     },
 });
 
+const storage = typeof window !== "undefined" ? window.sessionStorage : undefined;
+
 export const supabaseSessionOnly = createClient(supabaseUrl, anonKey, {
     auth: {
         persistSession: false,
-        storage: window.sessionStorage,
+        storage: storage,
         autoRefreshToken: false,
     },
 });
