@@ -16,7 +16,7 @@ function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const [loginProcessing, setLoginProcessing] = useState<"idle" | "loading" | "success">("idle");
+    const [loginProcessing, setLoginProcessing] = useState<"idle" | "loading" | "error" | "success">("idle");
     const [loggedIn, setLoggedIn] = useState(true);
     const { Captcha, runWithCaptcha } = useCaptchaGuard();
 
@@ -34,11 +34,13 @@ function LoginPage() {
                     toastSuccess("Login successful!");
                     navigate("/");
                     setLoginProcessing("success");
+                } else if (success === false) {
+                    setLoginProcessing("error");
                 }
             });
         } catch (err) {
             console.error("Captcha or login failed:", err);
-            setLoginProcessing("idle");
+            setLoginProcessing("error");
         }
     }
 
