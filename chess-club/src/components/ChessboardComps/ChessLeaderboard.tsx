@@ -83,8 +83,8 @@ function ChessLeaderboard({
     }, [user_id, data]);
 
     return (
-        <div className="mb-3 min-w-full max-w-2xl mx-auto justify-center items-center flex p-10 md:px-0">
-            <div className="bg-club-light/60 border border-black/20 rounded-2xl px-10 md:p-5 shadow-lg w-full">
+        <div className="mb-3 min-w-full mx-auto justify-center items-center flex p-0 md:px-0">
+            <div className="bg-club-light/60 border border-black/20 rounded-2xl px-0 md:p-5 shadow-lg w-full">
 
                 {/* ===== Your Stats ===== */}
                 <div className="mb-6 p-3 sm:p-4 ">
