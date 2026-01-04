@@ -72,7 +72,7 @@ function ResetPassword() {
                 {/* Form */}
                 <div className="flex flex-col gap-5">
                     {/* New password */}
-                    <div className="relative">
+                    <div className="relative group">
                         <TbLockPassword className="absolute left-3 top-3.5 text-club-dark/40" />
                         <Input
                             type="password"
@@ -81,6 +81,11 @@ function ResetPassword() {
                             onChange={(e) => setPassword(e.target.value)}
                             icon
                         />
+
+                        <p className="text-lg md:text-md mt-2 px-1 text-club-dark hidden group-focus-within:block">
+                            Password must be at least <span className="font-bold">8 characters, contain uppercase and
+                                lowercase letters and a number</span>.
+                        </p>
                     </div>
 
                     {/* Confirm password */}

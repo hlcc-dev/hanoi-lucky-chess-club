@@ -244,7 +244,7 @@ function SignUpPage() {
                                 </div>
                             </div>
 
-                            <div className="relative">
+                            <div className="relative group">
                                 <TbLockPassword className="absolute left-3.5 top-3.5 opacity-50" />
                                 <Input
                                     type={showPassword ? "text" : "password"}
@@ -254,6 +254,10 @@ function SignUpPage() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
+                                <p className="text-lg md:text-md mt-2 px-1 text-club-dark hidden group-focus-within:block">
+                                    Password must be at least <span className="font-bold">8 characters, contain uppercase and
+                                        lowercase letters and a number</span>.
+                                </p>
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
@@ -261,6 +265,7 @@ function SignUpPage() {
                                 >
                                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                                 </button>
+
                             </div>
 
                             <div className="relative">
