@@ -57,7 +57,7 @@ function ResetPassword() {
     if (loading) return null;
 
     return (
-        <div className="flex flex-1 items-center justify-center bg-club-light px-4">
+        <div className="flex flex-1 items-center justify-center bg-club-light px-4 mt-10 mx-auto mb-12">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
                 {/* Header */}
                 <div className="mb-6 text-center">
