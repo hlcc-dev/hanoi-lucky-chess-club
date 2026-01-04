@@ -18,7 +18,7 @@ async function signUp({
             data: {
                 username,
             },
-            emailRedirectTo: `${import.meta.env.VITE_SITE_URL}/auth/callback`,
+            emailRedirectTo: `${import.meta.env.VITE_SITE_URL}/signup?step=3`,
         },
     });
 

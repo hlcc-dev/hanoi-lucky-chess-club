@@ -21,9 +21,13 @@ import { checkUsernameAvailable } from "../utils/checkUsernameAvailable";
 import { useCaptchaGuard } from "../hooks/useCaptchaGuard";
 
 import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 function SignUpPage() {
-    const [step, setStep] = useState(1);
+    const [searchParams] = useSearchParams();
+    const urlStep = Number(searchParams.get("step")) || 1;
+
+    const [step, setStep] = useState(urlStep);
     const navigate = useNavigate();
     const { Captcha, runWithCaptcha } = useCaptchaGuard();
 
