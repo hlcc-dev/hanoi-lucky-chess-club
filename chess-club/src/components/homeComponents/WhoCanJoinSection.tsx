@@ -16,23 +16,19 @@ function WhoCanJoinSection() {
                         sizes="(max-width: 768px) 100vw, 50vw"
                         alt="Chess banner with Samuel Reshevsky playing against 20 grandmasters simultaneously in 1920"
                         loading='lazy' />
-
-                    <p className="mx-auto justify-center text-sm italic text-center mt-2 font-serif">
-                        Samuel Reshevsky, who is playing against 20 grandmasters simultaneously in 1920. He won 19 and lost 1. <span className='font-bold'>Age is a number when it comes to chess!</span>
-                    </p>
                 </div>
                 <div className="flex-col w-full md:w-1/2 items-center md:items-start flex gap-4">
-                    <p className="text-justify font-serif">
+                    <p className="text-justify font-serif text-sm md:text-base lg:text-lg leading-relaxed">
                         Our chess club is open to everyone! Whether you're a complete beginner or a seasoned player,
                         we welcome all skill levels. Our members range from young students to retirees, all united by
                         their love for the game.
                     </p>
-                    <p className="text-justify font-serif">
+                    <p className="text-justify font-serif text-sm md:text-base lg:text-lg leading-relaxed">
                         Newcomers are especially encouraged to join. We believe in fostering a friendly and supportive
                         environment where everyone can learn and improve. Our experienced members are always happy to
                         share tips and strategies with those looking to enhance their skills.
                     </p>
-                    <p className="text-justify font-serif">
+                    <p className="text-justify font-serif text-sm md:text-base lg:text-lg leading-relaxed">
                         So whether you're looking to play casual games, participate in tournaments, or simply enjoy
                         the camaraderie of fellow chess enthusiasts, the Hanoi Lucky Chess Club is the perfect place
                         for you!
