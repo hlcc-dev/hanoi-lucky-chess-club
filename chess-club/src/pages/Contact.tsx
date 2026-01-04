@@ -1,8 +1,10 @@
 import francis from '../assets/contact/francis.jpg';
 import hai from '../assets/contact/hai.jpg';
 
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import { SiZalo } from 'react-icons/si';
+import { IoCall } from "react-icons/io5";
+import { MdOutlineMailOutline } from "react-icons/md";
 function Contact() {
     return (
         <section className="grow flex flex-col items-center px-4 py-10">
@@ -42,17 +44,53 @@ function Contact() {
 
                     <img src={francis} alt="Francis' Profile Picture" className="w-64 h-64 mx-auto mb-4 rounded-full" loading='lazy' />
                     <p className="text-club-dark text-xl mb-2">
-                        <strong>Email:</strong>
-                        <a href="mailto:francislholland@gmail.com" className="ml-1 underline hover:text-club-light">
+                        <div className="flex flex-row items-center justify-center">
+                            <MdOutlineMailOutline className="inline-block mx-2" />
+                            <strong>Email:</strong>
+                        </div>
+                        <a
+                            href="mailto:francislholland@gmail.com"
+                            className="underline hover:text-club-light"
+                        >
                             francislholland@gmail.com
                         </a>
                     </p>
-                    <p className="text-club-dark text-xl mb-2">
-                        <strong>Phone:</strong>
-                        <a href="tel:+84333009587" className="ml-1 underline hover:text-club-light">
-                            +84 333 009 587 (Zalo/WhatsApp)
-                        </a>
-                    </p>
+
+                    <div className="text-club-dark text-xl mb-4">
+                        <strong>Phone & Chat:</strong>
+
+                        <div className="flex items-center justify-center gap-6 mt-2">
+
+                            <a
+                                href="tel:+84333009587"
+                                className="transition-transform hover:scale-110"
+                                aria-label="Call"
+                            >
+                                <IoCall className="text-black text-4xl" />
+                            </a>
+
+                            <a
+                                href="https://wa.me/84333009587"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="transition-transform hover:scale-110 text-black"
+                                aria-label="WhatsApp"
+                            >
+                                <FaWhatsapp className="text-black text-4xl" />
+                            </a>
+
+                            <a
+                                href="https://zalo.me/84333009587"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="transition-transform hover:scale-110 text-black"
+                                aria-label="Zalo"
+                            >
+                                <SiZalo className="text-black text-4xl" />
+                            </a>
+
+                        </div>
+                    </div>
                 </div>
 
                 {/* Card 2 */}
@@ -61,7 +99,10 @@ function Contact() {
                     <h3 className="text-lg italic mb-6">Co-Founder</h3>
                     <img src={hai} alt="Hanoi Lucky Chess Club" className="w-64 h-64 mx-auto mb-4 rounded-full" loading='lazy' />
                     <p className="text-club-dark text-xl mb-2">
-                        <strong>Email:</strong>
+                        <div className="flex flex-row items-center justify-center">
+                            <MdOutlineMailOutline className="inline-block mx-2" />
+                            <strong>Email:</strong>
+                        </div>
                         <a href="mailto:siegfried.duong@gmail.com" className="ml-1 underline hover:text-club-light">
                             siegfried.duong@gmail.com
                         </a>
