@@ -2,7 +2,6 @@ import { Suspense, lazy, useEffect, useState } from "react"
 import { useInView } from "../hooks/useInView"
 import HeroSection from "../components/homeComponents/HeroSection"
 import Notifications from "../components/Notifications"
-import { useUser } from "../hooks/useUser"
 import { Link } from "react-router-dom"
 
 const WhatToExpectSection = lazy(() => import("../components/homeComponents/WhatToExpectSection"))
@@ -16,7 +15,6 @@ function Home() {
   const { ref, inView } = useInView(0.3)
   const [openNotification, setOpenNotification] = useState(true)
 
-  const user = useUser()
 
   // Check notification only once daily
   useEffect(() => {
@@ -58,24 +56,12 @@ function Home() {
       <Notifications isOpen={openNotification} onClose={handleCloseNotification}>
         <h2 className="text-3xl font-bold mb-4">Welcome to Hanoi Lucky Chess Club!</h2>
 
-        <p className="mb-4 text-lg">
-          We're excited to have you here. Before you explore our site, please{" "}
-          {user.user === null ? (
-            <>
-              <Link to="/signup" className="text-blue-600 font-bold underline">
-                sign up
-              </Link>{" "}
-              or{" "}
-              <Link to="/login" className="text-blue-600 font-bold underline">
-                login
-              </Link>
-            </>
-          ) : (
-            <Link to="/chess-puzzles" className="text-blue-600 font-bold underline">
-              go to daily puzzles
-            </Link>
-          )}{" "}
-          to solve the daily puzzle and show your chess skills!
+        <p className="mb-4 text-lg align-justify">
+          We're excited to have you here! Before you explore our site, please{" "}
+          <Link to="/chess-puzzles" className="text-blue-600 font-bold underline">
+            go to daily puzzles
+          </Link>{" "}
+          to solve and show your chess skills!
         </p>
       </Notifications>
 
