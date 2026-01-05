@@ -33,7 +33,13 @@ export function useBackgroundChessRefresh() {
             return;
         }
 
-        checkUser(user?.chessStats?.chess_com_name || "");
+        if (user?.chessStats?.chess_com_name === null) {
+            return;
+        }
+
+        // fetch latest chess.com data
+
+        checkUser(user?.chessStats?.chess_com_name!);
 
         // if stats not loaded or error, do nothing
         if (status !== "success" || !stats) {
