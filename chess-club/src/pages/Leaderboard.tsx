@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { getActiveClient } from "../utils/getActiveClient";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket, faFire, faCalendar, faShuffle, faGlobe, faCrown, faPuzzlePiece } from "@fortawesome/free-solid-svg-icons";
+import { supabasePersistent } from "../utils/supabaseClient";
 
 
 
@@ -50,7 +51,7 @@ interface LeaderboardRow {
 }
 
 interface DailyPuzzleWinner {
-    id: string;
+    user_id: string;
     chess_com_name: string;
     username: string | null;
     wins: number;
@@ -66,26 +67,22 @@ function Leaderboard() {
     const cacheRef = useRef<Record<LeaderboardType, LeaderboardRow[]>>(loadCache());
     const dailyPuzzleCacheRef = useRef<DailyPuzzleWinner[] | null>(null);
 
-    const [supabaseClient, setSupabaseClient] = useState<any>(null);
-
+    // get current user id
     useEffect(() => {
         (async () => {
             const client = await getActiveClient();
-            setSupabaseClient(client);
+            if (!client) {
+                setCurrentUserId(null);
+                return;
+            }
+            const { data } = await client.auth.getUser();
+            setCurrentUserId(data.user?.id ?? null);
         })();
     }, []);
-
-    // get current user id
-    useEffect(() => {
-        supabaseClient?.auth.getUser().then(({ data }: { data: { user: { id: string } | null } }) => {
-            setCurrentUserId(data.user?.id ?? null);
-        });
-    }, [supabaseClient]);
 
     // fetch leaderboard (ONE TIME ONLY)
     useEffect(() => {
         async function fetchLeaderboard() {
-            if (!supabaseClient) return;
             setLoading(true);
 
             // If already cached from earlier visit show instantly,
@@ -96,15 +93,17 @@ function Leaderboard() {
             }
 
             // ---------- FETCH DAILY PUZZLE WINNERS ----------
-            const { data: dailyData, error: dailyError } = await supabaseClient.rpc("get_daily_puzzle_winners");
+            const { data: dailyData, error: dailyError } = await supabasePersistent.rpc("get_daily_puzzle_winners");
             if (dailyError) {
                 dailyPuzzleCacheRef.current = [];
+                console.error("Failed to fetch Daily Puzzle winners:", dailyError.message);
             } else {
                 dailyPuzzleCacheRef.current = dailyData || [];
+                console.log(dailyData);
             }
 
             // ---------- FETCH ALL LEADERBOARD RATINGS AT ONCE ----------
-            const { data, error } = await supabaseClient
+            const { data, error } = await supabasePersistent
                 .from("chess_com_stats")
                 .select(`
                     id,
@@ -126,15 +125,25 @@ function Leaderboard() {
                 return;
             }
 
-            function mapRows(ratingKey: string) {
-                return [...data]
-                    .sort((a, b) => (b[ratingKey] ?? 0) - (a[ratingKey] ?? 0))
+            function mapRows(
+                ratingKey:
+                    | "chess_com_blitz"
+                    | "chess_com_bullet"
+                    | "chess_com_rapid"
+                    | "chess_com_daily"
+                    | "chess_com_960_daily"
+                    | "fide_rating"
+            ) {
+                const rowsArray = (data ?? []) as any[];
+
+                return rowsArray
+                    .sort((a, b) => ((b?.[ratingKey] ?? 0) as number) - ((a?.[ratingKey] ?? 0) as number))
                     .map((row: any) => ({
-                        id: row.id,
-                        chess_com_name: row.chess_com_name,
-                        chess_com_title: row.chess_com_title,
-                        rating: row[ratingKey],
-                        profiles: row.profiles,
+                        id: row.id as string,
+                        chess_com_name: row.chess_com_name as string,
+                        chess_com_title: row.chess_com_title as string | null,
+                        rating: (row?.[ratingKey] as number) ?? null,
+                        profiles: row.profiles ?? null,
                     }));
             }
 
@@ -155,7 +164,7 @@ function Leaderboard() {
         }
 
         fetchLeaderboard();
-    }, [supabaseClient]);
+    }, []);
 
     function applyTabData() {
         if (type === "Daily Puzzle") {
@@ -338,12 +347,10 @@ function Leaderboard() {
                             dailyPuzzleWinnersRows
                                 .sort((a, b) => b.wins - a.wins)
                                 .map((winner, index) => {
-                                    const isMe =
-                                        winner.username ===
-                                        dailyPuzzleWinnersRows.find(r => r.id === currentUserId)?.username;
+                                    const isMe = winner.user_id === currentUserId;
                                     return (
                                         <tr
-                                            key={winner.chess_com_name}
+                                            key={winner.user_id}
                                             className={`
                                                 transition
                                                 ${isMe ? "bg-club-light" : "hover:bg-club-light/50"}
