@@ -98,7 +98,6 @@ function Leaderboard() {
             // ---------- FETCH DAILY PUZZLE WINNERS ----------
             const { data: dailyData, error: dailyError } = await supabaseClient.rpc("get_daily_puzzle_winners");
             if (dailyError) {
-                console.error("Daily puzzle RPC error:", dailyError);
                 dailyPuzzleCacheRef.current = [];
             } else {
                 dailyPuzzleCacheRef.current = dailyData || [];
@@ -123,7 +122,6 @@ function Leaderboard() {
                 .limit(200);
 
             if (error || !data) {
-                console.error("Leaderboard fetch failed", error);
                 setLoading(false);
                 return;
             }
@@ -314,6 +312,28 @@ function Leaderboard() {
                                 );
                             })}
                         {/* Daily Puzzle Winners rows appended below normal rows */}
+                        {loading && dailyPuzzleWinnersRows.length > 0 && (
+                            <tr>
+                                <td colSpan={3} className="py-3 text-center text-sm text-gray-500">
+                                    Updating…
+                                </td>
+                            </tr>
+                        )}
+                        {loading && dailyPuzzleWinnersRows.length === 0 && type === "Daily Puzzle" && (
+                            <tr>
+                                <td colSpan={3} className="py-8 text-center">
+                                    Loading leaderboard...
+                                </td>
+                            </tr>
+                        )}
+
+                        {!loading && dailyPuzzleWinnersRows.length === 0 && type === "Daily Puzzle" && (
+                            <tr>
+                                <td colSpan={3} className="py-8 text-center">
+                                    No players found.
+                                </td>
+                            </tr>
+                        )}
                         {!loading && type === "Daily Puzzle" && dailyPuzzleWinnersRows.length > 0 &&
                             dailyPuzzleWinnersRows
                                 .sort((a, b) => b.wins - a.wins)
@@ -321,7 +341,6 @@ function Leaderboard() {
                                     const isMe =
                                         winner.username ===
                                         dailyPuzzleWinnersRows.find(r => r.id === currentUserId)?.username;
-                                    console.log("winner ", winner, " isMe ", isMe);
                                     return (
                                         <tr
                                             key={winner.chess_com_name}
