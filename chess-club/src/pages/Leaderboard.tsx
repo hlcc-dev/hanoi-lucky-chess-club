@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { getActiveClient } from "../utils/getActiveClient";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRocket, faFire, faCalendar, faShuffle, faGlobe, faCrown } from "@fortawesome/free-solid-svg-icons";
+import { faRocket, faFire, faCalendar, faShuffle, faGlobe, faCrown, faPuzzlePiece } from "@fortawesome/free-solid-svg-icons";
+
 
 
 const CACHE_KEY = "leaderboardCache_v1";
@@ -9,9 +10,9 @@ const CACHE_KEY = "leaderboardCache_v1";
 function loadCache(): Record<LeaderboardType, LeaderboardRow[]> {
     try {
         const raw = localStorage.getItem(CACHE_KEY);
-        return raw ? JSON.parse(raw) : { blitz: [], bullet: [], rapid: [], daily: [], "960": [], fide: [] };
+        return raw ? JSON.parse(raw) : { "Daily Puzzle": [], blitz: [], bullet: [], rapid: [], daily: [], "960": [], fide: [] };
     } catch {
-        return { blitz: [], bullet: [], rapid: [], daily: [], "960": [], fide: [] };
+        return { "Daily Puzzle": [], blitz: [], bullet: [], rapid: [], daily: [], "960": [], fide: [] };
     }
 }
 
@@ -20,6 +21,7 @@ function saveCache(cache: Record<LeaderboardType, LeaderboardRow[]>) {
 }
 
 type LeaderboardType =
+    | "Daily Puzzle"
     | "blitz"
     | "bullet"
     | "rapid"
@@ -28,6 +30,7 @@ type LeaderboardType =
     | "fide";
 
 const leaderboardTabs: { label: string; value: LeaderboardType, icon: any }[] = [
+    { label: "Daily Puzzle", value: "Daily Puzzle", icon: faPuzzlePiece },
     { label: "Blitz", value: "blitz", icon: faFire },
     { label: "Bullet", value: "bullet", icon: faRocket },
     { label: "Rapid", value: "rapid", icon: faRocket },
@@ -35,15 +38,6 @@ const leaderboardTabs: { label: string; value: LeaderboardType, icon: any }[] = 
     { label: "960", value: "960", icon: faShuffle },
     { label: "FIDE", value: "fide", icon: faGlobe },
 ];
-
-const columnMap: Record<LeaderboardType, string> = {
-    blitz: "chess_com_blitz",
-    bullet: "chess_com_bullet",
-    rapid: "chess_com_rapid",
-    daily: "chess_com_daily",
-    "960": "chess_com_960_daily",
-    fide: "fide_rating",
-};
 
 interface LeaderboardRow {
     id: string;
@@ -55,14 +49,22 @@ interface LeaderboardRow {
     } | null;
 }
 
+interface DailyPuzzleWinner {
+    id: string;
+    chess_com_name: string;
+    username: string | null;
+    wins: number;
+}
+
 function Leaderboard() {
-    const [type, setType] = useState<LeaderboardType>("blitz");
+    const [type, setType] = useState<LeaderboardType>("Daily Puzzle");
     const [rows, setRows] = useState<LeaderboardRow[]>([]);
+    const [dailyPuzzleWinnersRows, setDailyPuzzleWinnersRows] = useState<DailyPuzzleWinner[]>([]);
     const [loading, setLoading] = useState(true);
     const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
     const cacheRef = useRef<Record<LeaderboardType, LeaderboardRow[]>>(loadCache());
-    const abortRef = useRef<AbortController | null>(null);
+    const dailyPuzzleCacheRef = useRef<DailyPuzzleWinner[] | null>(null);
 
     const [supabaseClient, setSupabaseClient] = useState<any>(null);
 
@@ -80,58 +82,96 @@ function Leaderboard() {
         });
     }, [supabaseClient]);
 
-    // fetch leaderboard
+    // fetch leaderboard (ONE TIME ONLY)
     useEffect(() => {
         async function fetchLeaderboard() {
             if (!supabaseClient) return;
             setLoading(true);
 
-            // If cached → show instantly (no waiting)
-            const cached = cacheRef.current[type];
-            if (cached && cached.length > 0) {
-                setRows(cached);
-                setLoading(false);
+            // If already cached from earlier visit show instantly,
+            // but STILL fetch from DB once to revalidate.
+            if (dailyPuzzleCacheRef.current || Object.values(cacheRef.current).some(x => x.length > 0)) {
+                applyTabData();
+                // don't return; still go on to fetch fresh data
             }
 
-            // cancel previous request
-            abortRef.current?.abort();
-            abortRef.current = new AbortController();
+            // ---------- FETCH DAILY PUZZLE WINNERS ----------
+            const { data: dailyData, error: dailyError } = await supabaseClient.rpc("get_daily_puzzle_winners");
+            if (dailyError) {
+                console.error("Daily puzzle RPC error:", dailyError);
+                dailyPuzzleCacheRef.current = [];
+            } else {
+                dailyPuzzleCacheRef.current = dailyData || [];
+            }
 
+            // ---------- FETCH ALL LEADERBOARD RATINGS AT ONCE ----------
             const { data, error } = await supabaseClient
                 .from("chess_com_stats")
                 .select(`
                     id,
                     chess_com_name,
                     chess_com_title,
-                    ${columnMap[type]},
-                    profiles (
-                        username
-                    )
+                    chess_com_blitz,
+                    chess_com_bullet,
+                    chess_com_rapid,
+                    chess_com_daily,
+                    chess_com_960_daily,
+                    fide_rating,
+                    profiles ( username )
                 `)
                 .not("chess_com_name", "is", null)
-                .order(columnMap[type], { ascending: false })
-                .limit(50)
-                .abortSignal(abortRef.current.signal);
+                .limit(200);
 
-            if (!error && data) {
-                const mapped = data.map((row: any) => ({
-                    id: row.id,
-                    chess_com_name: row.chess_com_name,
-                    chess_com_title: row.chess_com_title,
-                    rating: row[columnMap[type]],
-                    profiles: row.profiles,
-                }));
-
-                cacheRef.current[type] = mapped;
-                saveCache(cacheRef.current);
-                setRows(mapped);
+            if (error || !data) {
+                console.error("Leaderboard fetch failed", error);
+                setLoading(false);
+                return;
             }
 
+            function mapRows(ratingKey: string) {
+                return [...data]
+                    .sort((a, b) => (b[ratingKey] ?? 0) - (a[ratingKey] ?? 0))
+                    .map((row: any) => ({
+                        id: row.id,
+                        chess_com_name: row.chess_com_name,
+                        chess_com_title: row.chess_com_title,
+                        rating: row[ratingKey],
+                        profiles: row.profiles,
+                    }));
+            }
+
+            cacheRef.current = {
+                "Daily Puzzle": [],
+                blitz: mapRows("chess_com_blitz"),
+                bullet: mapRows("chess_com_bullet"),
+                rapid: mapRows("chess_com_rapid"),
+                daily: mapRows("chess_com_daily"),
+                "960": mapRows("chess_com_960_daily"),
+                fide: mapRows("fide_rating"),
+            };
+
+            saveCache(cacheRef.current);
+
+            applyTabData();
             setLoading(false);
         }
 
         fetchLeaderboard();
-    }, [type, supabaseClient]);
+    }, [supabaseClient]);
+
+    function applyTabData() {
+        if (type === "Daily Puzzle") {
+            setRows([]);
+            setDailyPuzzleWinnersRows(dailyPuzzleCacheRef.current || []);
+        } else {
+            setDailyPuzzleWinnersRows([]);
+            setRows(cacheRef.current[type] || []);
+        }
+    }
+
+    useEffect(() => {
+        applyTabData();
+    }, [type]);
 
     return (
         <div className="grow px-2 sm:px-0">
@@ -174,7 +214,9 @@ function Leaderboard() {
                         <tr>
                             <th className="px-3 sm:px-4 py-2 sm:py-3 text-left w-16">#</th>
                             <th className="px-3 sm:px-4 py-2 sm:py-3 text-left">Player</th>
-                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-right">Rating</th>
+                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-right">
+                                {type === "Daily Puzzle" ? "Wins" : "Rating"}
+                            </th>
                         </tr>
                     </thead>
 
@@ -186,7 +228,7 @@ function Leaderboard() {
                                 </td>
                             </tr>
                         )}
-                        {loading && rows.length === 0 && (
+                        {loading && rows.length === 0 && type !== "Daily Puzzle" && (
                             <tr>
                                 <td colSpan={3} className="py-8 text-center">
                                     Loading leaderboard...
@@ -194,7 +236,7 @@ function Leaderboard() {
                             </tr>
                         )}
 
-                        {!loading && rows.length === 0 && (
+                        {!loading && rows.length === 0 && type !== "Daily Puzzle" && (
                             <tr>
                                 <td colSpan={3} className="py-8 text-center">
                                     No players found.
@@ -271,6 +313,71 @@ function Leaderboard() {
                                     </tr>
                                 );
                             })}
+                        {/* Daily Puzzle Winners rows appended below normal rows */}
+                        {!loading && type === "Daily Puzzle" && dailyPuzzleWinnersRows.length > 0 &&
+                            dailyPuzzleWinnersRows
+                                .sort((a, b) => b.wins - a.wins)
+                                .map((winner, index) => {
+                                    const isMe =
+                                        winner.username ===
+                                        dailyPuzzleWinnersRows.find(r => r.id === currentUserId)?.username;
+                                    console.log("winner ", winner, " isMe ", isMe);
+                                    return (
+                                        <tr
+                                            key={winner.chess_com_name}
+                                            className={`
+                                                transition
+                                                ${isMe ? "bg-club-light" : "hover:bg-club-light/50"}
+                                            `}
+                                        >
+                                            {/* RANK */}
+                                            <td
+                                                className={`flex flex-row justify-center items-center px-3 sm:px-4 py-2 sm:py-3 font-bold text-black text-sm md:text-lg  lg:text-xl} `}
+                                            >
+                                                {index === 0 && (
+                                                    <FontAwesomeIcon className="inline mr-1 text-yellow-400" icon={faCrown} />
+                                                )}
+
+                                                {index === 1 && (
+                                                    <FontAwesomeIcon className="inline mr-1 text-gray-400" icon={faCrown} />
+                                                )}
+
+                                                {index === 2 && (
+                                                    <FontAwesomeIcon className="inline mr-1 text-[#cd7f32]" icon={faCrown} />
+                                                )}
+                                                {index + 1}
+
+                                            </td>
+
+                                            {/* PLAYER */}
+                                            <td className="px-3 sm:px-4 py-2 sm:py-3">
+                                                <div className="flex items-center gap-2">
+                                                    <span className="font-semibold text-sm sm:text-base">
+                                                        {winner.username ?? "-"}
+                                                    </span>
+
+                                                    {isMe && (
+                                                        <span className="text-xs font-semibold text-club-secondary">
+                                                            (You)
+                                                        </span>
+                                                    )}
+                                                </div>
+
+                                                <div className="text-[10px] sm:text-xs text-gray-500">
+                                                    {winner.chess_com_name}
+                                                </div>
+                                            </td>
+
+                                            {/* WINS */}
+                                            <td className="px-3 sm:px-4 py-2 sm:py-3 text-right">
+                                                <span className="text-base sm:text-lg font-bold">
+                                                    {winner.wins}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                        }
                     </tbody>
                 </table>
             </div>
