@@ -2,8 +2,8 @@ import { getActiveClient } from "./getActiveClient";
 
 interface ChessStatsInput {
     user_id: string;
-    chess_com_name: string;
-    chess_com_player_id: number;
+    chess_com_name?: string;
+    chess_com_player_id?: number;
     chess_com_blitz?: number;
     chess_com_bullet?: number;
     chess_com_rapid?: number;
@@ -28,19 +28,23 @@ async function updateChessStats({
 
     const supabaseClient = await getActiveClient();
 
+    const updatePayload: any = {
+        chess_com_blitz,
+        chess_com_bullet,
+        chess_com_rapid,
+        chess_com_daily,
+        chess_com_960_daily,
+        chess_com_title,
+        fide_rating,
+    };
+
+    // only update these if provided
+    if (chess_com_name) updatePayload.chess_com_name = chess_com_name;
+    if (chess_com_player_id) updatePayload.chess_com_player_id = chess_com_player_id;
+
     const { error } = await supabaseClient
         .from("chess_com_stats")
-        .update({
-            chess_com_name,
-            chess_com_player_id,
-            chess_com_blitz,
-            chess_com_bullet,
-            chess_com_rapid,
-            chess_com_daily,
-            chess_com_960_daily,
-            chess_com_title,
-            fide_rating,
-        })
+        .update(updatePayload)
         .eq("id", user_id);
 
     if (error) {

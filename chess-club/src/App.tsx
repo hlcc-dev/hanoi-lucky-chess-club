@@ -7,6 +7,9 @@ import ToastContainer from './components/Toast/ToastContainer';
 
 import { Analytics } from '@vercel/analytics/react';
 
+
+import { useBackgroundChessRefresh } from './hooks/useBackgroundChessRefresh';
+
 const Home = lazy(() => import('./pages/Home'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
@@ -19,6 +22,9 @@ const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
+  // Use background chess refresh hook
+  useBackgroundChessRefresh();
+
   return (
     <div className="min-h-screen flex flex-col">
       <ToastContainer />
