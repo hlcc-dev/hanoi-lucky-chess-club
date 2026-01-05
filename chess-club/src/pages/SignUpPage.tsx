@@ -297,12 +297,11 @@ function SignUpPage() {
                             Verify Your Email
                         </h1>
 
-                        <p className="text-center opacity-70 mb-6">
-                            We sent a verification link to <b>{email}</b> Please check your inbox and click the link to verify your email. The link may take a few minutes to arrive.
+                        <p className="text-center text-club-dark text-lg mb-6">
+                            We sent a verification link to <b>{email}</b> Please check your inbox including <span className="font-extrabold text-2xl">SPAM or JUNK</span> and
+                            click the link to verify your email. The link may take a few minutes to arrive.
                         </p>
-                        <p className="text-center opacity-70 mb-6">
-                            You can't find the email? Check your <strong>SPAM or JUNK</strong> folder just in case.
-                        </p>
+
 
                         <div className="flex flex-col gap-3">
                             <ButtonPrimary
