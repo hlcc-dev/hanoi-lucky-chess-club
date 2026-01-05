@@ -254,9 +254,8 @@ function SignUpPage() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
-                                <p className="text-lg md:text-md mt-2 px-1 text-club-dark hidden group-focus-within:block">
-                                    Password must be at least <span className="font-bold">8 characters, contain uppercase and
-                                        lowercase letters and a number</span>.
+                                <p className="mt-2 px-1 text-sm text-club-dark opacity-75 hidden group-focus-within:block">
+                                    Password must contain at least <span className="font-semibold">8 characters, 1 uppercase, 1 lowercase, and 1 number</span>.
                                 </p>
                                 <button
                                     type="button"
