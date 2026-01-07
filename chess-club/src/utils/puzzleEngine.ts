@@ -103,7 +103,8 @@ export function initPuzzleEngine(
 export function tryPuzzleMove(
     engine: PuzzleEngine,
     from: string,
-    to: string
+    to: string,
+    promotion?: string | 'q',
 ): {
     ok: boolean;
     wrong?: boolean;
@@ -119,7 +120,7 @@ export function tryPuzzleMove(
         move = engine.chess.move({
             from,
             to,
-            ...(to[1] === "8" || to[1] === "1" ? { promotion: "q" } : {}),
+            ...(to[1] === "8" || to[1] === "1" ? { promotion: promotion ?? "q" } : {}),
         });
     } catch {
         // chess.js threw -> illegal input (ignore silently)
@@ -154,8 +155,12 @@ export function tryPuzzleMove(
 
     const expFrom = expected.slice(0, 2);
     const expTo = expected.slice(2, 4);
+    let expPromotion: string | undefined = undefined;
+    if (expected.length > 4) {
+        expPromotion = expected[4];
+    }
 
-    if (from !== expFrom || to !== expTo) {
+    if (from !== expFrom || to !== expTo || promotion !== expPromotion) {
         // Capture board AFTER the wrong (but legal) move
         const previewFen = engine.chess.fen();
 

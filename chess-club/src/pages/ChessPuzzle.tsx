@@ -198,11 +198,11 @@ function ChessPuzzle() {
     }, [puzzleDate]);
 
     // Handle user move on the board
-    const handleMove = (from: string, to: string) => {
+    const handleMove = (from: string, to: string, promotion?: string) => {
         if (!engineRef.current) return false;
         if (from === to) return false;
 
-        const result = tryPuzzleMove(engineRef.current, from, to);
+        const result = tryPuzzleMove(engineRef.current, from, to, promotion);
 
         if (!result.ok && !result.wrong) return false;
 
