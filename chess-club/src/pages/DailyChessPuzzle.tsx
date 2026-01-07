@@ -21,7 +21,7 @@ import {
 import { getPuzzleStats, updatePuzzleStats } from "../utils/puzzleStats";
 import { toastError } from "../utils/toastUtils";
 
-function ChessPuzzle() {
+function DailyChessPuzzle() {
     const navigate = useNavigate();
 
     // User information
@@ -353,4 +353,4 @@ function ChessPuzzle() {
     );
 }
 
-export default ChessPuzzle;
+export default DailyChessPuzzle;

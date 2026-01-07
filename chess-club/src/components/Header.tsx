@@ -32,7 +32,7 @@ function Header() {
       {/* ================= MOBILE MENU ================= */}
       <div
         className={`
-          relative w-full bg-club-primary lg:hidden
+          relative z-50 w-full bg-club-primary lg:hidden
           transition-all duration-300 ease-in-out
           ${open ? "max-h-125 opacity-100" : "max-h-0 opacity-0 overflow-hidden"}
         `}
@@ -40,7 +40,8 @@ function Header() {
         <ol className="flex flex-col gap-4 px-6 py-6 font-semibold">
           <MobileNavLink to="/" label="Home" setOpen={setOpen} />
           <MobileNavLink to="/leaderboard" label="Leaderboard" setOpen={setOpen} />
-          <MobileNavLink to="/chess-puzzles" label="Daily Puzzles" setOpen={setOpen} />
+          <MobileNavLink to="/daily-chess-puzzle" label="Daily Puzzles" setOpen={setOpen} />
+          <MobileNavLink to="/puzzle-marathon" label="Puzzle Marathon" setOpen={setOpen} />
           <MobileNavLink to="/contact" label="Contact" setOpen={setOpen} />
 
           <AuthButtons mobile onAction={() => setOpen(false)} />
@@ -76,7 +77,8 @@ function Header() {
           <ol className="flex gap-6 font-semibold">
             <NavLinkItem to="/" label="Home" />
             <NavLinkItem to="/leaderboard" label="Leaderboard" />
-            <NavLinkItem to="/chess-puzzles" label="Daily Puzzles" />
+            <NavLinkItem to="/daily-chess-puzzle" label="Daily Puzzles" />
+            <NavLinkItem to="/puzzle-marathon" label="Puzzle Marathon" />
             <NavLinkItem to="/contact" label="Contact" />
           </ol>
         </div>
