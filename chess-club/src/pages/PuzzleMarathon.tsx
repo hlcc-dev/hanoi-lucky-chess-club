@@ -42,10 +42,11 @@ function PuzzleMarathon() {
     // Global loading & auth
 
     const [loading, setLoading] = useState(true);
-    const [Error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
     const [puzzleLoading, setPuzzleLoading] = useState(false);
     const { user, loading: userLoading } = useUser();
     const navigate = useNavigate();
+
 
 
     // User stats & scoring
@@ -358,6 +359,7 @@ function PuzzleMarathon() {
 
             }, 1000);
         }
+        console.log(error)
         return true; // Return true if the move is valid, false otherwise
     }
 
