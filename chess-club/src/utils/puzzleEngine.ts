@@ -110,7 +110,8 @@ export function initPuzzleEngineFen(
 export function makeFirstComputerMove(
     engine: PuzzleEngine,
     from: string,
-    to: string
+    to: string,
+    promotion?: string
 ): {
     ok: boolean;
     fen: string;
@@ -121,7 +122,7 @@ export function makeFirstComputerMove(
         move = engine.chess.move({
             from,
             to,
-            ...(to[1] === "8" || to[1] === "1" ? { promotion: "q" } : {}),
+            ...(to[1] === "8" || to[1] === "1" ? { promotion: promotion || 'q' } : {}),
         });
     } catch {
         throw new Error("Invalid first move");
