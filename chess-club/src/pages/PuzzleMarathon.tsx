@@ -42,6 +42,7 @@ function PuzzleMarathon() {
     // Global loading & auth
 
     const [loading, setLoading] = useState(true);
+    const [Error, setError] = useState<string | null>(null);
     const [puzzleLoading, setPuzzleLoading] = useState(false);
     const { user, loading: userLoading } = useUser();
     const navigate = useNavigate();
@@ -121,6 +122,7 @@ function PuzzleMarathon() {
             .rpc("get_random_puzzles_timestamp");
 
         if (error) {
+            setError("Failed to fetch puzzles. Please try again later.");
             return;
         }
 
@@ -160,6 +162,7 @@ function PuzzleMarathon() {
                 setMarathonStats(stats);
             })
             .catch((error) => {
+                setError(`Failed to fetch marathon stats. ${error.message}`);
             });
     }, [user]);
 
@@ -321,6 +324,7 @@ function PuzzleMarathon() {
                         .then(() => {
                         })
                         .catch((error) => {
+                            setError(`Failed to fetch marathon stats. ${error.message}`);
                         });
                 }
 
@@ -330,12 +334,14 @@ function PuzzleMarathon() {
                         .then(() => {
                         })
                         .catch((error) => {
+                            setError(`Failed to fetch marathon stats. ${error.message}`);
                         });
                     // Increment total puzzles solved
                     incrementMarathonPuzzleCount(user.id)
                         .then(() => {
                         })
                         .catch((error) => {
+                            setError(`Failed to fetch marathon stats. ${error.message}`);
                         });
                 }
 
