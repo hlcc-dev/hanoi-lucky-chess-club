@@ -15,7 +15,8 @@ const LoginPage = lazy(() => import('./pages/LoginPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
 const ForgotPassword = lazy(() => import('./components/ForgotPassword'));
 const ResetPassword = lazy(() => import('./pages/ResetPassword'));
-const ChessPuzzle = lazy(() => import('./pages/ChessPuzzle'));
+const DailyChessPuzzle = lazy(() => import('./pages/DailyChessPuzzle'));
+const PuzzleMarathon = lazy(() => import('./pages/PuzzleMarathon'));
 const Leaderboard = lazy(() => import('./pages/Leaderboard'));
 const Settings = lazy(() => import('./pages/Settings'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -41,7 +42,8 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/settings/reset-password" element={<ResetPassword />} />
-            <Route path="/chess-puzzles" element={<ChessPuzzle />} />
+            <Route path="/daily-chess-puzzle" element={<DailyChessPuzzle />} />
+            <Route path="/puzzle-marathon" element={<PuzzleMarathon />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/Events" element={<h1>Events</h1>} />

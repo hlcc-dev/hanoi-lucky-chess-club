@@ -20,6 +20,18 @@ export interface PuzzleEngine {
 
 }
 
+export interface PuzzleEngineFen {
+    chess: Chess;
+    solution: string[]; // UCI moves like ["f7h7", "g5g6", ...]
+    index: number;
+    lastMove: {
+        from: string;
+        to: string;
+        promotion?: string;
+    };
+
+}
+
 /* ================= INIT ENGINE ================= */
 
 /**
@@ -75,6 +87,56 @@ export function initPuzzleEngine(
         },
     };
 }
+
+export function initPuzzleEngineFen(
+    fen: string,
+    solution: string[]
+): PuzzleEngineFen {
+    const chess = new Chess();
+
+    chess.load(fen);
+    return {
+        chess,
+        solution,
+        index: 0,
+        lastMove: {
+            from: "",
+            to: "",
+        },
+    };
+}
+
+
+export function makeFirstComputerMove(
+    engine: PuzzleEngine,
+    from: string,
+    to: string
+): {
+    ok: boolean;
+    fen: string;
+} {
+    let move;
+    try {
+        // Try to apply the move ONCE
+        move = engine.chess.move({
+            from,
+            to,
+            ...(to[1] === "8" || to[1] === "1" ? { promotion: "q" } : {}),
+        });
+    } catch {
+        throw new Error("Invalid first move");
+    }
+
+    // Illegal move (wrong color, illegal square, wrong turn, etc.)
+    if (!move) {
+        throw new Error("Invalid first move");
+    }
+    return {
+        ok: true,
+        fen: engine.chess.fen(),
+    };
+}
+// Load full game
 
 /* ================= TRY USER MOVE ================= */
 

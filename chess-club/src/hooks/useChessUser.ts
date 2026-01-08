@@ -20,7 +20,6 @@ export function useChessUser() {
 
     const checkUser = async (username: string) => {
         if (!username) {
-            toastError("Please enter a Chess.com username.")
             return
         }
 
@@ -50,7 +49,6 @@ export function useChessUser() {
 
             if (err.response?.status === 404) {
                 setStatus("error")
-                toastError("Chess.com user not found. Please check the username.")
             } else {
                 setStatus("error")
                 toastError("An error occurred while fetching Chess.com data.")
