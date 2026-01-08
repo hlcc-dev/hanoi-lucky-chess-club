@@ -8,6 +8,11 @@ interface ChessBoardProps {
     onMove: (from: string, to: string, promotion?: string) => boolean;
     boardOrientation?: "white" | "black";
     movesEnabled?: boolean;
+    hintArrows?: {
+        startSquare: string;
+        endSquare: string;
+        color: string;
+    }[];
 }
 
 function isValidFen(fen: string) {
@@ -19,9 +24,10 @@ function isValidFen(fen: string) {
     }
 }
 
-function ChessBoard({ fen, onMove, boardOrientation, movesEnabled = true }: ChessBoardProps) {
+function ChessBoard({ fen, onMove, boardOrientation, movesEnabled = true, hintArrows = [] }: ChessBoardProps) {
     const [pendingMove, setPendingMove] = useState<{ from: string; to: string } | null>(null);
     const [showPromotionModal, setShowPromotionModal] = useState(false);
+
 
     const isPromotionMove = (from: string, to: string) => {
         const game = new Chess(fen);
@@ -56,6 +62,8 @@ function ChessBoard({ fen, onMove, boardOrientation, movesEnabled = true }: Ches
     const options = useMemo(() => ({
         position: fen,
 
+        arrows: hintArrows,
+
         onPieceDrop: ({ sourceSquare, targetSquare }: PieceDropHandlerArgs) => {
             if (!targetSquare) return false;
 
@@ -86,7 +94,7 @@ function ChessBoard({ fen, onMove, boardOrientation, movesEnabled = true }: Ches
         customLightSquareStyle: {
             backgroundColor: "#EBD5AB",
         },
-    }), [fen, onMove, boardOrientation]);
+    }), [fen, onMove, boardOrientation, hintArrows, movesEnabled]);
 
     return (
         <div style={{ position: "relative", width: "100%", height: "100%" }}>
