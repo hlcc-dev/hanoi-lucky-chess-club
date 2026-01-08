@@ -408,7 +408,7 @@ function PuzzleMarathon() {
             </div>
             {/* Layout wrapper for ChessBoard and right panels */}
             <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row md:items-start md:justify-between md:gap-8">
-                <div className="w-full max-w-sm mx-auto md:max-w-140 md:w-full lg:max-w-none lg:w-190 bg-club-light rounded-2xl shadow-xl p-4 mb-3">
+                <div className="w-full max-w-sm mx-auto md:max-w-[560px] md:w-full lg:max-w-none lg:w-[760px] bg-club-light rounded-2xl shadow-xl p-4 mb-3">
                     <ChessBoard
                         fen={fen}
                         onMove={handleMove}
@@ -418,8 +418,8 @@ function PuzzleMarathon() {
                     />
                 </div>
                 {/* Right side column for stats and message panels */}
-                <div className="w-full flex flex-col mx-auto md:w-90 lg:w-100 shrink-0">
-                    <div className="w-full max-w-sm mx-auto md:w-90 lg:w-100 bg-club-light rounded-2xl shadow-lg p-4 mb-3 space-y-3">
+                <div className="w-full flex flex-col mx-auto md:w-[360px] lg:w-[400px] shrink-0">
+                    <div className="w-full max-w-sm mx-auto md:w-[360px] lg:w-[400px] bg-club-light rounded-2xl shadow-lg p-4 mb-3 space-y-3">
                         <div className="grid grid-cols-3 w-full text-sm md:text-base lg:text-lg font-semibold">
                             <p className="text-left font-semibold text-gray-800 md:text-base lg:text-lg">
                                 Points : {marathonStats ? marathonStats.points : "N/A"} <span className='font-bold text-club-primary'>+ {currentPoints}</span>
@@ -444,7 +444,7 @@ function PuzzleMarathon() {
                             <p className="text-center text-gray-800 font-bold md:text-lg lg:text-xl w-16">Lv {marathonStats ? marathonStats.level : "N/A"}</p>
                         </div>
                     </div>
-                    <div className="flex flex-row justify-between w-full max-w-sm mx-auto md:w-90 lg:w-100 bg-club-light rounded-2xl shadow-lg p-4 mb-3">
+                    <div className="flex flex-row justify-between w-full max-w-sm mx-auto md:w-[360px] lg:w-[400px] bg-club-light rounded-2xl shadow-lg p-4 mb-3">
                         <p className="text-base md:text-lg lg:text-xl font-semibold text-gray-800 flex items-center gap-3">
                             {/*first move computer so black = white to move*/}
                             {message ? (
@@ -463,7 +463,7 @@ function PuzzleMarathon() {
                         </p>
                     </div>
                     {/* Desktop-only action bar (right side) */}
-                    <div className="hidden md:flex flex-col gap-3 mt-2 w-full max-w-sm mx-auto md:w-90 lg:w-100">
+                    <div className="hidden md:flex flex-col gap-3 mt-2 w-full max-w-sm mx-auto md:w-[360px] lg:w-[400px]">
                         <button
                             className="w-full h-12 flex items-center justify-center bg-club-light text-club-dark rounded-xl font-semibold text-base md:text-lg lg:text-xl active:scale-95 transition"
                             disabled={showNextButton}
