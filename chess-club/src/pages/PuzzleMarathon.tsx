@@ -230,7 +230,11 @@ function PuzzleMarathon() {
         // Computer makes FIRST move
         const timer = setTimeout(() => {
             if (!engineRef.current) return;
-            const success = makeFirstComputerMove(engineRef.current, movesArray[0].slice(0, 2), movesArray[0].slice(2, 4));
+            let promotion: string | undefined = undefined;
+            if (movesArray.length === 5) {
+                promotion = movesArray[0][4];
+            }
+            const success = makeFirstComputerMove(engineRef.current, movesArray[0].slice(0, 2), movesArray[0].slice(2, 4), promotion);
             if (success) {
                 setFen(engineRef.current.chess.fen());
             }
@@ -240,13 +244,13 @@ function PuzzleMarathon() {
 
     // Chess interaction
 
-    function handleMove(from: string, to: string): boolean {
+    function handleMove(from: string, to: string, promotion?: string): boolean {
         setHintArrows([]);
 
         if (!engineRef.current) return false;
         if (from === to) return false;
 
-        const result = tryPuzzleMove(engineRef.current, from, to);
+        const result = tryPuzzleMove(engineRef.current, from, to, promotion);
 
         if (!result.ok && !result.wrong) return false;
 
