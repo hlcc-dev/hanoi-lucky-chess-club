@@ -223,6 +223,7 @@ function PuzzleMarathon() {
         setFen(currentPuzzle.fen);
         setCurrentPoints(40);
         setPuzzleLoading(false);
+        setMessage(null);
 
         // Disable next button
         setShowNextButton(false);
