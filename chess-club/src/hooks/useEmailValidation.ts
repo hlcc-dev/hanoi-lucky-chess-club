@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { supabaseSessionOnly } from "../utils/supabaseClient";
 import { toastError } from "../utils/toastUtils";
 
 type StatusState = "idle" | "loading" | "success" | "error";
@@ -13,33 +12,19 @@ export function useEmailValidation() {
             return false;
         }
 
-        setStatus("loading");
-
-        try {
-            const { data, error } =
-                await supabaseSessionOnly.functions.invoke("email_check", {
-                    body: { email },
-                });
-
-            if (error) {
-                toastError("Error validating email. Please try again later.");
-                setStatus("error");
-                return false;
-            }
-
-            if (data?.valid === true) {
-                setStatus("success");
-                return true;
-            } else {
-                toastError("Invalid email address. Please check and try again.");
-                setStatus("error");
-                return false;
-            }
-        } catch {
-            toastError("An unexpected error occurred during email validation.");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if (!emailRegex.test(email)) {
             setStatus("error");
+            toastError("Invalid email format. Please check again.");
             return false;
         }
+
+        setStatus("loading");
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        setStatus("success");
+        return true;
     };
 
     const reset = () => {
