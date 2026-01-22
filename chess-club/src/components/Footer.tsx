@@ -10,7 +10,6 @@ function Footer() {
           px-4 py-4
           flex flex-col gap-3
           items-center text-center
-          sm:flex-row sm:items-center sm:justify-between sm:text-left
         "
       >
         {/* Left side */}
@@ -19,16 +18,6 @@ function Footer() {
             &copy; {new Date().getFullYear()} Hanoi Lucky Chess Club
             <span className="hidden sm:inline"> · All rights reserved</span>
           </p>
-          <a
-            href="https://www.ahmedozdogan.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
-          >
-            <p className="text-xs sm:text-sm md:text-base  ">
-              Designed & Developed by <span className="underline hover:text-white ">Ahmed Ozdogan</span>
-            </p>
-          </a>
         </div>
 
         {/* Right side */}
