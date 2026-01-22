@@ -21,7 +21,7 @@ import {
 import { getPuzzleStats, updatePuzzleStats } from "../utils/puzzleStats";
 import { toastError } from "../utils/toastUtils";
 
-function ChessPuzzle() {
+function DailyChessPuzzle() {
     const navigate = useNavigate();
 
     // User information
@@ -198,11 +198,11 @@ function ChessPuzzle() {
     }, [puzzleDate]);
 
     // Handle user move on the board
-    const handleMove = (from: string, to: string) => {
+    const handleMove = (from: string, to: string, promotion?: string) => {
         if (!engineRef.current) return false;
         if (from === to) return false;
 
-        const result = tryPuzzleMove(engineRef.current, from, to);
+        const result = tryPuzzleMove(engineRef.current, from, to, promotion);
 
         if (!result.ok && !result.wrong) return false;
 
@@ -353,4 +353,4 @@ function ChessPuzzle() {
     );
 }
 
-export default ChessPuzzle;
+export default DailyChessPuzzle;

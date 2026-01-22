@@ -20,6 +20,18 @@ export interface PuzzleEngine {
 
 }
 
+export interface PuzzleEngineFen {
+    chess: Chess;
+    solution: string[]; // UCI moves like ["f7h7", "g5g6", ...]
+    index: number;
+    lastMove: {
+        from: string;
+        to: string;
+        promotion?: string;
+    };
+
+}
+
 /* ================= INIT ENGINE ================= */
 
 /**
@@ -76,6 +88,57 @@ export function initPuzzleEngine(
     };
 }
 
+export function initPuzzleEngineFen(
+    fen: string,
+    solution: string[]
+): PuzzleEngineFen {
+    const chess = new Chess();
+
+    chess.load(fen);
+    return {
+        chess,
+        solution,
+        index: 0,
+        lastMove: {
+            from: "",
+            to: "",
+        },
+    };
+}
+
+
+export function makeFirstComputerMove(
+    engine: PuzzleEngine,
+    from: string,
+    to: string,
+    promotion?: string
+): {
+    ok: boolean;
+    fen: string;
+} {
+    let move;
+    try {
+        // Try to apply the move ONCE
+        move = engine.chess.move({
+            from,
+            to,
+            ...(to[1] === "8" || to[1] === "1" ? { promotion: promotion || 'q' } : {}),
+        });
+    } catch {
+        throw new Error("Invalid first move");
+    }
+
+    // Illegal move (wrong color, illegal square, wrong turn, etc.)
+    if (!move) {
+        throw new Error("Invalid first move");
+    }
+    return {
+        ok: true,
+        fen: engine.chess.fen(),
+    };
+}
+// Load full game
+
 /* ================= TRY USER MOVE ================= */
 
 /**
@@ -103,7 +166,8 @@ export function initPuzzleEngine(
 export function tryPuzzleMove(
     engine: PuzzleEngine,
     from: string,
-    to: string
+    to: string,
+    promotion?: string | 'q',
 ): {
     ok: boolean;
     wrong?: boolean;
@@ -119,7 +183,7 @@ export function tryPuzzleMove(
         move = engine.chess.move({
             from,
             to,
-            ...(to[1] === "8" || to[1] === "1" ? { promotion: "q" } : {}),
+            ...(to[1] === "8" || to[1] === "1" ? { promotion: promotion ?? "q" } : {}),
         });
     } catch {
         // chess.js threw -> illegal input (ignore silently)
@@ -154,8 +218,12 @@ export function tryPuzzleMove(
 
     const expFrom = expected.slice(0, 2);
     const expTo = expected.slice(2, 4);
+    let expPromotion: string | undefined = undefined;
+    if (expected.length > 4) {
+        expPromotion = expected[4];
+    }
 
-    if (from !== expFrom || to !== expTo) {
+    if (from !== expFrom || to !== expTo || promotion !== expPromotion) {
         // Capture board AFTER the wrong (but legal) move
         const previewFen = engine.chess.fen();
 

@@ -16,6 +16,7 @@ function LoginPage() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [loginProcessing, setLoginProcessing] = useState<"idle" | "loading" | "error" | "success">("idle");
+    const [loginProcessing, setLoginProcessing] = useState<"idle" | "loading" | "error" | "success">("idle");
     const [loggedIn, setLoggedIn] = useState(true);
 
     async function handleLogin() {
@@ -31,6 +32,8 @@ function LoginPage() {
                     toastSuccess("Login successful!");
                     navigate("/");
                     setLoginProcessing("success");
+                } else if (success === false) {
+                    setLoginProcessing("error");
                 } else if (success === false) {
                     setLoginProcessing("error");
                 }
