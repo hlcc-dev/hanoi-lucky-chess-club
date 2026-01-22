@@ -18,7 +18,6 @@ import { supabasePersistent } from "../utils/supabaseClient";
 import { toastSuccess, toastError } from "../utils/toastUtils";
 import { checkUsernameAvailable } from "../utils/checkUsernameAvailable";
 
-import { useCaptchaGuard } from "../hooks/useCaptchaGuard";
 
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
@@ -29,7 +28,6 @@ function SignUpPage() {
 
     const [step, setStep] = useState(urlStep);
     const navigate = useNavigate();
-    const { Captcha, runWithCaptcha } = useCaptchaGuard();
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -74,7 +72,6 @@ function SignUpPage() {
 
     const canContinueStep1 =
         status === "idle" && formValid;
-
     async function handleStep1Continue() {
         const ok = await validateEmail(email);
         if (!ok) {
@@ -88,23 +85,20 @@ function SignUpPage() {
                 toastError("Username is already taken. Please choose another.");
                 return;
             }
-            try {
-                await runWithCaptcha(async () => {
-                    const success = await signUp({ email, password, username });
 
-                    if (success) {
-                        setStep(2)
-                        toastSuccess("Sign up successful! Please check your inbox to verify your email.");
-                    } else if (!success) {
-                        toastError("Sign up failed. Email may already be in use. Please try again!");
-                    }
+            const success = await signUp({ email, password, username });
 
-                });
-            } catch (err) {
-                toastError("Captcha verification failed. Please try again.");
-                return;
+            if (success) {
+                setStep(2)
+                toastSuccess("Sign up successful! Please check your inbox to verify your email.");
+            } else {
+                // Sửa lại thông báo lỗi cho đúng ngữ cảnh
+                toastError("Sign up failed. Email may already be in use. Please try again!");
             }
-        } finally {
+
+        } catch (err) {
+            console.error("Signup error:", err);
+            toastError("An error occurred during sign up. Please try again.");
         }
     }
 
@@ -173,10 +167,6 @@ function SignUpPage() {
 
         async function saveChessStats() {
             setChessSaveState("saving");
-            console.log("Saving chess stats...");
-            console.log({ profile, stats });
-
-
 
             const success = await updateChessStats({
                 user_id: signedUser || "",
@@ -278,9 +268,6 @@ function SignUpPage() {
                                     onChange={(e) => setPasswordAgain(e.target.value)}
                                 />
                             </div>
-
-                            {Captcha}
-
                             <ButtonPrimary
                                 label={status === 'idle' ? "Verify Email and Continue" : status === 'loading' ? "Validating..." : status === 'error' ? "Error Validating" : "Success! Please wait..."}
                                 size="lg"
@@ -291,6 +278,7 @@ function SignUpPage() {
                     </>
                 )}
 
+                {/* Phần step 2 và 3 giữ nguyên như cũ, không cần thay đổi */}
                 {step === 2 && (
                     <>
                         <h1 className="text-2xl font-bold text-center mb-4">
