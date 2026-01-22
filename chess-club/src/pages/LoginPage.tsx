@@ -8,7 +8,6 @@ import Checkbox from "../components/Checkbox";
 import Input from "../components/Input";
 import { useNavigate } from "react-router-dom";
 import login from "../utils/login";
-import { useCaptchaGuard } from "../hooks/useCaptchaGuard";
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -18,12 +17,10 @@ function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
     const [loginProcessing, setLoginProcessing] = useState<"idle" | "loading" | "error" | "success">("idle");
     const [loggedIn, setLoggedIn] = useState(true);
-    const { Captcha, runWithCaptcha } = useCaptchaGuard();
 
     async function handleLogin() {
         setLoginProcessing("loading");
         try {
-            await runWithCaptcha(async () => {
                 const success = await login({
                     email,
                     password,
@@ -37,9 +34,8 @@ function LoginPage() {
                 } else if (success === false) {
                     setLoginProcessing("error");
                 }
-            });
         } catch (err) {
-            console.error("Captcha or login failed:", err);
+            console.error("Login failed:", err);
             setLoginProcessing("error");
         }
     }
@@ -113,7 +109,6 @@ function LoginPage() {
                         </button>
                     </div>
 
-                    {Captcha}
 
                     {/* Primary action */}
                     <ButtonPrimary label={loginProcessing === "loading" ? "Logging in..." : "Login"} size="lg" onClick={handleLogin} disabled={loginProcessing === "loading"} />
