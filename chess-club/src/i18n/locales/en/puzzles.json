@@ -1,0 +1,15 @@
+{
+  "loginRequired": "You must be logged in to access the daily puzzle.",
+  "wrongMove": "Wrong move for the puzzle. Try another move.",
+  "loadingPuzzle": "Loading puzzle",
+  "loadingDefault": "Loading...",
+  "pageTitle": "Daily Chess Puzzle - Rating : {{rating}}",
+  "loadingLeaderboard": "Loading leaderboard…",
+  "completed": {
+    "title": "Puzzle Completed!",
+    "seconds": "seconds",
+    "time": "Time",
+    "attempts": "Attempts",
+    "continue": "Continue"
+  }
+}

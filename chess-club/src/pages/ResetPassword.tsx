@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { TbLockPassword } from "react-icons/tb";
 import Input from "../components/Input";
 import ButtonPrimary from "../components/Button/ButtonPrimary";
@@ -7,6 +8,7 @@ import { toastSuccess, toastError } from "../utils/toastUtils";
 import { useNavigate } from "react-router-dom";
 
 function ResetPassword() {
+    const { t } = useTranslation("auth-pages");
     const navigate = useNavigate();
 
     const [password, setPassword] = useState("");
@@ -17,7 +19,7 @@ function ResetPassword() {
     useEffect(() => {
         supabasePersistent.auth.getSession().then(({ data }) => {
             if (!data.session) {
-                toastError("Invalid or expired reset link.");
+                toastError(t("resetPassword.invalidLink"));
                 navigate("/login", { replace: true });
                 return;
             } else {
@@ -28,12 +30,12 @@ function ResetPassword() {
 
     async function handleResetPassword() {
         if (!password || !passwordAgain) {
-            toastError("Please fill in both password fields.");
+            toastError(t("resetPassword.fillBothFields"));
             return;
         }
 
         if (password !== passwordAgain) {
-            toastError("Passwords do not match.");
+            toastError(t("resetPassword.passwordsNoMatch"));
             return;
         }
 
@@ -43,14 +45,14 @@ function ResetPassword() {
             });
 
             if (error) {
-                toastError("Failed to reset password. Please try again.");
+                toastError(t("resetPassword.resetFailed"));
                 return;
             }
 
-            toastSuccess("Password updated successfully. Please log in.");
+            toastSuccess(t("resetPassword.updatedSuccess"));
             navigate("/login", { replace: true });
         } catch {
-            toastError("Unexpected error occurred.");
+            toastError(t("resetPassword.unexpectedError"));
         }
     }
 
@@ -62,10 +64,10 @@ function ResetPassword() {
                 {/* Header */}
                 <div className="mb-6 text-center">
                     <h1 className="text-2xl font-bold text-club-dark">
-                        Reset your password
+                        {t("resetPassword.title")}
                     </h1>
                     <p className="mt-2 text-sm text-club-dark/60">
-                        Enter your new password below.
+                        {t("resetPassword.subtitle")}
                     </p>
                 </div>
 
@@ -76,15 +78,14 @@ function ResetPassword() {
                         <TbLockPassword className="absolute left-3 top-3.5 text-club-dark/40" />
                         <Input
                             type="password"
-                            placeholder="New password"
+                            placeholder={t("resetPassword.newPasswordPlaceholder")}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             icon
                         />
 
                         <p className="text-lg md:text-md mt-2 px-1 text-club-dark hidden group-focus-within:block">
-                            Password must be at least <span className="font-bold">8 characters, contain uppercase and
-                                lowercase letters and a number</span>.
+                            {t("resetPassword.passwordHintPrefix")} <span className="font-bold">{t("resetPassword.passwordHintStrong")}</span>.
                         </p>
                     </div>
 
@@ -93,7 +94,7 @@ function ResetPassword() {
                         <TbLockPassword className="absolute left-3 top-3.5 text-club-dark/40" />
                         <Input
                             type="password"
-                            placeholder="Confirm new password"
+                            placeholder={t("resetPassword.confirmPasswordPlaceholder")}
                             value={passwordAgain}
                             onChange={(e) => setPasswordAgain(e.target.value)}
                             icon
@@ -102,7 +103,7 @@ function ResetPassword() {
 
                     {/* Action */}
                     <ButtonPrimary
-                        label="Update password"
+                        label={t("resetPassword.updatePassword")}
                         size="lg"
                         onClick={handleResetPassword}
                     />

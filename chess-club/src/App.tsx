@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
+import { useTranslation } from 'react-i18next'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -23,6 +24,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
+  const { t } = useTranslation();
   // Use background chess refresh hook
   useBackgroundChessRefresh();
 
@@ -34,7 +36,7 @@ function App() {
 
       {/* MAIN CONTENT MUST GROW */}
       <main className="flex-1">
-        <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
+        <Suspense fallback={<div className="p-4 text-center">{t("loading")}</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
@@ -46,7 +48,7 @@ function App() {
             <Route path="/puzzle-marathon" element={<PuzzleMarathon />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/Events" element={<h1>Events</h1>} />
+            <Route path="/Events" element={<h1>{t("events")}</h1>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

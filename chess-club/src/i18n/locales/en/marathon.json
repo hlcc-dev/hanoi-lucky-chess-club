@@ -1,0 +1,37 @@
+{
+  "title": "Puzzle Marathon",
+  "subtitle": "Sharpen your mind. Enjoy the challenge.",
+  "loginRequired": "Please log in to access the Puzzle Marathon.",
+  "fetchPuzzlesError": "Failed to fetch puzzles. Please try again later.",
+  "fetchStatsError": "Failed to fetch marathon stats. {{message}}",
+  "notAvailable": "N/A",
+  "points": "Points",
+  "rating": "Rating",
+  "level": "Lv",
+  "whiteToMove": "White to move.",
+  "blackToMove": "Black to move.",
+  "hint": "Hint",
+  "skip": "Skip",
+  "next": "Next",
+  "correctMessages": [
+    "Great job!",
+    "Well done!",
+    "You're on fire!",
+    "Keep it up!",
+    "Excellent move!"
+  ],
+  "incorrectMessages": [
+    "Oops, try again.",
+    "Not quite right.",
+    "Keep practicing!",
+    "Don't give up!",
+    "Almost had it!"
+  ],
+  "finishedMessages": [
+    "Puzzle completed! Please proceed to the next one.",
+    "You're a puzzle master! Please move on to the next challenge.",
+    "Fantastic work! One more?",
+    "You nailed it! Next puzzle awaits.",
+    "Brilliant solving! Ready for the next?"
+  ]
+}

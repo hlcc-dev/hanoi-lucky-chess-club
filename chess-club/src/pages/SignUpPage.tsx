@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FaEye, FaEyeSlash, FaUser, FaEnvelope, FaChess } from "react-icons/fa";
 import { TbLockPassword } from "react-icons/tb";
 
@@ -23,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 
 function SignUpPage() {
+    const { t } = useTranslation("auth-pages");
     const [searchParams] = useSearchParams();
     const urlStep = Number(searchParams.get("step")) || 1;
 
@@ -75,14 +77,14 @@ function SignUpPage() {
     async function handleStep1Continue() {
         const ok = await validateEmail(email);
         if (!ok) {
-            toastError("Please provide a valid email address.");
+            toastError(t("signup.invalidEmail"));
             return;
         }
 
         try {
             const usernameAvailable = await checkUsernameAvailable(username);
             if (!usernameAvailable) {
-                toastError("Username is already taken. Please choose another.");
+                toastError(t("signup.usernameTaken"));
                 return;
             }
 
@@ -90,15 +92,15 @@ function SignUpPage() {
 
             if (success) {
                 setStep(2)
-                toastSuccess("Sign up successful! Please check your inbox to verify your email.");
+                toastSuccess(t("signup.signupSuccess"));
             } else {
                 // Sửa lại thông báo lỗi cho đúng ngữ cảnh
-                toastError("Sign up failed. Email may already be in use. Please try again!");
+                toastError(t("signup.signupFailed"));
             }
 
         } catch (err) {
             console.error("Signup error:", err);
-            toastError("An error occurred during sign up. Please try again.");
+            toastError(t("signup.signupError"));
         }
     }
 
@@ -135,11 +137,11 @@ function SignUpPage() {
 
 
         if (!success) {
-            toastError("Please verify your email before continuing.");
+            toastError(t("signup.verifyBeforeContinue"));
             return;
         }
 
-        toastSuccess("Email verified and logged in!");
+        toastSuccess(t("signup.emailVerifiedLoggedIn"));
         setStep(3);
     }
 
@@ -182,7 +184,7 @@ function SignUpPage() {
             });
 
             if (!success) {
-                toastError("Failed to save chess stats. Please try again.");
+                toastError(t("signup.failedSaveStats"));
                 setChessSaveState("failed"); // stop looping
                 return;
             }
@@ -202,7 +204,7 @@ function SignUpPage() {
                 {step === 1 && (
                     <>
                         <h1 className="text-2xl font-bold text-center mb-6">
-                            Create Account
+                            {t("signup.createAccount")}
                         </h1>
 
                         <div className="flex flex-col gap-4">
@@ -210,7 +212,7 @@ function SignUpPage() {
                                 <FaUser className="absolute left-3 top-3.5 opacity-50" />
                                 <Input
                                     type="text"
-                                    placeholder="Username"
+                                    placeholder={t("signup.usernamePlaceholder")}
                                     icon
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
@@ -221,7 +223,7 @@ function SignUpPage() {
                                 <FaEnvelope className="absolute left-3.5 top-1/2 -translate-y-1/2 opacity-50" />
                                 <Input
                                     type="email"
-                                    placeholder="Email"
+                                    placeholder={t("signup.emailPlaceholder")}
                                     icon
                                     value={email}
                                     onChange={(e) => {
@@ -238,14 +240,14 @@ function SignUpPage() {
                                 <TbLockPassword className="absolute left-3.5 top-3.5 opacity-50" />
                                 <Input
                                     type={showPassword ? "text" : "password"}
-                                    placeholder="Password"
+                                    placeholder={t("signup.passwordPlaceholder")}
                                     icon
                                     password_check={!passwordValid && password !== ""}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <p className="mt-2 px-1 text-sm text-club-dark opacity-75 hidden group-focus-within:block">
-                                    Password must contain at least <span className="font-semibold">8 characters, 1 uppercase, 1 lowercase, and 1 number</span>.
+                                    {t("signup.passwordHintPrefix")} <span className="font-semibold">{t("signup.passwordHintStrong")}</span>.
                                 </p>
                                 <button
                                     type="button"
@@ -261,7 +263,7 @@ function SignUpPage() {
                                 <TbLockPassword className="absolute left-3.5 top-3.5 opacity-50" />
                                 <Input
                                     type={showPassword ? "text" : "password"}
-                                    placeholder="Password again"
+                                    placeholder={t("signup.passwordAgainPlaceholder")}
                                     icon
                                     password_check={!passwordsMatch && passwordAgain !== ""}
                                     value={passwordAgain}
@@ -269,7 +271,7 @@ function SignUpPage() {
                                 />
                             </div>
                             <ButtonPrimary
-                                label={status === 'idle' ? "Verify Email and Continue" : status === 'loading' ? "Validating..." : status === 'error' ? "Error Validating" : "Success! Please wait..."}
+                                label={status === 'idle' ? t("signup.verifyEmailAndContinue") : status === 'loading' ? t("signup.validating") : status === 'error' ? t("signup.errorValidating") : t("signup.successPleaseWait")}
                                 size="lg"
                                 disabled={!canContinueStep1}
                                 onClick={handleStep1Continue}
@@ -282,18 +284,17 @@ function SignUpPage() {
                 {step === 2 && (
                     <>
                         <h1 className="text-2xl font-bold text-center mb-4">
-                            Verify Your Email
+                            {t("signup.verifyYourEmail")}
                         </h1>
 
                         <p className="text-center text-club-dark text-lg mb-6">
-                            We sent a verification link to <b>{email}</b> Please check your inbox including <span className="font-extrabold text-2xl">SPAM or JUNK</span> and
-                            click the link to verify your email. The link may take a few minutes to arrive.
+                            {t("signup.verificationSentPrefix")} <b>{email}</b> {t("signup.verificationSentMiddle")} <span className="font-extrabold text-2xl">{t("signup.spamOrJunk")}</span> {t("signup.verificationSentSuffix")}
                         </p>
 
 
                         <div className="flex flex-col gap-3">
                             <ButtonPrimary
-                                label="I have verified my email"
+                                label={t("signup.iHaveVerified")}
                                 size="lg"
                                 onClick={handleEmailVerifiedContinue}
                             />
@@ -301,8 +302,8 @@ function SignUpPage() {
                             <ButtonPrimary
                                 label={
                                     emailTimer > 0
-                                        ? `Resend in ${emailTimer}s`
-                                        : "Resend Email"
+                                        ? t("signup.resendIn", { seconds: emailTimer })
+                                        : t("signup.resendEmail")
                                 }
                                 disabled={emailTimer > 0}
                                 onClick={handleResendEmail}
@@ -314,10 +315,10 @@ function SignUpPage() {
                 {step === 3 && (
                     <>
                         <h1 className="text-2xl font-bold text-center mb-6">
-                            Chess Profile
+                            {t("signup.chessProfile")}
                         </h1>
                         <p className="text-center opacity-70 mb-6">
-                            Link your Chess.com profile to import your ratings and stats.
+                            {t("signup.linkChessProfile")}
                         </p>
 
                         <div className="flex flex-col gap-4">
@@ -325,7 +326,7 @@ function SignUpPage() {
                                 <FaChess className="absolute left-3 top-3 opacity-50" />
                                 <Input
                                     type="text"
-                                    placeholder="Chess.com username"
+                                    placeholder={t("signup.chessUsernamePlaceholder")}
                                     icon
                                     value={chessUsername}
                                     onChange={(e) => setChessUsername(e.target.value)}
@@ -337,7 +338,7 @@ function SignUpPage() {
 
                             <div className="flex justify-between gap-2">
                                 <ButtonSecondary
-                                    label="Skip for now"
+                                    label={t("signup.skipForNow")}
                                     size="sm"
                                     onClick={() => navigate("/")}
                                 />
@@ -345,10 +346,10 @@ function SignUpPage() {
                                 <ButtonPrimary
                                     label={
                                         chessStatus === "success"
-                                            ? "Save & Finish"
+                                            ? t("signup.saveAndFinish")
                                             : chessStatus === "loading"
-                                                ? "Checking..."
-                                                : "Check"
+                                                ? t("signup.checking")
+                                                : t("signup.check")
                                     }
                                     size="sm"
                                     onClick={handleCheckChessUser}

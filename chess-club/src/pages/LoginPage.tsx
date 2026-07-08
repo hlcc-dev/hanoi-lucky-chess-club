@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
 import { TbLockPassword } from "react-icons/tb";
 import ButtonPrimary from "../components/Button/ButtonPrimary";
@@ -10,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import login from "../utils/login";
 
 function LoginPage() {
+    const { t } = useTranslation("auth-pages");
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
@@ -28,7 +30,7 @@ function LoginPage() {
                 });
 
                 if (success) {
-                    toastSuccess("Login successful!");
+                    toastSuccess(t("login.successToast"));
                     navigate("/");
                     setLoginProcessing("success");
                 } else if (success === false) {
@@ -47,10 +49,10 @@ function LoginPage() {
                 {/* Header */}
                 <div className="mb-6 text-center">
                     <h1 className="text-3xl font-bold text-club-dark">
-                        Welcome Back
+                        {t("login.welcomeBack")}
                     </h1>
                     <p className="mt-1 text-sm text-club-dark/60">
-                        Log in to your account
+                        {t("login.subtitle")}
                     </p>
                 </div>
 
@@ -69,7 +71,7 @@ function LoginPage() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Email"
+                            placeholder={t("login.emailPlaceholder")}
                             icon
                         />
                     </div>
@@ -81,7 +83,7 @@ function LoginPage() {
                             type={showPassword ? "text" : "password"}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Password"
+                            placeholder={t("login.passwordPlaceholder")}
                             icon
                         />
                         <button
@@ -96,7 +98,7 @@ function LoginPage() {
                     {/* Options */}
                     <div className="flex items-center justify-between text-sm">
                         <Checkbox
-                            label="Keep me logged in"
+                            label={t("login.keepLoggedIn")}
                             checked={loggedIn}
                             onChange={() => setLoggedIn(!loggedIn)}
                         />
@@ -105,24 +107,24 @@ function LoginPage() {
                             onClick={() => navigate("/forgot-password")}
                             className="text-club-secondary hover:underline"
                         >
-                            Forgot password?
+                            {t("login.forgotPassword")}
                         </button>
                     </div>
 
 
                     {/* Primary action */}
-                    <ButtonPrimary label={loginProcessing === "loading" ? "Logging in..." : "Login"} size="lg" onClick={handleLogin} disabled={loginProcessing === "loading"} />
+                    <ButtonPrimary label={loginProcessing === "loading" ? t("login.loggingIn") : t("login.login")} size="lg" onClick={handleLogin} disabled={loginProcessing === "loading"} />
 
                     {/* Divider */}
                     <div className="flex items-center my-2">
                         <span className="flex-1 h-px bg-club-dark/10" />
-                        <span className="text-xs text-club-dark/50">OR</span>
+                        <span className="text-xs text-club-dark/50">{t("login.or")}</span>
                         <span className="flex-1 h-px bg-club-dark/10" />
                     </div>
 
                     {/* Secondary action */}
                     <ButtonDark
-                        label="Join Now"
+                        label={t("login.joinNow")}
                         size="md"
                         onClick={() => navigate("/signup")}
                     />

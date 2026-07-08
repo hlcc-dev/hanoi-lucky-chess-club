@@ -1,0 +1,37 @@
+{
+  "title": "Marathon câu đố",
+  "subtitle": "Rèn luyện trí não. Tận hưởng thử thách.",
+  "loginRequired": "Vui lòng đăng nhập để tham gia Marathon câu đố.",
+  "fetchPuzzlesError": "Không thể tải câu đố. Vui lòng thử lại sau.",
+  "fetchStatsError": "Không thể tải thống kê marathon. {{message}}",
+  "notAvailable": "Chưa có",
+  "points": "Điểm",
+  "rating": "Điểm xếp hạng",
+  "level": "Cấp",
+  "whiteToMove": "Bên Trắng đi.",
+  "blackToMove": "Bên Đen đi.",
+  "hint": "Gợi ý",
+  "skip": "Bỏ qua",
+  "next": "Tiếp theo",
+  "correctMessages": [
+    "Làm tốt lắm!",
+    "Xuất sắc!",
+    "Bạn đang chơi rất tốt!",
+    "Cứ tiếp tục như vậy!",
+    "Nước đi tuyệt vời!"
+  ],
+  "incorrectMessages": [
+    "Ôi, thử lại nhé.",
+    "Chưa đúng rồi.",
+    "Cứ luyện tập tiếp!",
+    "Đừng bỏ cuộc!",
+    "Suýt đúng rồi!"
+  ],
+  "finishedMessages": [
+    "Đã hoàn thành câu đố! Hãy chuyển sang câu tiếp theo.",
+    "Bạn là bậc thầy câu đố! Hãy chuyển sang thử thách tiếp theo.",
+    "Làm rất tốt! Thêm một câu nữa nhé?",
+    "Bạn đã làm được! Câu đố tiếp theo đang chờ.",
+    "Giải xuất sắc! Sẵn sàng cho câu tiếp theo chưa?"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "leaderboard": "Bảng xếp hạng",
+    "puzzles": "Câu đố",
+    "dailyPuzzles": "Câu đố hàng ngày",
+    "marathon": "Marathon",
+    "puzzleMarathon": "Marathon câu đố",
+    "contact": "Liên hệ"
+  },
+  "auth": {
+    "joinNow": "Tham gia ngay",
+    "login": "Đăng nhập",
+    "settings": "Cài đặt",
+    "logout": "Đăng xuất",
+    "loggedOutSuccess": "Đăng xuất thành công"
+  },
+  "footer": {
+    "rights": "Bảo lưu mọi quyền"
+  },
+  "language": {
+    "label": "Ngôn ngữ",
+    "english": "English",
+    "vietnamese": "Tiếng Việt"
+  },
+  "toast": {
+    "success": "Thành công",
+    "error": "Lỗi",
+    "info": "Thông tin",
+    "warning": "Cảnh báo"
+  },
+  "notFound": {
+    "title": "Nước đi này không tồn tại trên bàn cờ",
+    "message": "Có vẻ như bạn vừa đi một nước không hợp lệ. Trang bạn đang tìm đã xin đầu hàng — nhưng ván cờ vẫn chưa kết thúc! Hãy quay lại bàn cờ chính.",
+    "returnHome": "Về trang chủ"
+  },
+  "close": "Đóng",
+  "loading": "Đang tải...",
+  "events": "Sự kiện",
+  "verifyingEmail": "Đang xác thực email của bạn…"
+}

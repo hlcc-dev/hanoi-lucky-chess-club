@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useUser } from "../../hooks/useUser";
 import { useNavigate } from "react-router-dom";
 import {
@@ -21,6 +22,7 @@ interface AuthButtonsProps {
 }
 
 function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
+    const { t } = useTranslation();
     const { user, profile, loading } = useUser();
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
@@ -45,7 +47,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
         return (
             <div className={mobile ? "flex flex-col gap-3" : "flex gap-3"}>
                 <ButtonDark
-                    label="Join Now"
+                    label={t("auth.joinNow")}
                     size={mobile ? "md" : "sm"}
                     onClick={() => {
                         navigate("/signup");
@@ -53,7 +55,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                     }}
                 />
                 <ButtonSecondary
-                    label="Login"
+                    label={t("auth.login")}
                     size={mobile ? "md" : "sm"}
                     onClick={() => {
                         navigate("/login");
@@ -83,7 +85,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                 "
                 >
                     <FaChessRook className="text-lg" />
-                    <span>Settings</span>
+                    <span>{t("auth.settings")}</span>
                 </button>
 
                 <button
@@ -92,7 +94,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                             supabasePersistent.auth.signOut(),
                             supabaseSessionOnly.auth.signOut(),
                         ]);
-                        toastSuccess("Logged out successfully");
+                        toastSuccess(t("auth.loggedOutSuccess"));
                         navigate("/", { replace: true });
                         onAction?.();
                     }}
@@ -107,7 +109,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                 "
                 >
                     <FaChessKnight className="text-lg" />
-                    <span>Logout</span>
+                    <span>{t("auth.logout")}</span>
                 </button>
             </div>
         );
@@ -139,7 +141,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                         className="flex w-full items-center gap-3 px-4 py-3 hover:bg-club-light"
                     >
                         <FaChessRook />
-                        <span>Settings</span>
+                        <span>{t("auth.settings")}</span>
                     </button>
 
                     <button
@@ -149,13 +151,13 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                                 supabasePersistent.auth.signOut(),
                                 supabaseSessionOnly.auth.signOut(),
                             ]);
-                            toastSuccess("Logged out successfully");
+                            toastSuccess(t("auth.loggedOutSuccess"));
                             navigate("/", { replace: true });
                         }}
                         className="flex w-full items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50"
                     >
                         <FaChessKnight />
-                        <span>Logout</span>
+                        <span>{t("auth.logout")}</span>
                     </button>
                 </div>
             )}

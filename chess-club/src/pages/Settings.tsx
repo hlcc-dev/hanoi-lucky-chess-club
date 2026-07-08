@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import Input from '../components/Input';
 import ButtonPrimary from '../components/Button/ButtonPrimary';
 import { useUser } from "../hooks/useUser";
@@ -14,6 +15,7 @@ import { FaEnvelope, FaUser } from 'react-icons/fa';
 import { FaChessBoard } from "react-icons/fa6";
 
 function Settings() {
+    const { t } = useTranslation("auth-pages");
     const navigate = useNavigate();
     const user = useUser();
     const [username, setUsername] = useState("");
@@ -61,7 +63,7 @@ function Settings() {
                     fide_rating: stats?.fide ?? 0,
                 });
                 console.log("Chess.com stats updated.");
-                toastSuccess("Chess.com stats updated successfully! Please refresh to see the latest stats.");
+                toastSuccess(t("settings.chessComStatsUpdated"));
             }
         };
         updateStats();
@@ -72,14 +74,14 @@ function Settings() {
         return (
             <div className='flex w-full grow flex-1 items-center justify-center py-10'>
                 <ChessLoading
-                    text="Loading user data" />
+                    text={t("settings.loadingUserData")} />
             </div>
         );
     }
 
     if (!user.user || !user.profile) {
         navigate("/login");
-        toastError("Please log in to access settings.");
+        toastError(t("settings.loginRequired"));
         return null;
     }
     return (
@@ -142,7 +144,7 @@ function Settings() {
                         text-club-primary
                     "
                 >
-                    Settings
+                    {t("settings.pageTitle")}
                 </h1>
 
                 <div
@@ -169,7 +171,7 @@ function Settings() {
                             text-club-primary
                         "
                     >
-                        Profile
+                        {t("settings.profile")}
                     </h2>
 
                     <div
@@ -186,7 +188,7 @@ function Settings() {
                         "
                     >
                         <label className="block text-sm font-semibold text-gray-800 min-w-24">
-                            Username :
+                            {t("settings.username")}
                         </label>
 
                         <div
@@ -233,7 +235,7 @@ function Settings() {
 
                                 <div className="w-full sm:w-auto">
                                     <ButtonPrimary
-                                        label={isUsernameAvailable === false ? "Not available" : "Change Username"}
+                                        label={isUsernameAvailable === false ? t("settings.notAvailable") : t("settings.changeUsername")}
                                         size="md"
                                         onClick={async () => {
                                             try {
@@ -252,7 +254,7 @@ function Settings() {
                                             } finally {
                                                 setCheckingUsername(false);
                                                 setUsernameChanged(true);
-                                                toastSuccess("Username changed successfully to " + username + "! Please refresh to see the latest username.");
+                                                toastSuccess(t("settings.usernameChangedToast", { username }));
                                             }
                                         }}
                                         disabled={
@@ -281,7 +283,7 @@ function Settings() {
                         "
                     >
                         <label className="block text-sm font-semibold text-gray-800 min-w-24">
-                            Email :
+                            {t("settings.email")}
                         </label>
 
                         <div
@@ -311,7 +313,7 @@ function Settings() {
                     </div>
 
                     <div className="pt-4 flex justify-center">
-                        <ButtonPrimary label="Reset Password"
+                        <ButtonPrimary label={t("settings.resetPassword")}
                             onClick={() => { navigate("reset-password") }} />
                     </div>
                 </div>
@@ -340,7 +342,7 @@ function Settings() {
                             text-club-primary
                         "
                     >
-                        Chess.com
+                        {t("settings.chessCom")}
                     </h2>
 
                     <div
@@ -357,7 +359,7 @@ function Settings() {
                         "
                     >
                         <label className="block text-sm font-semibold text-gray-800 min-w-24">
-                            Chess Username :
+                            {t("settings.chessUsername")}
                         </label>
 
                         <div
@@ -386,19 +388,19 @@ function Settings() {
                                 <Input
                                     icon
                                     value={chessUsername}
-                                    placeholder="Chess.com Username"
+                                    placeholder={t("settings.chessUsernamePlaceholder")}
                                     onChange={(e) => setChessUsername(e.target.value)}
                                 />
                             </div>
 
                             <div className="w-full sm:w-auto">
                                 <ButtonPrimary
-                                    label={status === "loading" ? "Please wait..." : status === "success" ? "Done!" : "Change Username"}
+                                    label={status === "loading" ? t("settings.pleaseWait") : status === "success" ? t("settings.done") : t("settings.changeUsername")}
                                     disabled={status === "loading"}
                                     onClick={async () => {
                                         await checkUser(chessUsername);
                                         if (status === 'error') {
-                                            toastError("Failed to fetch Chess.com data or username in use. Please check the username.");
+                                            toastError(t("settings.fetchFailed"));
                                         }
 
                                     }}
@@ -426,10 +428,8 @@ function Settings() {
                                 text-center
                             "
                         >
-                            Default stats are shown as
-                            <span className="font-semibold"> 1200 </span>. If you still
-                            see 1200, your Chess.com account is not connected yet.
-                            Please verify your username and refresh your stats.
+                            {t("settings.defaultStatsInfoPrefix")}
+                            <span className="font-semibold"> 1200 </span>{t("settings.defaultStatsInfoSuffix")}
                         </p>
                     </div>
 
@@ -454,8 +454,8 @@ function Settings() {
                             ['Rapid', chessStats.current?.chess_com_rapid],
                             ['Daily', chessStats.current?.chess_com_daily],
                             ['960 Daily', chessStats.current?.chess_com_960_daily],
-                            ['Title', chessStats.current?.chess_com_title],
-                            ['Fide Rating', chessStats.current?.fide_rating],
+                            [t("settings.statTitle"), chessStats.current?.chess_com_title],
+                            [t("settings.fideRating"), chessStats.current?.fide_rating],
                         ].map(([label, value]) => (
                             <div
                                 key={label}
@@ -482,7 +482,7 @@ function Settings() {
                                 "
                             >
                                 <h3 className="text-lg font-medium">{label}</h3>
-                                <p>Rating: {value || 'N/A'}</p>
+                                <p>{t("settings.rating")}: {value || 'N/A'}</p>
                             </div>
                         ))}
                     </div>

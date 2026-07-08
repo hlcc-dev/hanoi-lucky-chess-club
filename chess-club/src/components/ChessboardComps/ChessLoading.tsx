@@ -1,23 +1,26 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface ChessLoadingProps {
     text?: string;
 }
 
-function ChessLoading({ text = "Loading..." }: ChessLoadingProps) {
+function ChessLoading({ text }: ChessLoadingProps) {
+    const { t } = useTranslation("puzzles");
+    const resolvedText = text ?? t("loadingDefault");
     // lets add ... to the text every half second to show loading progress
-    const [displayText, setDisplayText] = useState(text);
+    const [displayText, setDisplayText] = useState(resolvedText);
 
     useEffect(() => {
         let dotCount = 0;
         const interval = setInterval(() => {
             dotCount = (dotCount + 1) % 4;
-            setDisplayText(text + ".".repeat(dotCount));
+            setDisplayText(resolvedText + ".".repeat(dotCount));
         }, 500);
 
         return () => clearInterval(interval);
-    }, [text]);
+    }, [resolvedText]);
     return (
         <div className="flex  items-center justify-center h-full w-full">
             <style>{`

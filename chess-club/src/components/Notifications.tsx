@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import ButtonPrimary from "./Button/ButtonPrimary";
 interface ModalProps {
     isOpen: boolean;
@@ -6,6 +7,7 @@ interface ModalProps {
 }
 
 export default function Notifications({ isOpen, onClose, children }: ModalProps) {
+    const { t } = useTranslation();
     if (!isOpen) return null;
 
     return (
@@ -29,7 +31,7 @@ export default function Notifications({ isOpen, onClose, children }: ModalProps)
                 onClick={(e) => e.stopPropagation()}
             >
                 {children}
-                <ButtonPrimary label="Close" onClick={onClose} size="lg" />
+                <ButtonPrimary label={t("close")} onClick={onClose} size="lg" />
             </div>
         </div>
     );

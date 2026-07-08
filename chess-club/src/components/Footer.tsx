@@ -1,7 +1,9 @@
 import { FaFacebook } from "react-icons/fa";
 import { SiZalo } from "react-icons/si";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="w-full bg-club-primary text-club-dark shadow-inner shadow-club-dark/20 py-6 ">
       <div
@@ -16,7 +18,7 @@ function Footer() {
         <div>
           <p className="text-xs sm:text-sm md:text-base ">
             &copy; {new Date().getFullYear()} Hanoi Lucky Chess Club
-            <span className="hidden sm:inline"> · All rights reserved</span>
+            <span className="hidden sm:inline"> · {t("footer.rights")}</span>
           </p>
         </div>
 

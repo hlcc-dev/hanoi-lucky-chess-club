@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FaEnvelope } from "react-icons/fa";
 import Input from "./Input";
 import ButtonPrimary from "./Button/ButtonPrimary";
@@ -8,6 +9,7 @@ import { toastSuccess, toastError } from "../utils/toastUtils";
 import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
+    const { t } = useTranslation("auth-pages");
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
@@ -18,7 +20,7 @@ function ForgotPassword() {
         const supabaseClient = await getActiveClient();
 
         if (!email) {
-            toastError("Please enter your email address.");
+            toastError(t("forgotPassword.enterEmailError"));
             return;
         }
 
@@ -33,11 +35,11 @@ function ForgotPassword() {
             );
 
             if (error) {
-                toastError("Failed to send reset email. Please try again.");
+                toastError(t("forgotPassword.sendFailed"));
                 return;
             }
 
-            toastSuccess("Password reset email sent. Check your inbox.");
+            toastSuccess(t("forgotPassword.sentSuccess"));
             navigate("/login");
         } finally {
             setLoading(false);
@@ -51,10 +53,10 @@ function ForgotPassword() {
                 {/* Header */}
                 <div className="mb-6 text-center">
                     <h1 className="text-2xl font-bold text-club-dark">
-                        Forgot your password?
+                        {t("forgotPassword.title")}
                     </h1>
                     <p className="mt-2 text-sm text-club-dark/60">
-                        Enter your email and we’ll send you a reset link.
+                        {t("forgotPassword.subtitle")}
                     </p>
                 </div>
 
@@ -65,7 +67,7 @@ function ForgotPassword() {
                         <FaEnvelope className="absolute left-3 top-3.5 text-club-dark/40" />
                         <Input
                             type="email"
-                            placeholder="Email"
+                            placeholder={t("forgotPassword.emailPlaceholder")}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             icon
@@ -74,14 +76,14 @@ function ForgotPassword() {
 
                     {/* Actions */}
                     <ButtonPrimary
-                        label={loading ? "Sending..." : "Send reset link"}
+                        label={loading ? t("forgotPassword.sending") : t("forgotPassword.sendResetLink")}
                         size="lg"
                         disabled={loading}
                         onClick={handleReset}
                     />
 
                     <ButtonSecondary
-                        label="Back to login"
+                        label={t("forgotPassword.backToLogin")}
                         size="md"
                         onClick={() => navigate("/login")}
                     />

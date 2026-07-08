@@ -1,4 +1,5 @@
 import { useRef, useEffect, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCrown } from "@fortawesome/free-solid-svg-icons";
 
@@ -35,6 +36,7 @@ function ChessLeaderboard({
     displayAttempts,
     movesEnabled,
 }: ChessLeaderboardProps) {
+    const { t } = useTranslation("leaderboard");
     // -------- MEMOIZED LEADERBOARD + WINDOW LOGIC --------
     const leaderboard = useMemo(() => data, [data]);
 
@@ -88,18 +90,18 @@ function ChessLeaderboard({
 
                 {/* ===== Your Stats ===== */}
                 <div className="mb-6 p-3 sm:p-4 ">
-                    <p className="mb-3 text-lg font-bold text-center">Your Stats</p>
+                    <p className="mb-3 text-lg font-bold text-center">{t("chessLeaderboard.yourStats")}</p>
 
                     {!movesEnabled && (
                         <p className="mb-4 text-sm text-center text-gray-700">
-                            You’ve already completed today’s puzzle. Come back tomorrow!
+                            {t("chessLeaderboard.alreadyCompleted")}
                         </p>
                     )}
 
                     <div className="flex justify-center content-center items-center gap-4 sm:gap-6 flex-wrap sm:flex-nowrap w-full text-center">
                         <div className="flex flex-col gap-1 px-4 py-3 rounded-xl border border-black/20 bg-[#f3e7c4] shadow-sm w-36 sm:w-40">
                             <span className="text-xs uppercase text-gray-600 text-center">
-                                Time Elapsed
+                                {t("chessLeaderboard.timeElapsed")}
                             </span>
                             <span className="font-mono text-lg font-semibold self-center">
                                 {Math.floor(displayElapsed / 60)}:
@@ -109,7 +111,7 @@ function ChessLeaderboard({
 
                         <div className="flex flex-col gap-1 px-4 py-3 rounded-xl border border-black/20 bg-[#f3e7c4] shadow-sm w-36 sm:w-40">
                             <span className="text-xs uppercase text-gray-600 text-center">
-                                Total Mistakes
+                                {t("chessLeaderboard.totalMistakes")}
                             </span>
                             <span className="font-mono text-lg font-bold self-center">
                                 {displayAttempts}
@@ -120,12 +122,12 @@ function ChessLeaderboard({
 
                 {/* ===== Leaderboard ===== */}
                 <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-center">
-                    Daily Leaderboard
+                    {t("chessLeaderboard.dailyLeaderboard")}
                 </h2>
 
                 {statsLoading && (
                     <p className="text-center text-sm text-gray-500">
-                        Loading leaderboard…
+                        {t("chessLeaderboard.loading")}
                     </p>
                 )}
 
@@ -137,7 +139,7 @@ function ChessLeaderboard({
 
                 {leaderboard.length === 0 && !statsLoading && (
                     <div className="bg-[#ead9ad] rounded-lg px-4 py-3 text-sm text-center shadow-inner">
-                        No solves yet. Be the first!
+                        {t("chessLeaderboard.noSolvesYet")}
                     </div>
                 )}
 
@@ -195,7 +197,7 @@ function ChessLeaderboard({
 
                                     {/* Attempts */}
                                     <div className="w-20 text-right text-gray-700 text-xs sm:text-sm">
-                                        {entry.attempt} tries
+                                        {entry.attempt} {t("chessLeaderboard.tries")}
                                     </div>
                                 </div>
                             );

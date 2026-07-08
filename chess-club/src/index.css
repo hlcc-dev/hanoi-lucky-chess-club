@@ -8,6 +8,8 @@
   /* Fonts */
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+  --font-serif: "Noto Serif", ui-serif, Georgia, Cambria, "Times New Roman",
+    Times, serif;
 
   /* Chess club colors */
   --color-club-primary: #628141;
@@ -22,7 +24,6 @@
 
 * {
   box-sizing:border-box;
-  font-family: serif;
 }
 
 html {

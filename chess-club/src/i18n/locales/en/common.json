@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "home": "Home",
+    "leaderboard": "Leaderboard",
+    "puzzles": "Puzzles",
+    "dailyPuzzles": "Daily Puzzles",
+    "marathon": "Marathon",
+    "puzzleMarathon": "Puzzle Marathon",
+    "contact": "Contact"
+  },
+  "auth": {
+    "joinNow": "Join Now",
+    "login": "Login",
+    "settings": "Settings",
+    "logout": "Logout",
+    "loggedOutSuccess": "Logged out successfully"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  },
+  "language": {
+    "label": "Language",
+    "english": "English",
+    "vietnamese": "Tiếng Việt"
+  },
+  "toast": {
+    "success": "Success",
+    "error": "Error",
+    "info": "Info",
+    "warning": "Warning"
+  },
+  "notFound": {
+    "title": "That move doesn’t exist on this board",
+    "message": "Looks like you made an illegal move. The page you're trying to reach has resigned — but the game isn’t over! Let’s get you back to the main board.",
+    "returnHome": "Return to Home"
+  },
+  "close": "Close",
+  "loading": "Loading...",
+  "events": "Events",
+  "verifyingEmail": "Verifying your email…"
+}
