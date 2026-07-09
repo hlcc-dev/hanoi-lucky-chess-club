@@ -39,7 +39,7 @@ function Contact() {
             <div className="flex flex-col lg:flex-row gap-8 items-center justify-center w-full max-w-6xl">
 
                 {/* Card 1 */}
-                <div className="bg-club-secondary rounded-xl shadow-xl p-10 w-full max-w-2xl text-center border min-h-140">
+                <div className="bg-club-secondary rounded-xl shadow-xl p-10 flex-1 w-full max-w-2xl text-center border min-h-140">
                     <h2 className="text-xl font-semibold mb-4">Francis Lloyd Holland</h2>
                     <h3 className="text-lg italic mb-6">{t("coFounder")}</h3>
 
@@ -95,7 +95,7 @@ function Contact() {
                 </div>
 
                 {/* Card 2 */}
-                <div className="bg-club-secondary rounded-xl shadow-xl p-10 w-full max-w-2xl text-center border min-h-140">
+                <div className="bg-club-secondary rounded-xl shadow-xl p-10 flex-1 w-full max-w-2xl text-center border min-h-140">
                     <h2 className="text-xl font-semibold mb-4">Duong Hai</h2>
                     <h3 className="text-lg italic mb-6">{t("coFounder")}</h3>
                     <img src={hai} alt="Hanoi Lucky Chess Club" className="w-64 h-64 mx-auto mb-4 rounded-full" loading='lazy' />
