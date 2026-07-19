@@ -1,13 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
+import { GbFlag, VnFlag } from "./flags";
 
 interface LanguageSwitcherProps {
   variant?: "desktop" | "mobile";
 }
 
 const LANGUAGES = [
-  { code: "en", labelKey: "language.english" },
-  { code: "vi", labelKey: "language.vietnamese" },
+  { code: "en", labelKey: "language.english", Flag: GbFlag },
+  { code: "vi", labelKey: "language.vietnamese", Flag: VnFlag },
 ] as const;
 
 function LanguageSwitcher({ variant = "desktop" }: LanguageSwitcherProps) {
@@ -26,6 +28,7 @@ function LanguageSwitcher({ variant = "desktop" }: LanguageSwitcherProps) {
   }, []);
 
   const currentCode = i18n.resolvedLanguage?.toUpperCase() ?? "EN";
+  const CurrentFlag = LANGUAGES.find((l) => l.code === currentCode.toLowerCase())?.Flag ?? GbFlag;
 
   return (
     <div className="relative" ref={ref}>
@@ -34,30 +37,38 @@ function LanguageSwitcher({ variant = "desktop" }: LanguageSwitcherProps) {
         aria-label={t("language.label")}
         className={
           variant === "mobile"
-            ? "h-9 w-9 flex items-center justify-center gap-[2px] rounded-md text-[11px] font-semibold leading-none hover:bg-club-dark/10 transition-colors"
-            : "h-9 flex items-center gap-1 px-3 rounded-md text-sm font-semibold leading-none hover:bg-club-dark/10 transition-colors"
+            ? "h-9 w-9 flex items-center justify-center gap-1 rounded-md hover:bg-club-dark/10 transition-colors"
+            : "h-9 flex items-center gap-2 px-3 rounded-md hover:bg-club-dark/10 transition-colors"
         }
       >
-        <span className={variant === "mobile" ? "text-[15px] leading-none" : "text-base leading-none"}>
-          🌐
-        </span>
-        <span className="leading-none">{currentCode}</span>
-        {variant !== "mobile" && <span className="text-[10px] opacity-70">▾</span>}
+        <CurrentFlag
+          className={
+            variant === "mobile"
+              ? "h-5 w-[30px] rounded-sm shadow-sm"
+              : "h-6 w-9 rounded-sm shadow-sm"
+          }
+        />
+        {open ? (
+          <FaChevronUp className={variant === "mobile" ? "h-[6px] w-[6px]" : "h-[7px] w-[7px]"} />
+        ) : (
+          <FaChevronDown className={variant === "mobile" ? "h-[6px] w-[6px]" : "h-[7px] w-[7px]"} />
+        )}
       </button>
 
       {open && (
         <div className="absolute right-0 top-full mt-1.5 min-w-[150px] rounded-lg border border-club-dark/15 bg-club-light shadow-lg overflow-hidden z-50 text-sm">
-          {LANGUAGES.map(({ code, labelKey }) => (
+          {LANGUAGES.map(({ code, labelKey, Flag }) => (
             <button
               key={code}
               onClick={() => {
                 i18n.changeLanguage(code);
                 setOpen(false);
               }}
-              className={`w-full text-left px-3.5 py-2.5 hover:bg-club-primary/15 ${
+              className={`w-full flex items-center gap-2 text-left px-3.5 py-2.5 hover:bg-club-primary/15 ${
                 currentCode.toLowerCase() === code ? "font-bold bg-club-primary/10" : ""
               }`}
             >
+              <Flag className="h-4 w-6 rounded-sm shadow-sm shrink-0" />
               {t(labelKey)}
             </button>
           ))}
