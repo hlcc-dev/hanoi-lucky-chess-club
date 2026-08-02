@@ -4,7 +4,7 @@ interface FlagProps {
 
 export function GbFlag({ className }: FlagProps) {
   return (
-    <svg viewBox="0 0 60 30" className={className} aria-hidden="true">
+    <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" className={className} aria-hidden="true">
       <path d="M0,0 v30 h60 v-30 z" fill="#00247d" />
       <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
       <path
@@ -19,7 +19,7 @@ export function GbFlag({ className }: FlagProps) {
 
 export function VnFlag({ className }: FlagProps) {
   return (
-    <svg viewBox="0 0 30 20" className={className} aria-hidden="true">
+    <svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" className={className} aria-hidden="true">
       <rect width="30" height="20" fill="#da251d" />
       <polygon
         points="15,3 16.57,7.84 21.66,7.84 17.54,10.83 19.12,15.66 15,12.67 10.88,15.66 12.46,10.83 8.34,7.84 13.43,7.84"

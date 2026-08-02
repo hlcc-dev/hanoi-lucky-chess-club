@@ -41,13 +41,9 @@ function LanguageSwitcher({ variant = "desktop" }: LanguageSwitcherProps) {
             : "h-9 flex items-center gap-2 px-3 rounded-md hover:bg-club-dark/10 transition-colors"
         }
       >
-        <CurrentFlag
-          className={
-            variant === "mobile"
-              ? "h-5 w-[30px] rounded-sm shadow-sm"
-              : "h-6 w-9 rounded-sm shadow-sm"
-          }
-        />
+        <span className="h-6 w-6 rounded-full overflow-hidden shadow-sm shrink-0">
+          <CurrentFlag className="h-full w-full" />
+        </span>
         {open ? (
           <FaChevronUp className={variant === "mobile" ? "h-[6px] w-[6px]" : "h-[7px] w-[7px]"} />
         ) : (
@@ -56,7 +52,7 @@ function LanguageSwitcher({ variant = "desktop" }: LanguageSwitcherProps) {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1.5 min-w-[150px] rounded-lg border border-club-dark/15 bg-club-light shadow-lg overflow-hidden z-50 text-sm">
+        <div className="absolute right-0 top-full mt-1.5 min-w-[190px] rounded-lg border border-club-dark/15 bg-club-light shadow-lg overflow-hidden z-50 text-sm">
           {LANGUAGES.map(({ code, labelKey, Flag }) => (
             <button
               key={code}
@@ -64,11 +60,13 @@ function LanguageSwitcher({ variant = "desktop" }: LanguageSwitcherProps) {
                 i18n.changeLanguage(code);
                 setOpen(false);
               }}
-              className={`w-full flex items-center gap-2 text-left px-3.5 py-2.5 hover:bg-club-primary/15 ${
+              className={`w-full flex items-center gap-3 text-left whitespace-nowrap py-3.5 px-[18px] hover:bg-club-primary/15 ${
                 currentCode.toLowerCase() === code ? "font-bold bg-club-primary/10" : ""
               }`}
             >
-              <Flag className="h-4 w-6 rounded-sm shadow-sm shrink-0" />
+              <span className="h-8 w-8 rounded-full overflow-hidden shadow-sm shrink-0">
+                <Flag className="h-full w-full" />
+              </span>
               {t(labelKey)}
             </button>
           ))}
