@@ -1,0 +1,94 @@
+{
+  "hero": {
+    "welcome": "Welcome to",
+    "clubName": "Hanoi Lucky Chess Club",
+    "tagline": "A friendly corner of Hanoi where players of all levels meet, laugh, learn, and enjoy great games together.",
+    "quote": "“Chess is life.”",
+    "quoteAuthor": "Bobby Fischer"
+  },
+  "notification": {
+    "title": "Welcome to Hanoi Lucky Chess Club!",
+    "prefix": "We're excited to have you here! Before you explore our site, please",
+    "linkText": "go to daily puzzles",
+    "suffix": "to solve and show your chess skills!"
+  },
+  "clubInfo": {
+    "title": "Where & When We Play",
+    "weeklySchedule": "Weekly Schedule",
+    "friDay": "FRI",
+    "friPeriod": "EVENING",
+    "friName": "Friday Evening Chess",
+    "friDesc": "Casual games, friendly matches, laughs & great company.",
+    "sunDay": "SUN",
+    "sunPeriod": "AFTERNOON",
+    "sunName": "Sunday Afternoon Chess",
+    "sunDesc": "Relaxed weekend chess with players of all levels.",
+    "locationTitle": "Our Home in Hanoi",
+    "locationPrefix": "We meet at",
+    "venueName": "Horizon Cafe",
+    "locationSuffix": ", a cozy, friendly place, loved by locals and travelers. Great atmosphere, drinks, and plenty of space for chess.",
+    "getDirections": "Get Directions"
+  },
+  "cta": {
+    "title": "Ready to Join the Fun?",
+    "desc": "Whether you're a seasoned player or just starting out, the Hanoi Lucky Chess Club welcomes you. Come for the games, stay for the community!",
+    "joinZalo": "Join Our Zalo Group",
+    "joinFacebook": "Join Our Facebook Group",
+    "upcomingEvents": "Checkout Upcoming Events"
+  },
+  "whatToExpect": {
+    "title": "What to Expect at Hanoi Lucky Chess Club",
+    "p1": "At Hanoi Lucky Chess Club, we welcome players of all skill levels, from absolute beginners to seasoned competitors. Our friendly community is here to help you improve your game, make new friends, and enjoy the timeless joy of chess.",
+    "p2": "Whether you're looking for casual games, serious matches, or just a place to hang out with fellow chess enthusiasts, you'll find it here. We host regular events, tournaments, and training sessions to keep things exciting and engaging.",
+    "p3": "Our venue, Horizon Cafe, offers a comfortable and inviting atmosphere with plenty of space to play, relax, and socialize. Enjoy great coffee, snacks, and drinks while you immerse yourself in the world of chess.",
+    "p4": "Join us every Friday evening and Sunday afternoon for a memorable chess experience in the heart of Hanoi!"
+  },
+  "whoCanJoin": {
+    "title": "Who Can Join?",
+    "p1": "Our chess club is open to everyone! Whether you're a complete beginner or a seasoned player, we welcome all skill levels. Our members range from young students to retirees, all united by their love for the game.",
+    "p2": "Newcomers are especially encouraged to join. We believe in fostering a friendly and supportive environment where everyone can learn and improve. Our experienced members are always happy to share tips and strategies with those looking to enhance their skills.",
+    "p3": "So whether you're looking to play casual games, participate in tournaments, or simply enjoy the camaraderie of fellow chess enthusiasts, the Hanoi Lucky Chess Club is the perfect place for you!"
+  },
+  "imageCarousel": {
+    "caption": "That’s us every Friday & Sunday here in Hanoi",
+    "goToPicture": "Go to picture {{n}}"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "checkLocation": "Check the location",
+    "items": {
+      "q1": "How often does the club meet?",
+      "a1": "We meet twice a week: every Friday evening from 19:00 to 23:00 and every Sunday afternoon from 14:00 to 18:00.",
+      "q2": "Where do you play?",
+      "a2": "We play at Horizon Coffee in Phung Khoang, Ha Dong, Hanoi, a cozy, friendly venue with plenty of space, good lighting, and great drinks.",
+      "q3": "Do I need to be an experienced chess player to join?",
+      "a3": "Not at all! We welcome everyone, including absolute beginners, casual players, and experienced competitors. Members are happy to help newcomers learn and improve.",
+      "q4": "Are beginners welcome?",
+      "a4": "Yes! Many members are beginners here. You will always find friendly players willing to help you learn.",
+      "q5": "Is there a membership fee?",
+      "a5": "There are no dues or fees at all for participation and membership. Chess should be accessible. You pay only for your own drinks or snacks at the cafe.",
+      "q6": "Is joining the chess club a good way to learn English?",
+      "a6": "During chess meetings, we talk about chess, laugh and joke in Vietnamese, English and several other languages.",
+      "q7": "How many languages do club participants speak?",
+      "a7": "We speak many languages, including Vietnamese, English, French, Spanish, Portuguese, Turkish, German.",
+      "q8": "Can I bring my own chess set or clock?",
+      "a8": "We have enough boards and clocks for everyone to play and you are welcome to bring your own as well.",
+      "q9": "Do I need to register before coming?",
+      "a9": "No registration is needed. Just come, say \"Hello\", take a seat, and enjoy some chess!",
+      "q10": "Do you play casual or competitive chess?",
+      "a10": "Both! Some players enjoy relaxed friendly games, laughing, joking and talking smack, while others challenge each other in more serious matches and blitz sessions.",
+      "q11": "Can kids or younger players join?",
+      "a11": "Younger players are welcome as we believe chess is a great way for kids to develop critical thinking and social skills.",
+      "q12": "Do girls and women play chess with you?",
+      "a12": "Among our best chess players are girls and women. We often offer a prize for the best female player at our chess tournaments.",
+      "q13": "How do I stay updated about the club?",
+      "a13": "Join our Facebook / Zalo / community channels for updates, events, and announcements.",
+      "q14": "How can I get more information about the chess club and its meetings?",
+      "a14": "You can call Francis Lloyd Holland by Zalo and WhatsApp at 333 009 587 or email us at francislholland@gmail.com",
+      "q15": "Who started the Hanoi Lucky Chess Club (HLCC) and when?",
+      "a15": "Two friends, Francis Lloyd Holland (from America) and Duong Hai (Vietnamese), started HLCC on December 10, 2023, by taking a chess set to a Hanoi pizzeria and playing with members of the public.",
+      "q16": "Can I practice English and make new friends by playing chess with you?",
+      "a16": "Our chess club members often gather for lunch before the meetings and/or dinner afterward and practice our English while making new English-speaking friends from the USA, England, Australia, France, Germany, and African, Asian and Latin American countries."
+    }
+  }
+}

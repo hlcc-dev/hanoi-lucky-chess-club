@@ -2,9 +2,12 @@ import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { FaChessPawn, FaChessQueen } from "react-icons/fa6";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import AuthButtons from "./Button/AuthButtons";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function Header() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   // UX: Tắt cuộn trang khi mở menu mobile
@@ -30,12 +33,15 @@ function Header() {
           <span className="font-bold text-lg leading-tight">HLCC</span>
         </NavLink>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="text-2xl p-2 focus:outline-none hover:text-club-secondary transition-colors"
-        >
-          {open ? <FaTimes /> : <FaBars />}
-        </button>
+        <div className="flex items-center gap-1">
+          <LanguageSwitcher variant="mobile" />
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="text-2xl p-2 focus:outline-none hover:text-club-secondary transition-colors"
+          >
+            {open ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
 
         {/* MOBILE MENU OVERLAY */}
         <div
@@ -47,11 +53,11 @@ function Header() {
         >
           <nav>
             <ul className="flex flex-col gap-2 px-6 py-4 font-semibold text-sm">
-              <MobileNavLink to="/" label="Home" setOpen={setOpen} />
-              <MobileNavLink to="/leaderboard" label="Leaderboard" setOpen={setOpen} />
-              <MobileNavLink to="/daily-chess-puzzle" label="Daily Puzzles" setOpen={setOpen} />
-              <MobileNavLink to="/puzzle-marathon" label="Puzzle Marathon" setOpen={setOpen} />
-              <MobileNavLink to="/contact" label="Contact" setOpen={setOpen} />
+              <MobileNavLink to="/" label={t("nav.home")} setOpen={setOpen} />
+              <MobileNavLink to="/leaderboard" label={t("nav.leaderboard")} setOpen={setOpen} />
+              <MobileNavLink to="/daily-chess-puzzle" label={t("nav.dailyPuzzles")} setOpen={setOpen} />
+              <MobileNavLink to="/puzzle-marathon" label={t("nav.puzzleMarathon")} setOpen={setOpen} />
+              <MobileNavLink to="/contact" label={t("nav.contact")} setOpen={setOpen} />
               
               <div className="pt-3 mt-2 border-t border-club-dark/10 flex justify-center">
                  <AuthButtons mobile onAction={() => setOpen(false)} />
@@ -97,17 +103,18 @@ function Header() {
         <div className="flex-1 flex justify-center px-4">
           <nav>
             <ul className="flex gap-1 xl:gap-4 font-semibold text-sm xl:text-base">
-              <NavLinkItem to="/" label="Home" />
-              <NavLinkItem to="/leaderboard" label="Leaderboard" />
-              <NavLinkItem to="/daily-chess-puzzle" label="Puzzles" />
-              <NavLinkItem to="/puzzle-marathon" label="Marathon" />
-              <NavLinkItem to="/contact" label="Contact" />
+              <NavLinkItem to="/" label={t("nav.home")} />
+              <NavLinkItem to="/leaderboard" label={t("nav.leaderboard")} />
+              <NavLinkItem to="/daily-chess-puzzle" label={t("nav.puzzles")} />
+              <NavLinkItem to="/puzzle-marathon" label={t("nav.marathon")} />
+              <NavLinkItem to="/contact" label={t("nav.contact")} />
             </ul>
           </nav>
         </div>
 
-        {/* RIGHT: AUTH BUTTONS */}
-        <div className="flex items-center justify-end shrink-0 min-w-[140px]">
+        {/* RIGHT: LANGUAGE + AUTH BUTTONS */}
+        <div className="flex items-center justify-end gap-2 shrink-0 min-w-[140px]">
+           <LanguageSwitcher variant="desktop" />
            <AuthButtons />
         </div>
 

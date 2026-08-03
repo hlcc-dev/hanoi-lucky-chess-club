@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { getActiveClient } from "../utils/getActiveClient";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket, faFire, faCalendar, faShuffle, faGlobe, faCrown, faPuzzlePiece } from "@fortawesome/free-solid-svg-icons";
@@ -58,6 +59,7 @@ interface DailyPuzzleWinner {
 }
 
 function Leaderboard() {
+    const { t } = useTranslation("leaderboard");
     const [type, setType] = useState<LeaderboardType>("Daily Puzzle");
     const [rows, setRows] = useState<LeaderboardRow[]>([]);
     const [dailyPuzzleWinnersRows, setDailyPuzzleWinnersRows] = useState<DailyPuzzleWinner[]>([]);
@@ -185,7 +187,7 @@ function Leaderboard() {
             {/* HEADER */}
             <div className="max-w-6xl mx-auto mb-6">
                 <h1 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-                    Leaderboard
+                    {t("pageTitle")}
                 </h1>
 
                 {/* TABS */}
@@ -207,7 +209,7 @@ function Leaderboard() {
                             `}
                             >
                                 <FontAwesomeIcon icon={tab.icon} />
-                                {tab.label}
+                                {tab.value === "Daily Puzzle" ? t("tabs.dailyPuzzle") : tab.label}
                             </button>
                         </div>
                     ))}
@@ -220,9 +222,9 @@ function Leaderboard() {
                     <thead className="bg-club-primary text-club-dark">
                         <tr>
                             <th className="px-3 sm:px-4 py-2 sm:py-3 text-left w-16">#</th>
-                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-left">Player</th>
+                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-left">{t("table.player")}</th>
                             <th className="px-3 sm:px-4 py-2 sm:py-3 text-right">
-                                {type === "Daily Puzzle" ? "Wins" : "Rating"}
+                                {type === "Daily Puzzle" ? t("table.wins") : t("table.rating")}
                             </th>
                         </tr>
                     </thead>
@@ -231,14 +233,14 @@ function Leaderboard() {
                         {loading && rows.length > 0 && (
                             <tr>
                                 <td colSpan={3} className="py-3 text-center text-sm text-gray-500">
-                                    Updating…
+                                    {t("table.updating")}
                                 </td>
                             </tr>
                         )}
                         {loading && rows.length === 0 && type !== "Daily Puzzle" && (
                             <tr>
                                 <td colSpan={3} className="py-8 text-center">
-                                    Loading leaderboard...
+                                    {t("table.loading")}
                                 </td>
                             </tr>
                         )}
@@ -246,7 +248,7 @@ function Leaderboard() {
                         {!loading && rows.length === 0 && type !== "Daily Puzzle" && (
                             <tr>
                                 <td colSpan={3} className="py-8 text-center">
-                                    No players found.
+                                    {t("table.noPlayers")}
                                 </td>
                             </tr>
                         )}
@@ -301,7 +303,7 @@ function Leaderboard() {
 
                                                 {isMe && (
                                                     <span className="text-xs font-semibold text-club-secondary">
-                                                        (You)
+                                                        {t("table.you")}
                                                     </span>
                                                 )}
                                             </div>
@@ -324,14 +326,14 @@ function Leaderboard() {
                         {loading && dailyPuzzleWinnersRows.length > 0 && (
                             <tr>
                                 <td colSpan={3} className="py-3 text-center text-sm text-gray-500">
-                                    Updating…
+                                    {t("table.updating")}
                                 </td>
                             </tr>
                         )}
                         {loading && dailyPuzzleWinnersRows.length === 0 && type === "Daily Puzzle" && (
                             <tr>
                                 <td colSpan={3} className="py-8 text-center">
-                                    Loading leaderboard...
+                                    {t("table.loading")}
                                 </td>
                             </tr>
                         )}
@@ -339,7 +341,7 @@ function Leaderboard() {
                         {!loading && dailyPuzzleWinnersRows.length === 0 && type === "Daily Puzzle" && (
                             <tr>
                                 <td colSpan={3} className="py-8 text-center">
-                                    No players found.
+                                    {t("table.noPlayers")}
                                 </td>
                             </tr>
                         )}
@@ -384,7 +386,7 @@ function Leaderboard() {
 
                                                     {isMe && (
                                                         <span className="text-xs font-semibold text-club-secondary">
-                                                            (You)
+                                                            {t("table.you")}
                                                         </span>
                                                     )}
                                                 </div>

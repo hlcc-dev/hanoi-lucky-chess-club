@@ -1,4 +1,5 @@
 import { Suspense, lazy, useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { useInView } from "../hooks/useInView"
 import HeroSection from "../components/homeComponents/HeroSection"
 import Notifications from "../components/Notifications"
@@ -12,6 +13,7 @@ const CallToAction = lazy(() => import("../components/homeComponents/CallToActio
 const FAQ = lazy(() => import("../components/homeComponents/FAQ"))
 
 function Home() {
+  const { t } = useTranslation("home")
   const { ref, inView } = useInView(0.3)
   const [openNotification, setOpenNotification] = useState(true)
 
@@ -54,14 +56,14 @@ function Home() {
       <HeroSection />
 
       <Notifications isOpen={openNotification} onClose={handleCloseNotification}>
-        <h2 className="text-3xl font-bold mb-4">Welcome to Hanoi Lucky Chess Club!</h2>
+        <h2 className="text-3xl font-bold mb-4">{t("notification.title")}</h2>
 
         <p className="mb-4 text-lg align-justify">
-          We're excited to have you here! Before you explore our site, please{" "}
+          {t("notification.prefix")}{" "}
           <Link to="/chess-puzzles" className="text-blue-600 font-bold underline">
-            go to daily puzzles
+            {t("notification.linkText")}
           </Link>{" "}
-          to solve and show your chess skills!
+          {t("notification.suffix")}
         </p>
       </Notifications>
 

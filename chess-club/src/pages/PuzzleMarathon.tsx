@@ -1,5 +1,6 @@
 
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import ChessBoard from "../components/ChessBoard";
@@ -37,7 +38,7 @@ import {
 } from "../utils/updateMarathonPuzzleStats";
 
 function PuzzleMarathon() {
-
+    const { t } = useTranslation("marathon");
 
     // Global loading & auth
 
@@ -90,27 +91,9 @@ function PuzzleMarathon() {
 
     // Dynamic feedback messages for different puzzle results
 
-    const correctMessages = [
-        "Great job!",
-        "Well done!",
-        "You're on fire!",
-        "Keep it up!",
-        "Excellent move!",
-    ];
-    const incorrectMessages = [
-        "Oops, try again.",
-        "Not quite right.",
-        "Keep practicing!",
-        "Don't give up!",
-        "Almost had it!",
-    ];
-    const finishedMessages = [
-        "Puzzle completed! Please proceed to the next one.",
-        "You're a puzzle master! Please move on to the next challenge.",
-        "Fantastic work! One more?",
-        "You nailed it! Next puzzle awaits.",
-        "Brilliant solving! Ready for the next?",
-    ];
+    const correctMessages = t("correctMessages", { returnObjects: true }) as string[];
+    const incorrectMessages = t("incorrectMessages", { returnObjects: true }) as string[];
+    const finishedMessages = t("finishedMessages", { returnObjects: true }) as string[];
 
     // supabase rpc fetches random puzzles and prevents duplicates
     async function fetchPuzzles() {
@@ -123,7 +106,7 @@ function PuzzleMarathon() {
             .rpc("get_random_puzzles_timestamp");
 
         if (error) {
-            setError("Failed to fetch puzzles. Please try again later.");
+            setError(t("fetchPuzzlesError"));
             return;
         }
 
@@ -141,7 +124,7 @@ function PuzzleMarathon() {
     useEffect(() => {
         if (!user && !userLoading) {
             navigate("/login");
-            toastError("Please log in to access the Puzzle Marathon.");
+            toastError(t("loginRequired"));
         }
     }, [user, userLoading]);
 
@@ -163,7 +146,7 @@ function PuzzleMarathon() {
                 setMarathonStats(stats);
             })
             .catch((error) => {
-                setError(`Failed to fetch marathon stats. ${error.message}`);
+                setError(t("fetchStatsError", { message: error.message }));
             });
     }, [user]);
 
@@ -330,7 +313,7 @@ function PuzzleMarathon() {
                         .then(() => {
                         })
                         .catch((error) => {
-                            setError(`Failed to fetch marathon stats. ${error.message}`);
+                            setError(t("fetchStatsError", { message: error.message }));
                         });
                 }
 
@@ -340,14 +323,14 @@ function PuzzleMarathon() {
                         .then(() => {
                         })
                         .catch((error) => {
-                            setError(`Failed to fetch marathon stats. ${error.message}`);
+                            setError(t("fetchStatsError", { message: error.message }));
                         });
                     // Increment total puzzles solved
                     incrementMarathonPuzzleCount(user.id)
                         .then(() => {
                         })
                         .catch((error) => {
-                            setError(`Failed to fetch marathon stats. ${error.message}`);
+                            setError(t("fetchStatsError", { message: error.message }));
                         });
                 }
 
@@ -414,9 +397,9 @@ function PuzzleMarathon() {
         <div className="fixed inset-0 z-30 flex flex-col items-center justify-start overflow-x-hidden mt-20 md:mt-35 px-3 py-3 bg-club-primary border-t">
             <div className="z-30 w-full max-w-sm mx-auto md:max-w-full flex flex-col items-center justify-center mb-4 mt-2 text-center">
                 <TbPuzzle2 className="text-white text-4xl mb-1" />
-                <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">Puzzle Marathon</h1>
+                <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">{t("title")}</h1>
                 <p className="text-[11px] md:text-sm lg:text-base text-gray-200 opacity-80 tracking-wide mt-1">
-                    Sharpen your mind. Enjoy the challenge.
+                    {t("subtitle")}
                 </p>
             </div>
             {/* Layout wrapper for ChessBoard and right panels */}
@@ -435,7 +418,7 @@ function PuzzleMarathon() {
                     <div className="w-full max-w-sm mx-auto md:w-[360px] lg:w-[400px] bg-club-light rounded-2xl shadow-lg p-4 mb-3 space-y-3">
                         <div className="grid grid-cols-3 w-full text-sm md:text-base lg:text-lg font-semibold">
                             <p className="text-left font-semibold text-gray-800 md:text-base lg:text-lg">
-                                Points : {marathonStats ? marathonStats.points : "N/A"} <span className='font-bold text-club-primary'>+ {currentPoints}</span>
+                                {t("points")} : {marathonStats ? marathonStats.points : t("notAvailable")} <span className='font-bold text-club-primary'>+ {currentPoints}</span>
                             </p>
 
                             <p className="text-center text-base md:text-lg lg:text-xl font-bold text-gray-800 flex items-center justify-center">
@@ -443,7 +426,7 @@ function PuzzleMarathon() {
                             </p>
 
                             <p className="text-right font-semibold text-gray-800 md:text-base lg:text-lg">
-                                Rating : {rating ? rating : "N/A"}
+                                {t("rating")} : {rating ? rating : t("notAvailable")}
                             </p>
                         </div>
 
@@ -454,7 +437,7 @@ function PuzzleMarathon() {
                                     style={{ width: `${marathonStats ? marathonStats.points : 0}%` }}
                                 ></div>
                             </div>
-                            <p className="text-center text-gray-800 font-bold md:text-lg lg:text-xl w-16">Lv {marathonStats ? marathonStats.level : "N/A"}</p>
+                            <p className="text-center text-gray-800 font-bold md:text-lg lg:text-xl w-16">{t("level")} {marathonStats ? marathonStats.level : t("notAvailable")}</p>
                         </div>
                     </div>
                     <div className="flex flex-row justify-between w-full max-w-sm mx-auto md:w-[360px] lg:w-[400px] bg-club-light rounded-2xl shadow-lg p-4 mb-3">
@@ -465,12 +448,12 @@ function PuzzleMarathon() {
                             ) : boardOrientation === "black" ? (
                                 <>
                                     <FaRegSquareFull className="text-black bg-white" />
-                                    White to move.
+                                    {t("whiteToMove")}
                                 </>
                             ) : (
                                 <>
                                     <FaRegSquareFull className="text-white bg-black" />
-                                    Black to move.
+                                    {t("blackToMove")}
                                 </>
                             )}
                         </p>
@@ -483,7 +466,7 @@ function PuzzleMarathon() {
                             onClick={handleHint}
                         >
                             <FaLightbulb className="inline mr-2" />
-                            Hint
+                            {t("hint")}
                         </button>
 
                         <button
@@ -492,7 +475,7 @@ function PuzzleMarathon() {
                             onClick={handleSkipPuzzle}
                         >
                             <PiSkipForwardFill className="inline mr-2" />
-                            Skip
+                            {t("skip")}
                         </button>
 
                         <button
@@ -501,7 +484,7 @@ function PuzzleMarathon() {
                             disabled={!showNextButton}
                         >
                             <GrFormNextLink className="inline mr-2" />
-                            Next
+                            {t("next")}
                         </button>
                     </div>
                 </div>
@@ -515,7 +498,7 @@ function PuzzleMarathon() {
                         onClick={handleHint}
                     >
                         <FaLightbulb className="inline mr-2" />
-                        Hint
+                        {t("hint")}
                     </button>
 
                     <button
@@ -524,7 +507,7 @@ function PuzzleMarathon() {
                         onClick={handleSkipPuzzle}
                     >
                         <PiSkipForwardFill className="inline mr-2" />
-                        Skip
+                        {t("skip")}
                     </button>
 
                     <button
@@ -533,7 +516,7 @@ function PuzzleMarathon() {
                         disabled={!showNextButton}
                     >
                         <GrFormNextLink className="inline mr-2" />
-                        Next
+                        {t("next")}
                     </button>
                 </div>
             </div>

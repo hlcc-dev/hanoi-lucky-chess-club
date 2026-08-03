@@ -1,0 +1,25 @@
+{
+  "pageTitle": "Bảng xếp hạng",
+  "tabs": {
+    "dailyPuzzle": "Câu đố hàng ngày"
+  },
+  "table": {
+    "player": "Người chơi",
+    "rating": "Điểm",
+    "wins": "Số lần thắng",
+    "updating": "Đang cập nhật…",
+    "loading": "Đang tải bảng xếp hạng...",
+    "noPlayers": "Không tìm thấy người chơi nào.",
+    "you": "(Bạn)"
+  },
+  "chessLeaderboard": {
+    "yourStats": "Thống kê của bạn",
+    "alreadyCompleted": "Bạn đã hoàn thành câu đố hôm nay rồi. Hẹn gặp lại vào ngày mai!",
+    "timeElapsed": "Thời gian",
+    "totalMistakes": "Tổng số lỗi",
+    "dailyLeaderboard": "Bảng xếp hạng hàng ngày",
+    "loading": "Đang tải bảng xếp hạng…",
+    "noSolvesYet": "Chưa có ai giải. Hãy là người đầu tiên!",
+    "tries": "lần thử"
+  }
+}

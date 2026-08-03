@@ -1,0 +1,25 @@
+{
+  "pageTitle": "Leaderboard",
+  "tabs": {
+    "dailyPuzzle": "Daily Puzzle"
+  },
+  "table": {
+    "player": "Player",
+    "rating": "Rating",
+    "wins": "Wins",
+    "updating": "Updating…",
+    "loading": "Loading leaderboard...",
+    "noPlayers": "No players found.",
+    "you": "(You)"
+  },
+  "chessLeaderboard": {
+    "yourStats": "Your Stats",
+    "alreadyCompleted": "You’ve already completed today’s puzzle. Come back tomorrow!",
+    "timeElapsed": "Time Elapsed",
+    "totalMistakes": "Total Mistakes",
+    "dailyLeaderboard": "Daily Leaderboard",
+    "loading": "Loading leaderboard…",
+    "noSolvesYet": "No solves yet. Be the first!",
+    "tries": "tries"
+  }
+}

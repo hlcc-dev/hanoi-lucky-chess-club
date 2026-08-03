@@ -1,0 +1,15 @@
+{
+  "loginRequired": "Bạn cần đăng nhập để làm câu đố hàng ngày.",
+  "wrongMove": "Nước đi sai cho câu đố này. Hãy thử nước khác.",
+  "loadingPuzzle": "Đang tải câu đố",
+  "loadingDefault": "Đang tải...",
+  "pageTitle": "Câu đố cờ vua hàng ngày - Điểm : {{rating}}",
+  "loadingLeaderboard": "Đang tải bảng xếp hạng…",
+  "completed": {
+    "title": "Đã hoàn thành câu đố!",
+    "seconds": "giây",
+    "time": "Thời gian",
+    "attempts": "Số lần thử",
+    "continue": "Tiếp tục"
+  }
+}

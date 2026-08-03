@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 
 import { useInView } from "../../hooks/useInView"
 
@@ -14,7 +14,7 @@ const extendedImages1200 = [...images1200, images1200[0]];
 const extendedImages1920 = [...images1920, images1920[0]];
 
 function ImageCarousel() {
-
+    const { t } = useTranslation("home");
     const { ref, inView } = useInView(0.3);
 
     const [index, setIndex] = useState(0);
@@ -39,7 +39,7 @@ function ImageCarousel() {
 
             {/* Header Text */}
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center animate-[fadeIn_1s_ease-out_both] font-serif my-4">
-                That’s us every Friday & Sunday here in Hanoi
+                {t("imageCarousel.caption")}
             </h2>
 
             {/* Carousel Container */}
@@ -94,7 +94,7 @@ function ImageCarousel() {
                     <button
                         key={i}
                         type="button"
-                        aria-label={`Go to picture ${i + 1}`}
+                        aria-label={t("imageCarousel.goToPicture", { n: i + 1 })}
                         onClick={() => setIndex(i)}
                         className={`
                             w-8 h-8 md:w-6 md:h-6 lg:w-4 lg:h-4 rounded-full transition-all duration-300

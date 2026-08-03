@@ -1,0 +1,94 @@
+{
+  "hero": {
+    "welcome": "Chào mừng đến với",
+    "clubName": "Hanoi Lucky Chess Club",
+    "tagline": "Một góc thân thiện giữa lòng Hà Nội, nơi những người chơi cờ ở mọi trình độ gặp gỡ, cười đùa, học hỏi và cùng nhau tận hưởng những ván cờ tuyệt vời.",
+    "quote": "“Cờ vua là cuộc sống.”",
+    "quoteAuthor": "Bobby Fischer"
+  },
+  "notification": {
+    "title": "Chào mừng đến với Hanoi Lucky Chess Club!",
+    "prefix": "Chúng tôi rất vui khi bạn ghé thăm! Trước khi khám phá trang web, hãy",
+    "linkText": "đến mục câu đố hàng ngày",
+    "suffix": "để giải và thể hiện kỹ năng cờ vua của bạn nhé!"
+  },
+  "clubInfo": {
+    "title": "Chơi ở đâu & khi nào",
+    "weeklySchedule": "Lịch sinh hoạt hàng tuần",
+    "friDay": "T6",
+    "friPeriod": "TỐI",
+    "friName": "Cờ vua tối Thứ Sáu",
+    "friDesc": "Những ván cờ thoải mái, giao lưu thân thiện, tiếng cười và bạn bè vui vẻ.",
+    "sunDay": "CN",
+    "sunPeriod": "CHIỀU",
+    "sunName": "Cờ vua chiều Chủ Nhật",
+    "sunDesc": "Cờ vua cuối tuần thư giãn cùng người chơi ở mọi trình độ.",
+    "locationTitle": "Điểm hẹn của chúng tôi tại Hà Nội",
+    "locationPrefix": "Chúng tôi gặp nhau tại",
+    "venueName": "Horizon Cafe",
+    "locationSuffix": ", một địa điểm ấm cúng, thân thiện, được cả người dân địa phương và du khách yêu thích. Không gian tuyệt vời, đồ uống ngon và đủ chỗ để chơi cờ.",
+    "getDirections": "Chỉ đường"
+  },
+  "cta": {
+    "title": "Sẵn sàng tham gia chưa?",
+    "desc": "Dù bạn là người chơi kỳ cựu hay mới bắt đầu, Hanoi Lucky Chess Club luôn chào đón bạn. Đến vì những ván cờ, ở lại vì cộng đồng!",
+    "joinZalo": "Tham gia nhóm Zalo",
+    "joinFacebook": "Tham gia nhóm Facebook",
+    "upcomingEvents": "Xem sự kiện sắp tới"
+  },
+  "whatToExpect": {
+    "title": "Bạn sẽ trải nghiệm gì tại Hanoi Lucky Chess Club",
+    "p1": "Tại Hanoi Lucky Chess Club, chúng tôi chào đón người chơi ở mọi trình độ, từ người mới hoàn toàn đến những kỳ thủ dày dạn. Cộng đồng thân thiện của chúng tôi luôn sẵn sàng giúp bạn nâng cao trình độ, kết bạn mới và tận hưởng niềm vui bất tận của cờ vua.",
+    "p2": "Dù bạn muốn chơi giao lưu, thi đấu nghiêm túc, hay chỉ đơn giản là tìm một nơi để gặp gỡ những người cùng đam mê cờ vua, bạn đều có thể tìm thấy ở đây. Chúng tôi tổ chức các sự kiện, giải đấu và buổi luyện tập thường xuyên để mọi thứ luôn thú vị và hấp dẫn.",
+    "p3": "Địa điểm của chúng tôi, Horizon Cafe, mang đến không gian thoải mái, ấm cúng với đủ chỗ để chơi, thư giãn và giao lưu. Hãy thưởng thức cà phê, đồ ăn nhẹ và thức uống ngon trong khi đắm mình vào thế giới cờ vua.",
+    "p4": "Hãy tham gia cùng chúng tôi vào mỗi tối Thứ Sáu và chiều Chủ Nhật để có những trải nghiệm cờ vua đáng nhớ giữa lòng Hà Nội!"
+  },
+  "whoCanJoin": {
+    "title": "Ai có thể tham gia?",
+    "p1": "Câu lạc bộ cờ vua của chúng tôi mở cửa cho tất cả mọi người! Dù bạn là người mới hoàn toàn hay đã chơi lâu năm, chúng tôi chào đón mọi trình độ. Thành viên của chúng tôi trải dài từ các bạn học sinh trẻ đến những người đã nghỉ hưu, tất cả đều gắn kết bởi tình yêu dành cho cờ vua.",
+    "p2": "Chúng tôi đặc biệt khuyến khích người mới tham gia. Chúng tôi tin vào việc xây dựng một môi trường thân thiện và hỗ trợ, nơi ai cũng có thể học hỏi và tiến bộ. Các thành viên kỳ cựu luôn sẵn lòng chia sẻ kinh nghiệm và chiến thuật cho những ai muốn nâng cao kỹ năng.",
+    "p3": "Vậy nên dù bạn muốn chơi giao lưu, tham gia giải đấu, hay đơn giản là tận hưởng tình bạn cùng những người đam mê cờ vua, Hanoi Lucky Chess Club chính là nơi hoàn hảo dành cho bạn!"
+  },
+  "imageCarousel": {
+    "caption": "Đây là chúng tôi vào mỗi Thứ Sáu & Chủ Nhật tại Hà Nội",
+    "goToPicture": "Xem ảnh {{n}}"
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp",
+    "checkLocation": "Xem phần địa điểm",
+    "items": {
+      "q1": "Câu lạc bộ sinh hoạt bao lâu một lần?",
+      "a1": "Chúng tôi sinh hoạt hai lần một tuần: mỗi tối Thứ Sáu từ 19:00 đến 23:00 và mỗi chiều Chủ Nhật từ 14:00 đến 18:00.",
+      "q2": "Các bạn chơi ở đâu?",
+      "a2": "Chúng tôi chơi tại Horizon Coffee ở Phùng Khoang, Hà Đông, Hà Nội — một địa điểm ấm cúng, thân thiện, đủ không gian, ánh sáng tốt và đồ uống ngon.",
+      "q3": "Tôi có cần phải là người chơi cờ giỏi để tham gia không?",
+      "a3": "Hoàn toàn không! Chúng tôi chào đón tất cả mọi người, kể cả người mới hoàn toàn, người chơi giải trí, và các kỳ thủ giàu kinh nghiệm. Các thành viên luôn sẵn lòng giúp người mới học hỏi và tiến bộ.",
+      "q4": "Người mới có được chào đón không?",
+      "a4": "Có chứ! Rất nhiều thành viên ở đây là người mới. Bạn sẽ luôn gặp những người chơi thân thiện sẵn sàng giúp bạn học hỏi.",
+      "q5": "Có phí thành viên không?",
+      "a5": "Hoàn toàn không có phí tham gia hay phí thành viên nào cả. Cờ vua nên dễ tiếp cận với mọi người. Bạn chỉ trả tiền đồ uống hoặc đồ ăn nhẹ của riêng mình tại quán.",
+      "q6": "Tham gia câu lạc bộ cờ vua có phải là cách tốt để học tiếng Anh không?",
+      "a6": "Trong các buổi sinh hoạt, chúng tôi nói chuyện về cờ vua, cười đùa bằng tiếng Việt, tiếng Anh và một vài ngôn ngữ khác.",
+      "q7": "Các thành viên câu lạc bộ nói được bao nhiêu ngôn ngữ?",
+      "a7": "Chúng tôi nói được nhiều ngôn ngữ, bao gồm tiếng Việt, tiếng Anh, tiếng Pháp, tiếng Tây Ban Nha, tiếng Bồ Đào Nha, tiếng Thổ Nhĩ Kỳ, tiếng Đức.",
+      "q8": "Tôi có thể mang theo bàn cờ hoặc đồng hồ cờ của riêng mình không?",
+      "a8": "Chúng tôi có đủ bàn cờ và đồng hồ cho mọi người chơi, và bạn cũng hoàn toàn có thể mang theo bộ của riêng mình.",
+      "q9": "Tôi có cần đăng ký trước khi đến không?",
+      "a9": "Không cần đăng ký. Chỉ cần đến, nói \"Xin chào\", ngồi xuống và tận hưởng những ván cờ!",
+      "q10": "Các bạn chơi cờ giải trí hay thi đấu?",
+      "a10": "Cả hai! Một số người chơi thích những ván cờ thư giãn, vui vẻ, cười đùa, trong khi những người khác lại thích thử thách nhau trong các trận đấu nghiêm túc hơn và cờ chớp (blitz).",
+      "q11": "Trẻ em hoặc người chơi trẻ tuổi có thể tham gia không?",
+      "a11": "Người chơi trẻ tuổi hoàn toàn được chào đón, vì chúng tôi tin rằng cờ vua là cách tuyệt vời để trẻ phát triển tư duy phản biện và kỹ năng xã hội.",
+      "q12": "Các bạn nữ và phụ nữ có chơi cờ cùng mọi người không?",
+      "a12": "Trong số những kỳ thủ giỏi nhất của chúng tôi có rất nhiều bạn nữ và phụ nữ. Chúng tôi thường có giải thưởng riêng cho người chơi nữ xuất sắc nhất tại các giải đấu.",
+      "q13": "Làm sao để cập nhật thông tin về câu lạc bộ?",
+      "a13": "Hãy tham gia các kênh Facebook / Zalo / cộng đồng của chúng tôi để nhận thông tin cập nhật, sự kiện và thông báo.",
+      "q14": "Tôi có thể tìm hiểu thêm thông tin về câu lạc bộ và các buổi sinh hoạt ở đâu?",
+      "a14": "Bạn có thể gọi cho Francis Lloyd Holland qua Zalo và WhatsApp theo số 333 009 587 hoặc email cho chúng tôi tại francislholland@gmail.com",
+      "q15": "Ai đã sáng lập Hanoi Lucky Chess Club (HLCC) và từ khi nào?",
+      "a15": "Hai người bạn, Francis Lloyd Holland (đến từ Mỹ) và Dương Hải (người Việt Nam), đã sáng lập HLCC vào ngày 10 tháng 12 năm 2023, bằng cách mang một bộ cờ đến một quán pizza ở Hà Nội và chơi cùng mọi người.",
+      "q16": "Tôi có thể luyện tiếng Anh và kết bạn mới khi chơi cờ cùng mọi người không?",
+      "a16": "Các thành viên câu lạc bộ thường tụ họp ăn trưa trước buổi sinh hoạt và/hoặc ăn tối sau đó, cùng luyện tiếng Anh và kết bạn mới nói tiếng Anh đến từ Mỹ, Anh, Úc, Pháp, Đức, cũng như các nước châu Phi, châu Á và Mỹ Latinh."
+    }
+  }
+}

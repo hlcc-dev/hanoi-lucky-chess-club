@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import useAttempt from "../hooks/useAttempt";
@@ -22,6 +23,7 @@ import { getPuzzleStats, updatePuzzleStats } from "../utils/puzzleStats";
 import { toastError } from "../utils/toastUtils";
 
 function DailyChessPuzzle() {
+    const { t } = useTranslation("puzzles");
     const navigate = useNavigate();
 
     // User information
@@ -111,7 +113,7 @@ function DailyChessPuzzle() {
     // Redirect if user is not logged in
     useEffect(() => {
         if (!user.loading && !userId) {
-            toastError("You must be logged in to access the daily puzzle.");
+            toastError(t("loginRequired"));
             navigate("/login");
         }
     }, [user.loading, userId, navigate]);
@@ -213,7 +215,7 @@ function DailyChessPuzzle() {
 
             setTimeout(() => {
                 setFen(result.fen);
-                toastError("Wrong move for the puzzle. Try another move.");
+                toastError(t("wrongMove"));
                 incrementAttempt();
             }, 500);
 
@@ -278,7 +280,7 @@ function DailyChessPuzzle() {
     if (loading || user.loading) {
         return (
             <div className="flex w-full grow flex-1 items-center justify-center py-10">
-                <ChessLoading text="Loading puzzle" />
+                <ChessLoading text={t("loadingPuzzle")} />
             </div>
         );
     }
@@ -305,7 +307,7 @@ function DailyChessPuzzle() {
                 <div className="relative flex justify-center">
                     <div className="flex items-center gap-3 bg-club-primary/20 px-4 py-3 sm:px-8 sm:py-4 rounded-xl border border-black/20 shadow-md">
                         <h1 className="text-lg sm:text-2xl font-semibold tracking-wide text-center">
-                            Daily Chess Puzzle - Rating : {puzzle?.puzzle.rating}
+                            {t("pageTitle", { rating: puzzle?.puzzle.rating })}
                         </h1>
                     </div>
                 </div>
@@ -326,7 +328,7 @@ function DailyChessPuzzle() {
                 <div className="w-full max-w-md flex flex-col gap-4 mt-6 md:mt-0">
                     {statsLoading && (
                         <div className="text-sm text-gray-500 text-center">
-                            Loading leaderboard…
+                            {t("loadingLeaderboard")}
                         </div>
                     )}
 

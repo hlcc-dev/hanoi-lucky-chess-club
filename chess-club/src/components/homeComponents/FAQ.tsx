@@ -1,10 +1,12 @@
 import { useState } from "react";
 //import { useNavigate } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import { useInView } from "../../hooks/useInView";
 
 function FAQ() {
     //const navigate = useNavigate();
+    const { t } = useTranslation("home");
     const { ref, inView } = useInView(0.3);
 
     const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -15,69 +17,69 @@ function FAQ() {
 
     const faqs = [
         {
-            q: "How often does the club meet?",
-            a: "We meet twice a week: every Friday evening from 19:00 to 23:00 and every Sunday afternoon from 14:00 to 18:00."
+            q: t("faq.items.q1"),
+            a: t("faq.items.a1")
         },
         {
-            q: "Where do you play?",
-            a: "We play at Horizon Coffee in Phung Khoang, Ha Dong, Hanoi, a cozy, friendly venue with plenty of space, good lighting, and great drinks.",
+            q: t("faq.items.q2"),
+            a: t("faq.items.a2"),
             link: "location"
         },
         {
-            q: "Do I need to be an experienced chess player to join?",
-            a: "Not at all! We welcome everyone, including absolute beginners, casual players, and experienced competitors. Members are happy to help newcomers learn and improve."
+            q: t("faq.items.q3"),
+            a: t("faq.items.a3")
         },
         {
-            q: "Are beginners welcome?",
-            a: "Yes! Many members are beginners here. You will always find friendly players willing to help you learn."
+            q: t("faq.items.q4"),
+            a: t("faq.items.a4")
         },
         {
-            q: "Is there a membership fee?",
-            a: "There are no dues or fees at all for participation and membership. Chess should be accessible. You pay only for your own drinks or snacks at the cafe."
+            q: t("faq.items.q5"),
+            a: t("faq.items.a5")
         },
         {
-            q: "Is joining the chess club a good way to learn English?",
-            a: "During chess meetings, we talk about chess, laugh and joke in Vietnamese, English and several other languages."
+            q: t("faq.items.q6"),
+            a: t("faq.items.a6")
         },
         {
-            q: "How many languages do club participants speak?",
-            a: "We speak many languages, including Vietnamese, English, French, Spanish, Portuguese, Turkish, German."
+            q: t("faq.items.q7"),
+            a: t("faq.items.a7")
         },
         {
-            q: "Can I bring my own chess set or clock?",
-            a: "We have enough boards and clocks for everyone to play and you are welcome to bring your own as well."
+            q: t("faq.items.q8"),
+            a: t("faq.items.a8")
         },
         {
-            q: "Do I need to register before coming?",
-            a: "No registration is needed. Just come, say \"Hello\", take a seat, and enjoy some chess!"
+            q: t("faq.items.q9"),
+            a: t("faq.items.a9")
         },
         {
-            q: "Do you play casual or competitive chess?",
-            a: "Both! Some players enjoy relaxed friendly games, laughing, joking and talking smack, while others challenge each other in more serious matches and blitz sessions."
+            q: t("faq.items.q10"),
+            a: t("faq.items.a10")
         },
         {
-            q: "Can kids or younger players join?",
-            a: "Younger players are welcome as we believe chess is a great way for kids to develop critical thinking and social skills."
+            q: t("faq.items.q11"),
+            a: t("faq.items.a11")
         },
         {
-            q: "Do girls and women play chess with you?",
-            a: "Among our best chess players are girls and women. We often offer a prize for the best female player at our chess tournaments."
+            q: t("faq.items.q12"),
+            a: t("faq.items.a12")
         },
         {
-            q: "How do I stay updated about the club?",
-            a: "Join our Facebook / Zalo / community channels for updates, events, and announcements."
+            q: t("faq.items.q13"),
+            a: t("faq.items.a13")
         },
         {
-            q: "How can I get more information about the chess club and its meetings?",
-            a: "You can call Francis Lloyd Holland by Zalo and WhatsApp at 333 009 587 or email us at francislholland@gmail.com"
+            q: t("faq.items.q14"),
+            a: t("faq.items.a14")
         },
         {
-            q: "Who started the Hanoi Lucky Chess Club (HLCC) and when?",
-            a: "Two friends, Francis Lloyd Holland (from America) and Duong Hai (Vietnamese), started HLCC on December 10, 2023, by taking a chess set to a Hanoi pizzeria and playing with members of the public."
+            q: t("faq.items.q15"),
+            a: t("faq.items.a15")
         },
         {
-            q: "Can I practice English and make new friends by playing chess with you?",
-            a: "Our chess club members often gather for lunch before the meetings and/or dinner afterward and practice our English while making new English-speaking friends from the USA, England, Australia, France, Germany, and African, Asian and Latin American countries."
+            q: t("faq.items.q16"),
+            a: t("faq.items.a16")
         }
         // {
         //     q: "How can I make a financial contribution to the Hanoi Lucky Chess Club?",
@@ -97,7 +99,7 @@ function FAQ() {
             ref={ref}
             className={`w-full max-w-4xl mx-auto my-16 px-4 ${inView ? 'animate-slideRight' : 'opacity-0'}`}>
             <h2 className="text-3xl font-extrabold text-center mb-8 font-serif">
-                Frequently Asked Questions
+                {t("faq.title")}
             </h2>
 
             <div className="space-y-3 ">
@@ -130,7 +132,7 @@ function FAQ() {
                             </p>
 
                             {item.link && (
-                                <a href={`#${item.link}`} className="text-club-primary font-bold hover:underline mt-2 inline-block">Check the {item.link}</a>
+                                <a href={`#${item.link}`} className="text-club-primary font-bold hover:underline mt-2 inline-block">{t("faq.checkLocation")}</a>
                             )}
                             {/*{item.navigate && (
                                 <button
