@@ -1,0 +1,15 @@
+{
+  "loginRequired": "Debes iniciar sesión para acceder al problema diario.",
+  "wrongMove": "Jugada incorrecta para este problema. Prueba otra jugada.",
+  "loadingPuzzle": "Cargando el problema",
+  "loadingDefault": "Cargando...",
+  "pageTitle": "Problema de ajedrez diario - Elo: {{rating}}",
+  "loadingLeaderboard": "Cargando la clasificación…",
+  "completed": {
+    "title": "¡Problema resuelto!",
+    "seconds": "segundos",
+    "time": "Tiempo",
+    "attempts": "Intentos",
+    "continue": "Continuar"
+  }
+}

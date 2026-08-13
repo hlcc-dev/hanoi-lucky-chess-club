@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useRef, useState } from "react"
 import { toastError } from "../utils/toastUtils"
+import i18n from "../i18n/config"
 import type { ChessStats } from "../types/chessStatsTypes"
 import type { ChessUser } from "../types/chessUserTypes"
 type Status = "idle" | "loading" | "success" | "error"
@@ -51,7 +52,7 @@ export function useChessUser() {
                 setStatus("error")
             } else {
                 setStatus("error")
-                toastError("An error occurred while fetching Chess.com data.")
+                toastError(i18n.t("errors.chessComFetchFailed"))
             }
         }
     }

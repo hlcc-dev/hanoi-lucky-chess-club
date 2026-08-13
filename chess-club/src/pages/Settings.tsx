@@ -429,7 +429,7 @@ function Settings() {
                             "
                         >
                             {t("settings.defaultStatsInfoPrefix")}
-                            <span className="font-semibold"> 1200 </span>{t("settings.defaultStatsInfoSuffix")}
+                            <span className="font-semibold"> 1200</span>{t("settings.defaultStatsInfoSuffix")}
                         </p>
                     </div>
 

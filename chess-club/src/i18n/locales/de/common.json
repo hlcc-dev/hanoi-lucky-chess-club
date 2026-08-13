@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "leaderboard": "Rangliste",
+    "puzzles": "Rätsel",
+    "dailyPuzzles": "Tägliche Rätsel",
+    "marathon": "Marathon",
+    "puzzleMarathon": "Rätsel-Marathon",
+    "contact": "Kontakt"
+  },
+  "auth": {
+    "joinNow": "Jetzt mitmachen",
+    "login": "Anmelden",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "loggedOutSuccess": "Erfolgreich abgemeldet"
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten"
+  },
+  "language": {
+    "label": "Sprache",
+    "english": "English",
+    "vietnamese": "Tiếng Việt",
+    "french": "Français",
+    "german": "Deutsch",
+    "spanish": "Español"
+  },
+  "toast": {
+    "success": "Erfolg",
+    "error": "Fehler",
+    "info": "Info",
+    "warning": "Warnung"
+  },
+  "notFound": {
+    "title": "Diesen Zug gibt es auf diesem Brett nicht",
+    "message": "Sieht aus, als hättest du einen regelwidrigen Zug gemacht. Die Seite, die du erreichen wolltest, hat aufgegeben – aber die Partie ist noch nicht vorbei! Wir bringen dich zurück aufs Hauptbrett.",
+    "returnHome": "Zurück zur Startseite"
+  },
+  "close": "Schließen",
+  "loading": "Lädt...",
+  "events": "Veranstaltungen",
+  "verifyingEmail": "Wir bestätigen deine E-Mail-Adresse…",
+  "errors": {
+    "confirmEmail": "Bitte bestätige deine E-Mail-Adresse. Wir haben dir eine neue Bestätigungs-E-Mail geschickt.",
+    "wrongCredentials": "E-Mail-Adresse oder Passwort ist falsch. Bitte versuche es erneut.",
+    "invalidEmailFormat": "Ungültiges E-Mail-Format. Bitte überprüfe es noch einmal.",
+    "chessComFetchFailed": "Beim Laden der Chess.com-Daten ist ein Fehler aufgetreten.",
+    "chessComRefreshFailed": "Die Chess.com-Statistiken konnten im Hintergrund nicht aktualisiert werden.",
+    "usernameCheckFailed": "Fehler bei der Prüfung des Benutzernamens: {{message}}",
+    "usernameUnavailable": "Dieser Benutzername ist nicht verfügbar. Bitte wähle einen anderen."
+  }
+}

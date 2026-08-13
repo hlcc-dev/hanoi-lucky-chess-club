@@ -21,7 +21,10 @@
   "language": {
     "label": "Language",
     "english": "English",
-    "vietnamese": "Tiếng Việt"
+    "vietnamese": "Tiếng Việt",
+    "french": "Français",
+    "german": "Deutsch",
+    "spanish": "Español"
   },
   "toast": {
     "success": "Success",
@@ -37,5 +40,14 @@
   "close": "Close",
   "loading": "Loading...",
   "events": "Events",
-  "verifyingEmail": "Verifying your email…"
+  "verifyingEmail": "Verifying your email…",
+  "errors": {
+    "confirmEmail": "Please confirm your email address. A new verification email has been sent.",
+    "wrongCredentials": "Wrong email or password. Please try again.",
+    "invalidEmailFormat": "Invalid email format. Please check again.",
+    "chessComFetchFailed": "An error occurred while fetching Chess.com data.",
+    "chessComRefreshFailed": "Failed to refresh Chess.com stats in background.",
+    "usernameCheckFailed": "Error checking username availability: {{message}}",
+    "usernameUnavailable": "Username is not available. Please choose another one."
+  }
 }

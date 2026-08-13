@@ -30,14 +30,14 @@ function ClubInfoSection() {
                         {/* Friday Card */}
                         <div className="flex w-full md:flex-1 bg-white rounded-xl border border-black/20 shadow overflow-hidden">
                             {/* Date Section */}
-                            <div className="bg-club-primary text-white flex flex-col justify-center items-center px-6 py-4">
+                            <div className="bg-club-primary text-white flex flex-col justify-center items-center shrink-0 px-6 py-4">
                                 <p className="text-4xl font-extrabold leading-none">{t("clubInfo.friDay")}</p>
                                 <p className="text-sm tracking-wide mt-1">{t("clubInfo.friPeriod")}</p>
                             </div>
 
                             {/* Details Section */}
-                            <div className="flex flex-col justify-center px-6 py-4">
-                                <p className="font-bold text-lg text-club-dark">{t("clubInfo.friName")}</p>
+                            <div className="flex flex-col justify-center min-w-0 px-6 py-4">
+                                <p className="font-bold text-lg text-club-dark break-words">{t("clubInfo.friName")}</p>
                                 <p className="text-gray-700 flex items-center gap-2">
                                     <FaRegClock className="text-club-dark" /> 19:00 — 23:00
                                 </p>
@@ -50,14 +50,14 @@ function ClubInfoSection() {
                         {/* Sunday Card */}
                         <div className="flex w-full md:flex-1 bg-white rounded-xl border border-black/20 shadow overflow-hidden">
                             {/* Date Section */}
-                            <div className="bg-[#9fb97f] text-black flex flex-col justify-center items-center px-6 py-4">
+                            <div className="bg-[#9fb97f] text-black flex flex-col justify-center items-center shrink-0 px-6 py-4">
                                 <p className="text-4xl font-extrabold leading-none">{t("clubInfo.sunDay")}</p>
                                 <p className="text-sm tracking-wide mt-1">{t("clubInfo.sunPeriod")}</p>
                             </div>
 
                             {/* Details Section */}
-                            <div className="flex flex-col justify-center px-6 py-4">
-                                <p className="font-bold text-lg text-club-dark">{t("clubInfo.sunName")}</p>
+                            <div className="flex flex-col justify-center min-w-0 px-6 py-4">
+                                <p className="font-bold text-lg text-club-dark break-words">{t("clubInfo.sunName")}</p>
                                 <p className="text-gray-700 flex items-center gap-2">
                                     <FaRegClock className="text-club-dark" /> 14:00 — 18:00
                                 </p>

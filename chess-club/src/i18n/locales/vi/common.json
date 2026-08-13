@@ -21,7 +21,10 @@
   "language": {
     "label": "Ngôn ngữ",
     "english": "English",
-    "vietnamese": "Tiếng Việt"
+    "vietnamese": "Tiếng Việt",
+    "french": "Français",
+    "german": "Deutsch",
+    "spanish": "Español"
   },
   "toast": {
     "success": "Thành công",
@@ -37,5 +40,14 @@
   "close": "Đóng",
   "loading": "Đang tải...",
   "events": "Sự kiện",
-  "verifyingEmail": "Đang xác thực email của bạn…"
+  "verifyingEmail": "Đang xác thực email của bạn…",
+  "errors": {
+    "confirmEmail": "Vui lòng xác nhận địa chỉ email của bạn. Một email xác thực mới đã được gửi.",
+    "wrongCredentials": "Email hoặc mật khẩu không đúng. Vui lòng thử lại.",
+    "invalidEmailFormat": "Định dạng email không hợp lệ. Vui lòng kiểm tra lại.",
+    "chessComFetchFailed": "Đã xảy ra lỗi khi tải dữ liệu Chess.com.",
+    "chessComRefreshFailed": "Không thể cập nhật dữ liệu Chess.com ở chế độ nền.",
+    "usernameCheckFailed": "Lỗi khi kiểm tra tên người dùng: {{message}}",
+    "usernameUnavailable": "Tên người dùng không khả dụng. Vui lòng chọn tên khác."
+  }
 }

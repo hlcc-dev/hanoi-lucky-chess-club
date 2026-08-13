@@ -1,0 +1,25 @@
+{
+  "pageTitle": "Rangliste",
+  "tabs": {
+    "dailyPuzzle": "Tägliches Rätsel"
+  },
+  "table": {
+    "player": "Spieler",
+    "rating": "Wertung",
+    "wins": "Siege",
+    "updating": "Wird aktualisiert…",
+    "loading": "Rangliste wird geladen...",
+    "noPlayers": "Keine Spieler gefunden.",
+    "you": "(Du)"
+  },
+  "chessLeaderboard": {
+    "yourStats": "Deine Statistiken",
+    "alreadyCompleted": "Du hast das heutige Rätsel schon gelöst. Komm morgen wieder!",
+    "timeElapsed": "Benötigte Zeit",
+    "totalMistakes": "Fehler insgesamt",
+    "dailyLeaderboard": "Tagesrangliste",
+    "loading": "Rangliste wird geladen…",
+    "noSolvesYet": "Noch keine Lösungen. Sei der Erste!",
+    "tries": "Versuche"
+  }
+}

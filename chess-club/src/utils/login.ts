@@ -3,6 +3,7 @@ import {
     supabaseSessionOnly,
 } from "./supabaseClient";
 import { toastError } from "./toastUtils";
+import i18n from "../i18n/config";
 
 interface Login {
     email: string;
@@ -30,7 +31,7 @@ async function signIn({
 
         // If account exists but email is not confirmed, Supabase often reports as invalid login
         if (error?.message?.toLowerCase().includes("confirm")) {
-            toastError("Please confirm your email address. A new verification email has been sent.");
+            toastError(i18n.t("errors.confirmEmail"));
 
             await supabasePersistent.auth.resend({
                 type: "signup",
@@ -40,13 +41,13 @@ async function signIn({
             return false;
         }
 
-        toastError("Wrong email or password. Please try again.");
+        toastError(i18n.t("errors.wrongCredentials"));
         return false;
     }
 
     // Check email verification state
     if (!data.user?.email_confirmed_at) {
-        toastError("Please confirm your email address. A new verification email has been sent.");
+        toastError(i18n.t("errors.confirmEmail"));
 
         await supabasePersistent.auth.resend({
             type: "signup",

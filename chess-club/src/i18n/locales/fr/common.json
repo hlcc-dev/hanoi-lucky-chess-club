@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "leaderboard": "Classement",
+    "puzzles": "Problèmes",
+    "dailyPuzzles": "Problèmes du jour",
+    "marathon": "Marathon",
+    "puzzleMarathon": "Marathon de problèmes",
+    "contact": "Contact"
+  },
+  "auth": {
+    "joinNow": "Rejoignez-nous",
+    "login": "Connexion",
+    "settings": "Paramètres",
+    "logout": "Déconnexion",
+    "loggedOutSuccess": "Vous êtes bien déconnecté"
+  },
+  "footer": {
+    "rights": "Tous droits réservés"
+  },
+  "language": {
+    "label": "Langue",
+    "english": "English",
+    "vietnamese": "Tiếng Việt",
+    "french": "Français",
+    "german": "Deutsch",
+    "spanish": "Español"
+  },
+  "toast": {
+    "success": "Succès",
+    "error": "Erreur",
+    "info": "Info",
+    "warning": "Attention"
+  },
+  "notFound": {
+    "title": "Ce coup n’existe pas sur cet échiquier",
+    "message": "On dirait que vous avez joué un coup illégal. La page que vous cherchez a abandonné — mais la partie n’est pas finie ! Retournons à l’échiquier principal.",
+    "returnHome": "Retour à l’accueil"
+  },
+  "close": "Fermer",
+  "loading": "Chargement...",
+  "events": "Événements",
+  "verifyingEmail": "Vérification de votre e-mail…",
+  "errors": {
+    "confirmEmail": "Veuillez confirmer votre adresse e-mail. Un nouvel e-mail de vérification vient d’être envoyé.",
+    "wrongCredentials": "E-mail ou mot de passe incorrect. Veuillez réessayer.",
+    "invalidEmailFormat": "Format d’e-mail invalide. Veuillez vérifier à nouveau.",
+    "chessComFetchFailed": "Une erreur est survenue lors de la récupération des données Chess.com.",
+    "chessComRefreshFailed": "Impossible d’actualiser les statistiques Chess.com en arrière-plan.",
+    "usernameCheckFailed": "Erreur lors de la vérification du nom d’utilisateur : {{message}}",
+    "usernameUnavailable": "Ce nom d’utilisateur n’est pas disponible. Veuillez en choisir un autre."
+  }
+}

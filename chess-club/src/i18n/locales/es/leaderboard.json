@@ -1,0 +1,25 @@
+{
+  "pageTitle": "Clasificación",
+  "tabs": {
+    "dailyPuzzle": "Problema diario"
+  },
+  "table": {
+    "player": "Jugador",
+    "rating": "Elo",
+    "wins": "Victorias",
+    "updating": "Actualizando…",
+    "loading": "Cargando la clasificación...",
+    "noPlayers": "No se encontraron jugadores.",
+    "you": "(Tú)"
+  },
+  "chessLeaderboard": {
+    "yourStats": "Tus estadísticas",
+    "alreadyCompleted": "Ya has resuelto el problema de hoy. ¡Vuelve mañana!",
+    "timeElapsed": "Tiempo transcurrido",
+    "totalMistakes": "Errores totales",
+    "dailyLeaderboard": "Clasificación diaria",
+    "loading": "Cargando la clasificación…",
+    "noSolvesYet": "Todavía nadie lo ha resuelto. ¡Sé el primero!",
+    "tries": "intentos"
+  }
+}

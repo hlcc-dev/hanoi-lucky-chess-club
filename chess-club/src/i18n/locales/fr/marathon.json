@@ -1,0 +1,37 @@
+{
+  "title": "Marathon de problèmes",
+  "subtitle": "Aiguisez votre esprit. Savourez le défi.",
+  "loginRequired": "Veuillez vous connecter pour accéder au Marathon de problèmes.",
+  "fetchPuzzlesError": "Impossible de charger les problèmes. Veuillez réessayer plus tard.",
+  "fetchStatsError": "Impossible de charger les statistiques du marathon. {{message}}",
+  "notAvailable": "N/D",
+  "points": "Points",
+  "rating": "Elo",
+  "level": "Niv",
+  "whiteToMove": "Les blancs jouent.",
+  "blackToMove": "Les noirs jouent.",
+  "hint": "Indice",
+  "skip": "Passer",
+  "next": "Suivant",
+  "correctMessages": [
+    "Bien joué !",
+    "Excellent !",
+    "Vous êtes en feu !",
+    "Continuez comme ça !",
+    "Quel beau coup !"
+  ],
+  "incorrectMessages": [
+    "Oups, réessayez.",
+    "Pas tout à fait.",
+    "Continuez à vous entraîner !",
+    "N’abandonnez pas !",
+    "Vous y étiez presque !"
+  ],
+  "finishedMessages": [
+    "Problème résolu ! Passez au suivant.",
+    "Vous êtes un as des problèmes ! Passez au défi suivant.",
+    "Formidable ! On en fait un autre ?",
+    "Impeccable ! Le prochain problème vous attend.",
+    "Résolution brillante ! Prêt pour le suivant ?"
+  ]
+}

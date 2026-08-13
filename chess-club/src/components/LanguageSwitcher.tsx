@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
-import { GbFlag, VnFlag } from "./flags";
+import { GbFlag, VnFlag, FrFlag, DeFlag, EsFlag } from "./flags";
 
 interface LanguageSwitcherProps {
   variant?: "desktop" | "mobile";
@@ -10,6 +10,9 @@ interface LanguageSwitcherProps {
 const LANGUAGES = [
   { code: "en", labelKey: "language.english", Flag: GbFlag },
   { code: "vi", labelKey: "language.vietnamese", Flag: VnFlag },
+  { code: "fr", labelKey: "language.french", Flag: FrFlag },
+  { code: "de", labelKey: "language.german", Flag: DeFlag },
+  { code: "es", labelKey: "language.spanish", Flag: EsFlag },
 ] as const;
 
 function LanguageSwitcher({ variant = "desktop" }: LanguageSwitcherProps) {

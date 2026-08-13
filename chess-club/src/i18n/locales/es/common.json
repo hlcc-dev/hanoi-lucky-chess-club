@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "leaderboard": "Clasificación",
+    "puzzles": "Problemas",
+    "dailyPuzzles": "Problemas diarios",
+    "marathon": "Maratón",
+    "puzzleMarathon": "Maratón de problemas",
+    "contact": "Contacto"
+  },
+  "auth": {
+    "joinNow": "Únete ahora",
+    "login": "Iniciar sesión",
+    "settings": "Ajustes",
+    "logout": "Cerrar sesión",
+    "loggedOutSuccess": "Has cerrado sesión correctamente"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados"
+  },
+  "language": {
+    "label": "Idioma",
+    "english": "English",
+    "vietnamese": "Tiếng Việt",
+    "french": "Français",
+    "german": "Deutsch",
+    "spanish": "Español"
+  },
+  "toast": {
+    "success": "Éxito",
+    "error": "Error",
+    "info": "Información",
+    "warning": "Advertencia"
+  },
+  "notFound": {
+    "title": "Esa jugada no existe en este tablero",
+    "message": "Parece que has hecho una jugada ilegal. La página que buscas se ha rendido, ¡pero la partida no ha terminado! Volvamos al tablero principal.",
+    "returnHome": "Volver al inicio"
+  },
+  "close": "Cerrar",
+  "loading": "Cargando...",
+  "events": "Eventos",
+  "verifyingEmail": "Verificando tu correo electrónico…",
+  "errors": {
+    "confirmEmail": "Confirma tu dirección de correo electrónico. Te hemos enviado un nuevo correo de verificación.",
+    "wrongCredentials": "El correo electrónico o la contraseña son incorrectos. Inténtalo de nuevo.",
+    "invalidEmailFormat": "El formato del correo electrónico no es válido. Compruébalo de nuevo.",
+    "chessComFetchFailed": "Se produjo un error al obtener los datos de Chess.com.",
+    "chessComRefreshFailed": "No se pudieron actualizar las estadísticas de Chess.com en segundo plano.",
+    "usernameCheckFailed": "Error al comprobar el nombre de usuario: {{message}}",
+    "usernameUnavailable": "Ese nombre de usuario no está disponible. Elige otro."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "loginRequired": "Vous devez être connecté pour accéder au problème du jour.",
+  "wrongMove": "Ce coup n’est pas le bon pour ce problème. Essayez un autre coup.",
+  "loadingPuzzle": "Chargement du problème",
+  "loadingDefault": "Chargement...",
+  "pageTitle": "Problème d’échecs du jour - Niveau : {{rating}}",
+  "loadingLeaderboard": "Chargement du classement…",
+  "completed": {
+    "title": "Problème résolu !",
+    "seconds": "secondes",
+    "time": "Temps",
+    "attempts": "Tentatives",
+    "continue": "Continuer"
+  }
+}

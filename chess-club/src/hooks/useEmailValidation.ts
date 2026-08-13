@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toastError } from "../utils/toastUtils";
+import i18n from "../i18n/config";
 
 type StatusState = "idle" | "loading" | "success" | "error";
 
@@ -16,7 +17,7 @@ export function useEmailValidation() {
         
         if (!emailRegex.test(email)) {
             setStatus("error");
-            toastError("Invalid email format. Please check again.");
+            toastError(i18n.t("errors.invalidEmailFormat"));
             return false;
         }
 

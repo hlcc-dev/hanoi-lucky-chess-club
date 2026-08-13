@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import { getActiveClient } from "./getActiveClient";
+import i18n from "../i18n/config";
 
 export async function checkUsernameAvailable(username: string): Promise<boolean> {
     const supabaseClient = await getActiveClient();
@@ -10,12 +11,12 @@ export async function checkUsernameAvailable(username: string): Promise<boolean>
         .maybeSingle();
 
     if (error) {
-        toast.error(`Error checking username availability: ${error.message}`);
+        toast.error(i18n.t("errors.usernameCheckFailed", { message: error.message }));
         return false;
     }
 
     if (data) {
-        toast.error("Username is not available. Please choose another one.");
+        toast.error(i18n.t("errors.usernameUnavailable"));
         return false;
     }
 
