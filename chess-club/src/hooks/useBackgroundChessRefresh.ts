@@ -3,6 +3,7 @@ import { useUser } from "../hooks/useUser";
 import { useChessUser } from "../hooks/useChessUser";
 import updateChessStats from "../utils/UpdateChessStats";
 import { toastError } from "../utils/toastUtils";
+import i18n from "../i18n/config";
 
 export function useBackgroundChessRefresh() {
     const user = useUser();
@@ -64,7 +65,7 @@ export function useBackgroundChessRefresh() {
                 localStorage.setItem("last_chess_refresh", todayKey);
                 setRanToday(true);
             } catch (e) {
-                toastError("Failed to refresh Chess.com stats in background.");
+                toastError(i18n.t("errors.chessComRefreshFailed"));
             }
         })();
     }, [user?.user, status, ranToday]);

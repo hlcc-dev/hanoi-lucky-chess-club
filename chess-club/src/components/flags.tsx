@@ -28,3 +28,34 @@ export function VnFlag({ className }: FlagProps) {
     </svg>
   );
 }
+
+export function FrFlag({ className }: FlagProps) {
+  return (
+    // Square viewBox: vertical stripes must not be side-cropped by `slice`,
+    // which would otherwise render the white band twice as wide as the others.
+    <svg viewBox="0 0 30 30" preserveAspectRatio="xMidYMid slice" className={className} aria-hidden="true">
+      <rect width="10" height="30" fill="#002395" />
+      <rect x="10" width="10" height="30" fill="#fff" />
+      <rect x="20" width="10" height="30" fill="#ed2939" />
+    </svg>
+  );
+}
+
+export function DeFlag({ className }: FlagProps) {
+  return (
+    <svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" className={className} aria-hidden="true">
+      <rect width="30" height="6.667" fill="#000" />
+      <rect y="6.667" width="30" height="6.667" fill="#dd0000" />
+      <rect y="13.333" width="30" height="6.667" fill="#ffce00" />
+    </svg>
+  );
+}
+
+export function EsFlag({ className }: FlagProps) {
+  return (
+    <svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" className={className} aria-hidden="true">
+      <rect width="30" height="20" fill="#aa151b" />
+      <rect y="5" width="30" height="10" fill="#f1bf00" />
+    </svg>
+  );
+}

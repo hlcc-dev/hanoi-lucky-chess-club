@@ -1,0 +1,15 @@
+{
+  "loginRequired": "Du musst angemeldet sein, um das tägliche Rätsel zu spielen.",
+  "wrongMove": "Falscher Zug für dieses Rätsel. Versuch einen anderen Zug.",
+  "loadingPuzzle": "Rätsel wird geladen",
+  "loadingDefault": "Lädt...",
+  "pageTitle": "Tägliches Schachrätsel – Wertung: {{rating}}",
+  "loadingLeaderboard": "Rangliste wird geladen…",
+  "completed": {
+    "title": "Rätsel gelöst!",
+    "seconds": "Sekunden",
+    "time": "Zeit",
+    "attempts": "Versuche",
+    "continue": "Weiter"
+  }
+}

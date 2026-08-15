@@ -1,0 +1,37 @@
+{
+  "title": "Rätsel-Marathon",
+  "subtitle": "Schärfe deinen Verstand. Genieße die Herausforderung.",
+  "loginRequired": "Bitte melde dich an, um den Rätsel-Marathon zu spielen.",
+  "fetchPuzzlesError": "Die Rätsel konnten nicht geladen werden. Bitte versuch es später noch einmal.",
+  "fetchStatsError": "Die Marathon-Statistiken konnten nicht geladen werden. {{message}}",
+  "notAvailable": "k. A.",
+  "points": "Punkte",
+  "rating": "Wertung",
+  "level": "Stufe",
+  "whiteToMove": "Weiß ist am Zug.",
+  "blackToMove": "Schwarz ist am Zug.",
+  "hint": "Tipp",
+  "skip": "Überspringen",
+  "next": "Weiter",
+  "correctMessages": [
+    "Gut gemacht!",
+    "Sehr schön!",
+    "Du bist in Topform!",
+    "Weiter so!",
+    "Ausgezeichneter Zug!"
+  ],
+  "incorrectMessages": [
+    "Ups, versuch es noch einmal.",
+    "Nicht ganz richtig.",
+    "Bleib dran und übe weiter!",
+    "Gib nicht auf!",
+    "Fast geschafft!"
+  ],
+  "finishedMessages": [
+    "Rätsel gelöst! Weiter geht es mit dem nächsten.",
+    "Du bist ein echter Rätselmeister! Auf zur nächsten Herausforderung.",
+    "Fantastisch gemacht! Noch eins?",
+    "Perfekt gelöst! Das nächste Rätsel wartet schon.",
+    "Brillant gelöst! Bereit für das nächste?"
+  ]
+}

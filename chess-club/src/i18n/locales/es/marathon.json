@@ -1,0 +1,37 @@
+{
+  "title": "Maratón de problemas",
+  "subtitle": "Agudiza tu mente. Disfruta del desafío.",
+  "loginRequired": "Inicia sesión para acceder al Maratón de problemas.",
+  "fetchPuzzlesError": "No se pudieron cargar los problemas. Inténtalo de nuevo más tarde.",
+  "fetchStatsError": "No se pudieron cargar las estadísticas del maratón. {{message}}",
+  "notAvailable": "N/D",
+  "points": "Puntos",
+  "rating": "Elo",
+  "level": "Nv",
+  "whiteToMove": "Juegan las blancas.",
+  "blackToMove": "Juegan las negras.",
+  "hint": "Pista",
+  "skip": "Saltar",
+  "next": "Siguiente",
+  "correctMessages": [
+    "¡Buen trabajo!",
+    "¡Muy bien!",
+    "¡Estás imparable!",
+    "¡Sigue así!",
+    "¡Excelente jugada!"
+  ],
+  "incorrectMessages": [
+    "Uy, inténtalo de nuevo.",
+    "No es del todo correcto.",
+    "¡Sigue practicando!",
+    "¡No te rindas!",
+    "¡Casi lo tenías!"
+  ],
+  "finishedMessages": [
+    "¡Problema resuelto! Pasa al siguiente.",
+    "¡Eres todo un maestro de los problemas! Pasa al siguiente desafío.",
+    "¡Fantástico! ¿Vamos con otro?",
+    "¡Lo has clavado! Te espera el siguiente problema.",
+    "¡Resuelto con brillantez! ¿Listo para el siguiente?"
+  ]
+}
