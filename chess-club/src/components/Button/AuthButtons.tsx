@@ -49,6 +49,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                 <ButtonDark
                     label={t("auth.joinNow")}
                     size={mobile ? "md" : "sm"}
+                    tone="gold"
                     onClick={() => {
                         navigate("/signup");
                         onAction?.();
@@ -57,6 +58,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                 <ButtonSecondary
                     label={t("auth.login")}
                     size={mobile ? "md" : "sm"}
+                    tone="cream"
                     onClick={() => {
                         navigate("/login");
                         onAction?.();
@@ -80,6 +82,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
                     px-4 py-3
                     rounded-lg
                     bg-white
+                    text-club-dark
                     border border-club-secondary
                     hover:bg-club-light
                 "
@@ -131,7 +134,7 @@ function AuthButtons({ mobile = false, onAction }: AuthButtonsProps) {
             </button>
 
             {open && (
-                <div className="absolute right-0 mt-2 w-48 rounded-xl border border-club-dark/20 bg-white shadow-lg overflow-hidden z-50">
+                <div className="absolute right-0 mt-2 w-48 rounded-xl border border-club-dark/20 bg-white text-club-dark shadow-lg overflow-hidden z-50">
 
                     <button
                         onClick={() => {
