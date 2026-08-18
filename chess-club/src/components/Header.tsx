@@ -136,7 +136,10 @@ function Header() {
         {/* CENTER: NAV ITEMS */}
         <div className="flex-1 flex justify-center px-4">
           <nav>
-            <ul className="flex gap-1 xl:gap-4 font-medium text-base">
+            {/* The 16px spec size holds from xl up (the spec sheet targets
+                1440px+). Between lg and xl there is only ~515px of centre
+                space, so the row steps down instead of crushing itself. */}
+            <ul className="flex gap-1 xl:gap-4 font-medium text-sm xl:text-base">
               <NavLinkItem to="/" label={t("nav.home")} icon={<FaCrown />} />
               <NavLinkItem to="/leaderboard" label={t("nav.leaderboard")} icon={<FaChessPawn />} />
               <NavLinkItem to="/daily-chess-puzzle" label={t("nav.puzzles")} icon={<FaPuzzlePiece />} />
@@ -177,7 +180,7 @@ function NavLinkItem({
         className={({ isActive }) =>
           [
             "inline-flex items-center justify-center",
-            "px-3 py-2 rounded-md transition-all duration-200",
+            "px-2 xl:px-3 py-2 rounded-md transition-all duration-200",
             "border border-transparent",
             // Active and hover share the same green per the spec; weight is
             // what tells them apart.
@@ -188,8 +191,11 @@ function NavLinkItem({
         }
       >
         <span className="flex items-center gap-2">
-          <span className="text-[17px] leading-none">{icon}</span>
-          <span>{label}</span>
+          {/* shrink-0 so a tight row can never squash the icon to 0px wide, and
+              hidden below xl where there genuinely isn't room for it. The label
+              carries the meaning, so dropping the icon there costs nothing. */}
+          <span className="hidden xl:block shrink-0 text-[17px] leading-none">{icon}</span>
+          <span className="whitespace-nowrap">{label}</span>
         </span>
       </NavLink>
     </li>
