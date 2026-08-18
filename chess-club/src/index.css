@@ -33,8 +33,11 @@
 
   /* Header CTA pair. Scoped to the header chrome — the site-wide ButtonDark /
      ButtonSecondary keep their own colours. */
-  --color-brand-gold: #D6A84F;
-  --color-brand-gold-hover: #E2B65A;
+  /* Lifted from the spec's #D6A84F: as a foreground on the green footer that
+     only reached 2.49:1, where this reaches 3.66:1. Applied to the Join Now
+     fill too, so the header and footer share one gold. */
+  --color-brand-gold: #EDD189;
+  --color-brand-gold-hover: #F5E4B0;
   --color-brand-cream-hover: #EFE0BE;
   --color-brand-ink: #182015;
 }
