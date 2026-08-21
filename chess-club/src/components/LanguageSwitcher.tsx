@@ -40,11 +40,15 @@ function LanguageSwitcher({ variant = "desktop" }: LanguageSwitcherProps) {
         aria-label={t("language.label")}
         className={
           variant === "mobile"
-            ? "h-9 w-9 flex items-center justify-center gap-1 rounded-md hover:bg-club-dark/10 transition-colors"
-            : "h-9 flex items-center gap-2 px-3 rounded-md hover:bg-club-dark/10 transition-colors"
+            ? "h-9 flex items-center justify-center gap-0.5 rounded-md hover:bg-white/10 transition-colors"
+            : "h-9 flex items-center gap-2 px-3 rounded-md hover:bg-white/10 transition-colors"
         }
       >
-        <span className="h-6 w-6 rounded-full overflow-hidden shadow-sm shrink-0">
+        <span
+          className={`rounded-full overflow-hidden shadow-sm shrink-0 ${
+            variant === "mobile" ? "h-[26px] w-[26px]" : "h-6 w-6"
+          }`}
+        >
           <CurrentFlag className="h-full w-full" />
         </span>
         {open ? (
@@ -55,7 +59,12 @@ function LanguageSwitcher({ variant = "desktop" }: LanguageSwitcherProps) {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1.5 min-w-[190px] rounded-lg border border-club-dark/15 bg-club-light shadow-lg overflow-hidden z-50 text-sm">
+        // Explicit text colour: this panel sits inside the header, which sets a
+        // cream foreground — inheriting it would put cream text on cream.
+        // z-60, above the mobile nav overlay: both sit in the header's stacking
+        // context, so at an equal z-index the later DOM sibling (the overlay)
+        // would paint over this panel.
+        <div className="absolute right-0 top-full mt-1.5 min-w-[190px] rounded-lg border border-club-dark/15 bg-club-light text-club-dark shadow-lg overflow-hidden z-60 text-sm">
           {LANGUAGES.map(({ code, labelKey, Flag }) => (
             <button
               key={code}

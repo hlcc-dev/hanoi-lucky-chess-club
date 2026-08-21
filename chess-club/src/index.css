@@ -10,12 +10,36 @@
     "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
   --font-serif: "Noto Serif", ui-serif, Georgia, Cambria, "Times New Roman",
     Times, serif;
+  /* Brand wordmark only (the club name is ASCII, so no Vietnamese subset needed) */
+  --font-brand: "Cormorant Garamond", ui-serif, Georgia, "Times New Roman",
+    Times, serif;
 
   /* Chess club colors */
   --color-club-primary: #628141;
   --color-club-secondary: #8BAE66;
   --color-club-light: #f8ecc4;
   --color-club-dark: #1B211A;
+
+  /* Header bar — deliberately separate from club-primary/light, which are
+     used site-wide; the header has its own slightly deeper green.
+     #557238 rather than the spec's #5E7F3E: it lifts the 16px cream nav text
+     to 4.59:1, clearing WCAG AA, at a difference the eye can't pick up. */
+  --color-header-bg: #557238;
+  --color-header-fg: #F5EBD0;
+  /* Shifted down from the spec's #4F7135 to track the darker bar above: against
+     #557238 the spec value separated by only 1.03:1 (invisible). #486130 restores
+     the 1.27:1 the original pairing had. */
+  --color-header-active: #486130;
+
+  /* Header CTA pair. Scoped to the header chrome — the site-wide ButtonDark /
+     ButtonSecondary keep their own colours. */
+  /* Lifted from the spec's #D6A84F: as a foreground on the green footer that
+     only reached 2.49:1, where this reaches 3.66:1. Applied to the Join Now
+     fill too, so the header and footer share one gold. */
+  --color-brand-gold: #EDD189;
+  --color-brand-gold-hover: #F5E4B0;
+  --color-brand-cream-hover: #EFE0BE;
+  --color-brand-ink: #182015;
 }
 
 /* -----------------------------

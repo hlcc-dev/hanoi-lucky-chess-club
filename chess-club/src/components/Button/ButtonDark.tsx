@@ -1,10 +1,13 @@
 type ButtonSize = "sm" | "md" | "lg"
+/** "gold" is the header CTA treatment; "dark" is the site-wide default. */
+type ButtonTone = "dark" | "gold"
 
 type ButtonDarkProps = {
     label: string
     onClick?: () => void
     disabled?: boolean
     size?: ButtonSize
+    tone?: ButtonTone
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -13,11 +16,17 @@ const sizeClasses: Record<ButtonSize, string> = {
     lg: "min-w-[180px] min-h-[52px] px-6 text-lg",
 }
 
+const toneClasses: Record<ButtonTone, string> = {
+    dark: "bg-club-dark border-club-dark text-club-light hover:bg-club-light hover:text-club-dark",
+    gold: "bg-brand-gold border-brand-gold text-brand-ink hover:bg-brand-gold-hover",
+}
+
 function ButtonDark({
     label,
     onClick,
     disabled = false,
     size = "md",
+    tone = "dark",
 }: ButtonDarkProps) {
     return (
         <button
@@ -25,16 +34,12 @@ function ButtonDark({
             onClick={onClick}
             disabled={disabled}
             className={`
-        bg-club-dark
-        border-club-dark
-        text-club-light
         rounded-2xl
         font-medium
         transition
-        hover:bg-club-light
-        hover:text-club-dark
         disabled:opacity-50
         disabled:cursor-not-allowed
+        ${toneClasses[tone]}
         ${sizeClasses[size]}
       `}
         >
