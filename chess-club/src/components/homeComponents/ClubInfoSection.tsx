@@ -1,4 +1,4 @@
-import { FaMapMarkerAlt, FaClock, FaDirections, FaRegClock } from "react-icons/fa"
+import { FaMapMarkerAlt, FaClock, FaDirections, FaRegClock, FaMoon, FaSun, FaExternalLinkAlt } from "react-icons/fa"
 import { useTranslation } from "react-i18next"
 import { useInView } from "../../hooks/useInView"
 
@@ -7,6 +7,29 @@ function ClubInfoSection() {
     const { ref, inView } = useInView(0.3);
 
     const googleMapsLink = "https://maps.app.goo.gl/aQdHKXbR5KqGRZ9v6"
+
+    const sessions = [
+        {
+            key: "fri",
+            icon: <FaMoon className="text-2xl sm:text-3xl mb-2 text-[#f2c14e]" />,
+            badgeClass: "bg-[#2b3a55] text-white",
+            day: t("clubInfo.friDay"),
+            period: t("clubInfo.friPeriod"),
+            title: t("clubInfo.friTitle"),
+            time: t("clubInfo.friTime"),
+            desc: t("clubInfo.friDesc"),
+        },
+        {
+            key: "sun",
+            icon: <FaSun className="text-2xl sm:text-3xl mb-2 text-[#fbc02d]" />,
+            badgeClass: "bg-[#9fb97f] text-club-dark",
+            day: t("clubInfo.sunDay"),
+            period: t("clubInfo.sunPeriod"),
+            title: t("clubInfo.sunTitle"),
+            time: t("clubInfo.sunTime"),
+            desc: t("clubInfo.sunDesc"),
+        },
+    ]
 
     return (
         <div id="location" className={`w-full h-full  mt-6 md:mt-16 flex flex-col items-center ${inView ? 'animate-slideLeft' : 'opacity-0'}`}
@@ -25,47 +48,39 @@ function ClubInfoSection() {
                         <h3 className="text-xl font-bold">{t("clubInfo.weeklySchedule")}</h3>
                     </div>
 
-                    <div className={`flex flex-col lg:flex-row gap-4 mt-2 items-stretch ${inView ? 'animate-fadeIn' : 'opacity-0'}`}>
+                    <div className={`flex flex-col gap-4 mt-2 ${inView ? 'animate-fadeIn' : 'opacity-0'}`}>
 
-                        {/* Friday Card */}
-                        <div className="flex w-full md:flex-1 bg-white rounded-xl border border-black/20 shadow overflow-hidden">
-                            {/* Date Section */}
-                            <div className="bg-club-primary text-white flex flex-col justify-center items-center shrink-0 px-6 py-4">
-                                <p className="text-4xl font-extrabold leading-none">{t("clubInfo.friDay")}</p>
-                                <p className="text-sm tracking-wide mt-1">{t("clubInfo.friPeriod")}</p>
-                            </div>
+                        {sessions.map((session) => (
+                            <div key={session.key} className="flex w-full bg-white rounded-xl border border-black/20 shadow overflow-hidden">
+                                {/* Date Section */}
+                                <div className={`${session.badgeClass} flex flex-col justify-center items-center shrink-0 w-20 sm:w-24 px-3 py-4`}>
+                                    {session.icon}
+                                    <p className="text-2xl sm:text-3xl font-extrabold leading-none">{session.day}</p>
+                                    <p className="text-[10px] sm:text-xs tracking-wide mt-1">{session.period}</p>
+                                </div>
 
-                            {/* Details Section */}
-                            <div className="flex flex-col justify-center min-w-0 px-6 py-4">
-                                <p className="font-bold text-lg text-club-dark break-words">{t("clubInfo.friName")}</p>
-                                <p className="text-gray-700 flex items-center gap-2">
-                                    <FaRegClock className="text-club-dark" /> 19:00 — 23:00
-                                </p>
-                                <p className="text-sm italic text-gray-600">
-                                    {t("clubInfo.friDesc")}
-                                </p>
-                            </div>
-                        </div>
+                                {/* Details Section */}
+                                <div className="flex-1 min-w-0 flex flex-col gap-1.5 px-4 py-4">
+                                    <div className="flex items-start justify-between gap-2">
+                                        <h4 className="min-w-0 hyphens-auto break-words text-lg sm:text-xl font-bold text-club-dark">{session.title}</h4>
+                                        <span className="shrink-0 inline-flex items-center rounded-full border border-[#D4AF37] bg-gradient-to-b from-[#FBF3DC] to-[#F3E3B3] px-2.5 py-1 text-xs font-semibold text-[#785B12] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 ease-in-out hover:scale-105 hover:from-[#F3E3B3] hover:to-[#EDD189] hover:shadow-sm">
+                                            {t("clubInfo.freeEntry")}
+                                        </span>
+                                    </div>
 
-                        {/* Sunday Card */}
-                        <div className="flex w-full md:flex-1 bg-white rounded-xl border border-black/20 shadow overflow-hidden">
-                            {/* Date Section */}
-                            <div className="bg-[#9fb97f] text-black flex flex-col justify-center items-center shrink-0 px-6 py-4">
-                                <p className="text-4xl font-extrabold leading-none">{t("clubInfo.sunDay")}</p>
-                                <p className="text-sm tracking-wide mt-1">{t("clubInfo.sunPeriod")}</p>
-                            </div>
+                                    <p className="text-base sm:text-lg font-semibold text-club-dark flex items-center gap-1.5 whitespace-nowrap">
+                                        <FaRegClock className="text-club-dark shrink-0" /> {session.time}
+                                    </p>
 
-                            {/* Details Section */}
-                            <div className="flex flex-col justify-center min-w-0 px-6 py-4">
-                                <p className="font-bold text-lg text-club-dark break-words">{t("clubInfo.sunName")}</p>
-                                <p className="text-gray-700 flex items-center gap-2">
-                                    <FaRegClock className="text-club-dark" /> 14:00 — 18:00
-                                </p>
-                                <p className="text-sm italic text-gray-600">
-                                    {t("clubInfo.sunDesc")}
-                                </p>
+                                    <p className="text-gray-700 text-sm sm:text-base">{session.desc}</p>
+
+                                    <ul className="list-disc pl-5 text-gray-700 text-sm sm:text-base space-y-0.5">
+                                        <li>{t("clubInfo.noRegistration")}</li>
+                                        <li>{t("clubInfo.justWalkIn")}</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
 
@@ -82,7 +97,7 @@ function ClubInfoSection() {
                         </p>
 
                         {/* Google Map */}
-                        <div className="w-full h-72 rounded-xl overflow-hidden border border-black/20 shadow">
+                        <div className="relative w-full h-72 rounded-xl overflow-hidden border border-black/20 shadow">
                             <iframe
                                 title="Horizon Coffee - relax & working space "
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.1412136480885!2d105.78998237622996!3d20.986975789210604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad0068fb4277%3A0x304c1a8711f2fe1a!2sHorizon%20Coffee%20-%20Ph%C3%B9ng%20Khoang!5e0!3m2!1sen!2s!4v1767537636625!5m2!1sen!2s"
@@ -92,6 +107,15 @@ function ClubInfoSection() {
                                 allowFullScreen
                                 referrerPolicy="no-referrer-when-downgrade"
                             />
+
+                            <a
+                                href={googleMapsLink}
+                                target="_blank"
+                                className="absolute top-3 left-3 z-10 flex items-center gap-2 bg-white/95 text-club-dark text-sm font-semibold rounded-lg px-3 py-1.5 shadow border border-black/10 hover:bg-white transition"
+                            >
+                                {t("clubInfo.openInMaps")}
+                                <FaExternalLinkAlt className="text-xs" />
+                            </a>
                         </div>
 
                         <a
