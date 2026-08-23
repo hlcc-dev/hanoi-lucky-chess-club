@@ -21,9 +21,9 @@ function Home() {
           <Suspense fallback={null}>
             <ImageCarousel />
             <ClubInfoSection />
-            <CallToAction />
             <WhatToExpectSection />
             <WhoCanJoinSection />
+            <CallToAction />
             <FAQ />
           </Suspense>
         )}
