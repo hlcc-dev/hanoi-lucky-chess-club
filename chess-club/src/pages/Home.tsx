@@ -2,7 +2,6 @@ import { Suspense, lazy } from "react"
 import { useInView } from "../hooks/useInView"
 import HeroSection from "../components/homeComponents/HeroSection"
 
-const WhatToExpectSection = lazy(() => import("../components/homeComponents/WhatToExpectSection"))
 const WhoCanJoinSection = lazy(() => import("../components/homeComponents/WhoCanJoinSection"))
 const ClubInfoSection = lazy(() => import("../components/homeComponents/ClubInfoSection"))
 const ImageCarousel = lazy(() => import("../components/homeComponents/ImageCarousel"))
@@ -22,7 +21,6 @@ function Home() {
             <ImageCarousel />
             <ClubInfoSection />
             <CallToAction />
-            <WhatToExpectSection />
             <WhoCanJoinSection />
             <FAQ />
           </Suspense>
