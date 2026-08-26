@@ -14,19 +14,25 @@
   },
   "clubInfo": {
     "title": "Où et quand nous jouons",
-    "weeklySchedule": "Programme de la semaine",
+    "weeklySchedule": "Programme hebdomadaire régulier",
+    "freeEntry": "Entrée libre",
     "friDay": "VEN",
     "friPeriod": "SOIR",
-    "friName": "Échecs du vendredi soir",
-    "friDesc": "Parties décontractées, rencontres amicales, rires et bonne compagnie.",
+    "friTitle": "Échecs du vendredi soir",
+    "friTime": "19:00 – 23:00",
+    "friDesc": "Parties décontractées, matchs amicaux et bonne compagnie.",
     "sunDay": "DIM",
     "sunPeriod": "APRÈS-MIDI",
-    "sunName": "Échecs du dimanche après-midi",
-    "sunDesc": "Des échecs détendus le week-end, avec des joueurs de tous niveaux.",
+    "sunTitle": "Échecs du dimanche après-midi",
+    "sunTime": "14:00 – 18:00",
+    "sunDesc": "Échecs détendus le week-end, avec des joueurs de tous niveaux.",
+    "noRegistration": "Aucune inscription requise",
+    "justWalkIn": "Venez et jouez, tout simplement",
     "locationTitle": "Notre repaire à Hanoi",
     "locationPrefix": "Nous nous retrouvons au",
-    "venueName": "Horizon Cafe",
+    "venueName": "Horizon Coffee à Phung Khoang",
     "locationSuffix": ", un endroit chaleureux et convivial, apprécié des habitants comme des voyageurs. Une super ambiance, de bonnes boissons et beaucoup de place pour jouer aux échecs.",
+    "openInMaps": "Ouvrir dans Maps",
     "getDirections": "Voir l’itinéraire"
   },
   "cta": {
@@ -36,18 +42,12 @@
     "joinFacebook": "Rejoindre notre groupe Facebook",
     "upcomingEvents": "Découvrir les prochains événements"
   },
-  "whatToExpect": {
-    "title": "À quoi s’attendre au Hanoi Lucky Chess Club",
-    "p1": "Au Hanoi Lucky Chess Club, nous accueillons les joueurs de tous niveaux, du grand débutant au compétiteur expérimenté. Notre communauté bienveillante est là pour vous aider à progresser, à faire de nouvelles rencontres et à savourer le plaisir intemporel des échecs.",
-    "p2": "Que vous cherchiez des parties décontractées, des rencontres sérieuses ou simplement un endroit où passer du temps avec d’autres passionnés d’échecs, vous le trouverez ici. Nous organisons régulièrement des événements, des tournois et des séances d’entraînement pour que tout reste vivant et stimulant.",
-    "p3": "Notre lieu de rendez-vous, le Horizon Cafe, offre une atmosphère confortable et accueillante, avec beaucoup d’espace pour jouer, se détendre et discuter. Profitez d’un bon café, de quelques en-cas et de boissons tout en vous plongeant dans l’univers des échecs.",
-    "p4": "Rejoignez-nous chaque vendredi soir et chaque dimanche après-midi pour une expérience échiquéenne mémorable au cœur de Hanoi !"
-  },
   "whoCanJoin": {
-    "title": "Qui peut nous rejoindre ?",
-    "p1": "Notre club d’échecs est ouvert à tous ! Que vous soyez tout à fait débutant ou joueur chevronné, tous les niveaux sont les bienvenus. Nos membres vont des jeunes étudiants aux retraités, tous réunis par leur amour du jeu.",
-    "p2": "Les nouveaux venus sont particulièrement encouragés à nous rejoindre. Nous croyons à un environnement amical et bienveillant, où chacun peut apprendre et progresser. Nos membres expérimentés partagent toujours volontiers conseils et stratégies avec celles et ceux qui souhaitent s’améliorer.",
-    "p3": "Alors, que vous souhaitiez jouer des parties décontractées, participer à des tournois ou simplement profiter de la convivialité entre passionnés d’échecs, le Hanoi Lucky Chess Club est l’endroit idéal pour vous !"
+    "title": "À quoi s’attendre ?",
+    "p1": "Nous accueillons les joueurs de tous âges et de tous niveaux, du débutant complet au joueur expérimenté qui aime les parties tranchantes et la compétition sérieuse. Les enfants sont également les bienvenus pour apprendre et jouer au sein de notre communauté d’échecs internationale et conviviale.",
+    "p2": "Nous ne faisons pas que jouer aux échecs. Nous discutons des fondamentaux, de la théorie, des stratégies et des tactiques, tout en apprenant et en progressant ensemble. Beaucoup de nos membres pratiquent aussi leur anglais à travers les échecs, se font de nouveaux amis et rencontrent des personnes venues de cultures et de pays différents.",
+    "p3": "Nous nous retrouvons souvent pour manger avant ou après nos parties sur l’échiquier. Il n’y a ni cotisation ni frais de participation, et nous avons assez de jeux et de pendules pour que tout le monde puisse jouer.",
+    "p4": "Nous tenons à maintenir nos rencontres selon le programme annoncé, quelle que soit la météo ou les autres imprévus. La seule exception régulière est la fête du Tết : les jours sans rencontre sont annoncés à l’avance sur nos groupes Zalo et Facebook ainsi que sur notre page Facebook."
   },
   "imageCarousel": {
     "caption": "Voilà à quoi nous ressemblons chaque vendredi et chaque dimanche, ici à Hanoi",
@@ -61,16 +61,8 @@
       "a1": "Nous nous réunissons deux fois par semaine : tous les vendredis soir de 19:00 à 23:00 et tous les dimanches après-midi de 14:00 à 18:00.",
       "q2": "Où jouez-vous ?",
       "a2": "Nous jouons au Horizon Coffee, à Phung Khoang, Ha Dong, Hanoi : un lieu chaleureux et convivial, avec beaucoup de place, une bonne lumière et d’excellentes boissons.",
-      "q3": "Faut-il être un joueur d’échecs expérimenté pour venir ?",
-      "a3": "Pas du tout ! Tout le monde est bienvenu, y compris les grands débutants, les joueurs occasionnels et les compétiteurs expérimentés. Nos membres aident volontiers les nouveaux venus à apprendre et à progresser.",
-      "q4": "Les débutants sont-ils les bienvenus ?",
-      "a4": "Oui ! Beaucoup de nos membres sont débutants. Vous trouverez toujours des joueurs sympathiques prêts à vous aider à apprendre.",
       "q5": "Y a-t-il une cotisation ?",
       "a5": "Il n’y a aucune cotisation ni aucun frais, ni pour participer ni pour être membre. Les échecs doivent rester accessibles. Vous ne payez que vos propres boissons ou en-cas au café.",
-      "q6": "Rejoindre le club d’échecs est-il un bon moyen d’apprendre l’anglais ?",
-      "a6": "Pendant nos rencontres, nous parlons d’échecs, nous rions et plaisantons en vietnamien, en anglais et dans plusieurs autres langues.",
-      "q7": "Combien de langues parlent les membres du club ?",
-      "a7": "Nous parlons de nombreuses langues, dont le vietnamien, l’anglais, le français, l’espagnol, le portugais, le turc et l’allemand.",
       "q8": "Puis-je apporter mon propre jeu d’échecs ou ma pendule ?",
       "a8": "Nous avons assez d’échiquiers et de pendules pour que tout le monde puisse jouer, et vous êtes bien sûr libre d’apporter les vôtres.",
       "q9": "Faut-il s’inscrire avant de venir ?",
@@ -81,14 +73,8 @@
       "a11": "Les jeunes joueurs sont les bienvenus : nous sommes convaincus que les échecs sont un excellent moyen pour les enfants de développer leur esprit critique et leurs compétences sociales.",
       "q12": "Est-ce que des filles et des femmes jouent aux échecs avec vous ?",
       "a12": "Parmi nos meilleurs joueurs, il y a des filles et des femmes. Nous offrons souvent un prix à la meilleure joueuse lors de nos tournois.",
-      "q13": "Comment rester informé de la vie du club ?",
-      "a13": "Rejoignez nos canaux Facebook / Zalo / communautaires pour suivre les actualités, les événements et les annonces.",
       "q14": "Comment obtenir plus d’informations sur le club d’échecs et ses rencontres ?",
-      "a14": "Vous pouvez appeler Francis Lloyd Holland sur Zalo et WhatsApp au 333 009 587, ou nous écrire à francislholland@gmail.com",
-      "q15": "Qui a fondé le Hanoi Lucky Chess Club (HLCC), et quand ?",
-      "a15": "Deux amis, Francis Lloyd Holland (américain) et Duong Hai (vietnamien), ont fondé le HLCC le 10 décembre 2023, en apportant un jeu d’échecs dans une pizzeria de Hanoi et en jouant avec les gens de passage.",
-      "q16": "Puis-je pratiquer mon anglais et me faire de nouveaux amis en jouant aux échecs avec vous ?",
-      "a16": "Les membres de notre club se retrouvent souvent pour déjeuner avant les rencontres et/ou pour dîner après : nous y pratiquons notre anglais tout en nous faisant de nouveaux amis anglophones venus des États-Unis, d’Angleterre, d’Australie, de France, d’Allemagne, ainsi que de pays d’Afrique, d’Asie et d’Amérique latine."
+      "a14": "Vous pouvez appeler Francis Lloyd Holland sur Zalo et WhatsApp au 333 009 587, ou nous écrire à francislholland@gmail.com"
     }
   }
 }

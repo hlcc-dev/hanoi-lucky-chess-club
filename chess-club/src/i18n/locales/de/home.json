@@ -14,19 +14,25 @@
   },
   "clubInfo": {
     "title": "Wo & wann wir spielen",
-    "weeklySchedule": "Wochenplan",
+    "weeklySchedule": "Regelmäßiger Wochenplan",
+    "freeEntry": "Freier Eintritt",
     "friDay": "FR",
     "friPeriod": "ABEND",
-    "friName": "Schach am Freitag",
-    "friDesc": "Locker spielen, freundschaftliche Partien, viel Lachen & gute Gesellschaft.",
+    "friTitle": "Schach am Freitagabend",
+    "friTime": "19:00 – 23:00",
+    "friDesc": "Entspannte Partien, freundliche Matches und gute Gesellschaft.",
     "sunDay": "SO",
     "sunPeriod": "NACHMITTAG",
-    "sunName": "Schach am Sonntag",
+    "sunTitle": "Schach am Sonntagnachmittag",
+    "sunTime": "14:00 – 18:00",
     "sunDesc": "Entspanntes Wochenendschach mit Spielern aller Spielstärken.",
+    "noRegistration": "Keine Anmeldung nötig",
+    "justWalkIn": "Einfach vorbeikommen und spielen",
     "locationTitle": "Unser Zuhause in Hanoi",
     "locationPrefix": "Wir treffen uns im",
-    "venueName": "Horizon Cafe",
+    "venueName": "Horizon Coffee in Phung Khoang",
     "locationSuffix": ", einem gemütlichen, freundlichen Ort, den Einheimische und Reisende gleichermaßen lieben. Tolle Atmosphäre, gute Getränke und viel Platz für Schach.",
+    "openInMaps": "In Maps öffnen",
     "getDirections": "Route anzeigen"
   },
   "cta": {
@@ -36,18 +42,12 @@
     "joinFacebook": "Unserer Facebook-Gruppe beitreten",
     "upcomingEvents": "Kommende Veranstaltungen ansehen"
   },
-  "whatToExpect": {
-    "title": "Was dich im Hanoi Lucky Chess Club erwartet",
-    "p1": "Im Hanoi Lucky Chess Club sind Spieler aller Spielstärken willkommen – von absoluten Anfängern bis zu erfahrenen Turnierspielern. Unsere freundliche Gemeinschaft hilft dir dabei, dein Spiel zu verbessern, neue Freunde zu finden und die zeitlose Freude am Schach zu genießen.",
-    "p2": "Ob du locker spielen, ernsthafte Partien austragen oder einfach mit anderen Schachfans abhängen möchtest – hier findest du genau das. Wir veranstalten regelmäßig Events, Turniere und Trainingsabende, damit es immer spannend bleibt.",
-    "p3": "Unser Treffpunkt, das Horizon Cafe, bietet eine gemütliche und einladende Atmosphäre mit viel Platz zum Spielen, Entspannen und Plaudern. Genieße guten Kaffee, Snacks und Getränke, während du in die Welt des Schachs eintauchst.",
-    "p4": "Komm jeden Freitagabend und Sonntagnachmittag vorbei und erlebe unvergessliches Schach im Herzen von Hanoi!"
-  },
   "whoCanJoin": {
-    "title": "Wer kann mitmachen?",
-    "p1": "Unser Schachclub ist offen für alle! Egal ob kompletter Anfänger oder alter Hase – bei uns sind alle Spielstärken willkommen. Unsere Mitglieder reichen von jungen Schülern bis zu Rentnern, vereint durch die Liebe zum Spiel.",
-    "p2": "Neulinge sind besonders herzlich eingeladen. Uns ist eine freundliche und unterstützende Atmosphäre wichtig, in der jeder lernen und besser werden kann. Unsere erfahrenen Mitglieder geben ihre Tipps und Strategien immer gern weiter.",
-    "p3": "Ob du also locker spielen, an Turnieren teilnehmen oder einfach die Geselligkeit unter Schachfreunden genießen möchtest – der Hanoi Lucky Chess Club ist genau der richtige Ort für dich!"
+    "title": "Was dich erwartet",
+    "p1": "Wir freuen uns über Spieler jeden Alters und jeder Spielstärke – von absoluten Anfängern bis zu erfahrenen Spielern, die scharfe Partien und echten Wettkampf mögen. Auch Kinder sind herzlich willkommen, in unserer freundlichen internationalen Schachgemeinschaft zu lernen und zu spielen.",
+    "p2": "Wir spielen nicht nur Schach. Wir sprechen über Grundlagen, Theorie, Strategie und Taktik und lernen und verbessern uns gemeinsam. Viele Mitglieder üben beim Schach zugleich ihr Englisch, finden neue Freunde und treffen Menschen aus verschiedenen Kulturen und Ländern.",
+    "p3": "Vor oder nach unseren Partien am Brett gehen wir oft zusammen essen. Es gibt keine Mitglieds- oder Teilnahmegebühren, und wir haben genug Schachspiele und Uhren für alle.",
+    "p4": "Wir halten unsere Treffen zuverlässig nach dem angekündigten Plan ab, unabhängig von Wetter oder anderen Widrigkeiten. Die einzige regelmäßige Ausnahme ist das Tết-Fest: Tage ohne Treffen kündigen wir vorab in unseren Zalo- und Facebook-Gruppen und auf unserer Facebook-Seite an."
   },
   "imageCarousel": {
     "caption": "So sieht es bei uns jeden Freitag & Sonntag hier in Hanoi aus",
@@ -61,16 +61,8 @@
       "a1": "Wir treffen uns zweimal pro Woche: jeden Freitagabend von 19:00 bis 23:00 und jeden Sonntagnachmittag von 14:00 bis 18:00.",
       "q2": "Wo spielt ihr?",
       "a2": "Wir spielen im Horizon Coffee in Phung Khoang, Ha Dong, Hanoi – einem gemütlichen, freundlichen Treffpunkt mit viel Platz, gutem Licht und leckeren Getränken.",
-      "q3": "Muss ich ein erfahrener Schachspieler sein, um mitzumachen?",
-      "a3": "Überhaupt nicht! Bei uns sind alle willkommen: absolute Anfänger, Gelegenheitsspieler und erfahrene Turnierspieler. Unsere Mitglieder helfen Neulingen gern beim Lernen und Besserwerden.",
-      "q4": "Sind Anfänger willkommen?",
-      "a4": "Ja! Viele unserer Mitglieder sind Anfänger. Du findest hier immer freundliche Spieler, die dir beim Lernen helfen.",
       "q5": "Gibt es einen Mitgliedsbeitrag?",
       "a5": "Für die Teilnahme und die Mitgliedschaft fallen überhaupt keine Beiträge oder Gebühren an. Schach soll für alle zugänglich sein. Du zahlst nur deine eigenen Getränke oder Snacks im Café.",
-      "q6": "Ist der Schachclub eine gute Möglichkeit, Englisch zu lernen?",
-      "a6": "Bei unseren Schachtreffen reden wir über Schach, lachen und scherzen – auf Vietnamesisch, Englisch und in mehreren anderen Sprachen.",
-      "q7": "Wie viele Sprachen sprechen die Teilnehmer im Club?",
-      "a7": "Wir sprechen viele Sprachen, darunter Vietnamesisch, Englisch, Französisch, Spanisch, Portugiesisch, Türkisch und Deutsch.",
       "q8": "Kann ich mein eigenes Schachspiel oder meine eigene Uhr mitbringen?",
       "a8": "Wir haben genug Bretter und Uhren für alle – du kannst aber gern auch deine eigenen mitbringen.",
       "q9": "Muss ich mich vorher anmelden?",
@@ -81,14 +73,8 @@
       "a11": "Jüngere Spieler sind herzlich willkommen – wir finden, Schach ist eine großartige Möglichkeit für Kinder, kritisches Denken und soziale Fähigkeiten zu entwickeln.",
       "q12": "Spielen bei euch auch Mädchen und Frauen Schach?",
       "a12": "Zu unseren besten Schachspielern gehören Mädchen und Frauen. Bei unseren Turnieren gibt es oft einen Preis für die beste Spielerin.",
-      "q13": "Wie bleibe ich über den Club informiert?",
-      "a13": "Komm in unsere Facebook-, Zalo- und Community-Kanäle – dort gibt es Neuigkeiten, Veranstaltungen und Ankündigungen.",
       "q14": "Wie bekomme ich mehr Informationen über den Schachclub und die Treffen?",
-      "a14": "Du kannst Francis Lloyd Holland über Zalo und WhatsApp unter 333 009 587 anrufen oder uns eine E-Mail an francislholland@gmail.com schreiben",
-      "q15": "Wer hat den Hanoi Lucky Chess Club (HLCC) gegründet und wann?",
-      "a15": "Zwei Freunde, Francis Lloyd Holland (aus Amerika) und Duong Hai (aus Vietnam), gründeten den HLCC am 10. Dezember 2023: Sie nahmen einfach ein Schachspiel in eine Pizzeria in Hanoi mit und spielten dort mit den Gästen.",
-      "q16": "Kann ich beim Schachspielen mit euch mein Englisch üben und neue Freunde finden?",
-      "a16": "Unsere Clubmitglieder treffen sich oft vor den Treffen zum Mittagessen und/oder danach zum Abendessen, üben dabei ihr Englisch und finden neue englischsprachige Freunde aus den USA, England, Australien, Frankreich, Deutschland sowie aus afrikanischen, asiatischen und lateinamerikanischen Ländern."
+      "a14": "Du kannst Francis Lloyd Holland über Zalo und WhatsApp unter 333 009 587 anrufen oder uns eine E-Mail an francislholland@gmail.com schreiben"
     }
   }
 }

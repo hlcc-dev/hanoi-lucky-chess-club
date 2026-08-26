@@ -14,19 +14,25 @@
   },
   "clubInfo": {
     "title": "Dónde y cuándo jugamos",
-    "weeklySchedule": "Horario semanal",
+    "weeklySchedule": "Horario semanal habitual",
+    "freeEntry": "Entrada libre",
     "friDay": "VIE",
     "friPeriod": "NOCHE",
-    "friName": "Ajedrez de los viernes por la noche",
-    "friDesc": "Partidas informales, encuentros amistosos, risas y buena compañía.",
+    "friTitle": "Ajedrez del viernes por la noche",
+    "friTime": "19:00 – 23:00",
+    "friDesc": "Partidas relajadas, encuentros amistosos y buena compañía.",
     "sunDay": "DOM",
     "sunPeriod": "TARDE",
-    "sunName": "Ajedrez de los domingos por la tarde",
+    "sunTitle": "Ajedrez del domingo por la tarde",
+    "sunTime": "14:00 – 18:00",
     "sunDesc": "Ajedrez relajado de fin de semana con jugadores de todos los niveles.",
+    "noRegistration": "No hace falta registrarse",
+    "justWalkIn": "Solo ven y juega",
     "locationTitle": "Nuestra casa en Hanoi",
     "locationPrefix": "Nos reunimos en",
-    "venueName": "Horizon Cafe",
+    "venueName": "Horizon Coffee en Phung Khoang",
     "locationSuffix": ", un lugar acogedor y agradable, muy querido por vecinos y viajeros. Buen ambiente, buenas bebidas y mucho espacio para jugar al ajedrez.",
+    "openInMaps": "Abrir en Maps",
     "getDirections": "Cómo llegar"
   },
   "cta": {
@@ -36,18 +42,12 @@
     "joinFacebook": "Únete a nuestro grupo de Facebook",
     "upcomingEvents": "Consulta los próximos eventos"
   },
-  "whatToExpect": {
-    "title": "Qué te espera en el Hanoi Lucky Chess Club",
-    "p1": "En el Hanoi Lucky Chess Club damos la bienvenida a jugadores de todos los niveles, desde principiantes absolutos hasta competidores con mucha experiencia. Nuestra comunidad está aquí para ayudarte a mejorar tu juego, hacer nuevos amigos y disfrutar del placer atemporal del ajedrez.",
-    "p2": "Ya busques partidas informales, encuentros más serios o simplemente un lugar donde pasar el rato con otros aficionados al ajedrez, aquí lo encontrarás. Organizamos eventos, torneos y sesiones de entrenamiento con regularidad para que todo siga siendo emocionante y entretenido.",
-    "p3": "Nuestro local, el Horizon Cafe, ofrece un ambiente cómodo y acogedor, con mucho espacio para jugar, relajarse y socializar. Disfruta de un buen café, algo para picar y buenas bebidas mientras te sumerges en el mundo del ajedrez.",
-    "p4": "¡Únete a nosotros todos los viernes por la noche y los domingos por la tarde para vivir una experiencia de ajedrez inolvidable en el corazón de Hanoi!"
-  },
   "whoCanJoin": {
-    "title": "¿Quién puede unirse?",
-    "p1": "¡Nuestro club de ajedrez está abierto a todo el mundo! Tanto si eres principiante absoluto como jugador experimentado, damos la bienvenida a todos los niveles. Entre nuestros miembros hay desde estudiantes jóvenes hasta jubilados, todos unidos por su amor al juego.",
-    "p2": "Animamos especialmente a los recién llegados a unirse. Creemos en cultivar un ambiente amable y de apoyo en el que todos puedan aprender y mejorar. Nuestros miembros con más experiencia siempre están encantados de compartir consejos y estrategias con quienes quieren mejorar su nivel.",
-    "p3": "Así que, si quieres jugar partidas informales, participar en torneos o simplemente disfrutar de la buena compañía de otros aficionados al ajedrez, ¡el Hanoi Lucky Chess Club es el lugar perfecto para ti!"
+    "title": "¿Qué te espera?",
+    "p1": "Damos la bienvenida a jugadores de todas las edades y de todos los niveles, desde principiantes absolutos hasta jugadores con experiencia a los que les gustan las partidas afiladas y la competición seria. Los niños también son muy bienvenidos a aprender y jugar en nuestra comunidad de ajedrez internacional y cercana.",
+    "p2": "No solo jugamos al ajedrez. Hablamos de fundamentos, teoría, estrategias y tácticas, mientras aprendemos y mejoramos juntos. Muchos miembros también practican su inglés jugando al ajedrez, hacen nuevos amigos y conocen a gente de culturas y países distintos.",
+    "p3": "Solemos quedar para comer antes o después de nuestras partidas sobre el tablero. No hay cuotas de socio ni de participación, y tenemos suficientes juegos y relojes para que todos puedan jugar.",
+    "p4": "Nos comprometemos a celebrar nuestras reuniones según el horario anunciado, sin importar el tiempo ni otras dificultades. La única excepción habitual es la fiesta del Tết: los días sin reunión se anuncian con antelación en nuestros grupos de Zalo y Facebook y en nuestra página de Facebook."
   },
   "imageCarousel": {
     "caption": "Así somos cada viernes y domingo aquí en Hanoi",
@@ -61,16 +61,8 @@
       "a1": "Nos reunimos dos veces por semana: todos los viernes por la noche, de 19:00 a 23:00, y todos los domingos por la tarde, de 14:00 a 18:00.",
       "q2": "¿Dónde jugáis?",
       "a2": "Jugamos en el Horizon Coffee, en Phung Khoang, Ha Dong, Hanoi: un local acogedor y agradable, con mucho espacio, buena iluminación y bebidas excelentes.",
-      "q3": "¿Necesito tener experiencia jugando al ajedrez para unirme?",
-      "a3": "¡En absoluto! Todo el mundo es bienvenido, incluidos los principiantes absolutos, los jugadores ocasionales y los competidores con experiencia. Nuestros miembros están encantados de ayudar a los recién llegados a aprender y mejorar.",
-      "q4": "¿Son bienvenidos los principiantes?",
-      "a4": "¡Sí! Muchos de nuestros miembros son principiantes. Siempre encontrarás jugadores amables dispuestos a ayudarte a aprender.",
       "q5": "¿Hay que pagar una cuota de socio?",
       "a5": "No hay ninguna cuota ni pago por participar o ser miembro. El ajedrez debe estar al alcance de todos. Solo pagas tus propias bebidas o lo que piques en la cafetería.",
-      "q6": "¿Es el club de ajedrez una buena forma de aprender inglés?",
-      "a6": "En nuestros encuentros hablamos de ajedrez, nos reímos y bromeamos en vietnamita, inglés y varios otros idiomas.",
-      "q7": "¿Cuántos idiomas hablan los participantes del club?",
-      "a7": "Hablamos muchos idiomas, entre ellos vietnamita, inglés, francés, español, portugués, turco y alemán.",
       "q8": "¿Puedo llevar mi propio juego de ajedrez o mi reloj?",
       "a8": "Tenemos tableros y relojes suficientes para que todos jueguen, pero también puedes traer los tuyos si quieres.",
       "q9": "¿Tengo que registrarme antes de venir?",
@@ -81,14 +73,8 @@
       "a11": "Los jugadores más jóvenes son bienvenidos, ya que creemos que el ajedrez es una forma excelente de que los niños desarrollen el pensamiento crítico y las habilidades sociales.",
       "q12": "¿Juegan chicas y mujeres al ajedrez con vosotros?",
       "a12": "Entre nuestros mejores jugadores hay chicas y mujeres. A menudo ofrecemos un premio a la mejor jugadora en nuestros torneos de ajedrez.",
-      "q13": "¿Cómo puedo estar al día de las novedades del club?",
-      "a13": "Únete a nuestros canales de Facebook, Zalo y de la comunidad para enterarte de novedades, eventos y anuncios.",
       "q14": "¿Cómo puedo obtener más información sobre el club de ajedrez y sus encuentros?",
-      "a14": "Puedes llamar a Francis Lloyd Holland por Zalo y WhatsApp al 333 009 587 o escribirnos a francislholland@gmail.com",
-      "q15": "¿Quién fundó el Hanoi Lucky Chess Club (HLCC) y cuándo?",
-      "a15": "Dos amigos, Francis Lloyd Holland (estadounidense) y Duong Hai (vietnamita), fundaron el HLCC el 10 de diciembre de 2023: llevaron un juego de ajedrez a una pizzería de Hanoi y se pusieron a jugar con la gente del lugar.",
-      "q16": "¿Puedo practicar inglés y hacer nuevos amigos jugando al ajedrez con vosotros?",
-      "a16": "Los miembros de nuestro club solemos quedar para comer antes de los encuentros o para cenar después, y así practicamos nuestro inglés mientras hacemos nuevos amigos angloparlantes de Estados Unidos, Inglaterra, Australia, Francia, Alemania y de países africanos, asiáticos y latinoamericanos."
+      "a14": "Puedes llamar a Francis Lloyd Holland por Zalo y WhatsApp al 333 009 587 o escribirnos a francislholland@gmail.com"
     }
   }
 }

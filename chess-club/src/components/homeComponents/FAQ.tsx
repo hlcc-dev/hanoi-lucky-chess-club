@@ -26,24 +26,8 @@ function FAQ() {
             link: "location"
         },
         {
-            q: t("faq.items.q3"),
-            a: t("faq.items.a3")
-        },
-        {
-            q: t("faq.items.q4"),
-            a: t("faq.items.a4")
-        },
-        {
             q: t("faq.items.q5"),
             a: t("faq.items.a5")
-        },
-        {
-            q: t("faq.items.q6"),
-            a: t("faq.items.a6")
-        },
-        {
-            q: t("faq.items.q7"),
-            a: t("faq.items.a7")
         },
         {
             q: t("faq.items.q8"),
@@ -66,20 +50,8 @@ function FAQ() {
             a: t("faq.items.a12")
         },
         {
-            q: t("faq.items.q13"),
-            a: t("faq.items.a13")
-        },
-        {
             q: t("faq.items.q14"),
             a: t("faq.items.a14")
-        },
-        {
-            q: t("faq.items.q15"),
-            a: t("faq.items.a15")
-        },
-        {
-            q: t("faq.items.q16"),
-            a: t("faq.items.a16")
         }
         // {
         //     q: "How can I make a financial contribution to the Hanoi Lucky Chess Club?",
